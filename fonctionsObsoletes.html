@@ -1,0 +1,419 @@
+ <!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" href="uml/style.css" />
+	<link rel="stylesheet" href="uml/prism.css" media="screen" /> 
+	<style>
+		/* ------------------------------------ */
+		table {
+		  font-family: arial, sans-serif;
+		  border-collapse: collapse;
+		  width: 97.5%;			  
+		}
+
+		td, th {
+		  border: 1px solid #dddddd;
+		  text-align: center;
+		  padding: 8px;		  
+		}
+		td { text-align: left;}
+
+		 tr:nth-child(n+2):nth-child(even) { 
+		/* tbody tr:nth-child(n+2):nth-child(even */
+		  background-color: #f7f7f9;
+		}
+
+		/* ------------------------------------ */
+		
+		
+		th
+		{
+		 color:white ;
+		 
+		 /* background:#558C89; */
+		 /* background:#74AFAD; */
+		 background:#5fcf80;
+		 
+		 box-shadow: 7px 6px 15px #333;
+		   border-radius:8px 8px 0px 0px;
+		  -webkit-border-radius:8px 8px 0px 0px;
+
+		}
+		tr
+		{
+			-moz-border-radius:4px;
+			-webkit-border-radius:4px;
+			border-radius:4px;
+			margin:0px;
+		}
+		
+		table pre {
+		  white-space: pre;
+		  overflow-x: auto !important;
+		  display: block !important;
+		  max-width: 100%;
+		  
+		  
+		}
+		
+	</style>
+	<script src="uml/moteurJquery.js"> </script>
+	<script src="uml/prism.js" type="text/javascript" ></script>
+</head>
+<body>
+<div class="sidenav">
+  <!-- menu accordeon -->
+    <div id="aside" style="width:100%; margin-right:0;  height:99%; margin-bottom:0;  margin-top:0; padding-top:0; font-size:.8em; " > <!-- appliquer ce style sur base4.css -->
+		<ul class="navigation" style="width:100%;"  >	<!-- margin-top:-19.5%; pour LES GRAND ECRAN-->
+			<li class="toggleSubMenu"> <span >1. Authentification</span>
+				<ul class="subMenu" id="seulement_les_passeports" style="color:silver;" >
+				  <li id="envoi"><a href="index.html#login">Login</a></li>
+				  <li id="retour"><a href="index.html#validerlogin" >Gestion des droits</a></li>
+				</ul>
+			</li>
+			<li class="toggleSubMenu" style="border:1px solid gray;  border-bottom:none;"><span >2. Accueil</span>
+				  <ul class="subMenu"  style="color:silver;" >						
+					<li><a href="index.html#affichelien">Afficher: Le lien</a></li>
+					<li><a href="index.html#affichedoc">Afficher: Le document</a></li>
+					<li> <a class="btn" href="index.html#imprimer">&emsp;&#9632;&ensp; Bouton Imprimer</a></li>
+					<li><a class="btn" href="index.html#modifier">&emsp;&#9632;&ensp;  Bouton Rectifier</a></li>
+					<li><a class="btn" href="index.html#supprimer">&emsp;&#9632;&ensp;  Bouton Supprimer</a></li>
+					<li><a class="btn" href="index.html#trier">&emsp;&#9632;&ensp; Bouton Trier</a></li>
+					<li><a href="index.html#cherchenum">Recherche par numéro</a></li>
+					<li><a href="index.html#cherchenom">Recherche par nom</a></li>
+				  </ul><!-- fin ul.subMenu -->
+			</li>
+			<li class="toggleSubMenu" style="border:1px solid gray; border-bottom:none; border-top:none;"><span>3. Resultat de recherche</span>
+				  <ul class="subMenu" id="seulement_les_caisses" style="color:silver;" >						
+					<li><a href="index.html#resultatnum" >Résultat par numéro </a></li>
+					<li><a href="index.html#resultatnom" >Résultat par nom</a></li>
+				  </ul>
+		    </li> 
+				    <!-- ######################## TASKS #####################################
+					
+ 					        Les 3 liens suivants(4.1, 4.2, 4.3) doivent être regroupés en 1 seul lien:
+					        Mais d'abord, i fo regrouper les 3 arborescences dans 1 seul shémas
+                           
+						    INCHA ALLAH
+							
+                         #################################################################### -->						
+			<li class="toggleSubMenu" style="border:1px solid gray;  border-top:none;"><span>4. Traitement du résultat </span>
+			     <ul class="subMenu"  style="color:silver;" >			        
+					<li><a href="index.html#afficheresultat" >Afficher</a></li>
+					<li><a href="index.html#imprimeresultat" >Imprimer</a></li>
+					<li><a href="index.html#modifieresultat" >Rectifier</a></li>
+				  </ul>
+			</li>				
+			<li class="toggleSubMenu"><span>5. Nouveau document</span>
+				  <ul class="subMenu" id="seulement_les_caisses" style="color:silver;" >						
+					<li><a href="index.html#" >fonction1</a></li>
+					<li><a href="index.html#" >fonction2</a></li>
+					<li><a href="index.html#" >fonction3</a></li>
+					<li><a href="index.html#" >fonction4</a></li>
+				  </ul>
+			</li>
+			<li class="toggleSubMenu"><span>6. Affichage documents</span>
+				  <ul class="subMenu" id="seulement_les_caisses" style="color:silver;" >						
+					<li><a href="index.html#" >fonction1</a></li>
+					<li><a href="index.html#" >fonction2</a></li>
+					<li><a href="index.html#" >fonction3</a></li>
+					<li><a href="index.html#" >fonction4</a></li>
+				  </ul>
+			</li>
+			<li class="toggleSubMenu" style="border-top:1px solid gray;"><span>Les fonctions dépreciées</span>
+				  <ul class="subMenu" id="seulement_les_caisses" style="color:silver;" >						
+					<li><a href="#php">PHP</a></li>
+					<li><a href="#ajax">AJAX</a></li>
+
+				  </ul>
+			</li>
+		</ul>  		   
+    </div><!-- fin menu accordeon --> 
+</div><!-- fin #sidenav -->
+
+
+<div class="main" style="margin-right:0;">
+
+	<h4 id="php" class="img" style="background: #ddd; clear:both !important; ">1. PHP</h4>
+
+	Task1:<br> Soumettre accueil.php(juste le code php) à capilot et le demander de te sortir
+	 <br> - les fonctions dépreciées
+	 <br> - les fonctions obsoletes<br>
+	Faire de même chose pour les autres pages( ecritureBD.php, lectureBD.php, lectureBD2.php, modifier_.php, ...etc )<u> pour remplir cette table</u> <br><br>
+
+
+	INCHA ALLAH <br><br>
+
+	<table>
+	  <tr>
+		<th>Fonction</th>
+		<th>Description </th>
+		<th>Fichier source</th>
+		<th>Nouvelle fonction</th>
+	  </tr>
+	  
+	  <tbody>
+		  <tr>
+			<td>get_magic_quotes_gpc()</td>
+			<td>Virer l'espace en début de chaîne.<br>Enleve l'echappement.<br>N'existe plus depuis PHP 7.4</td>
+			<td>lectureBD_afficherNaissance.php</td>
+			<td>❌ Supprimer</td>
+		  </tr>
+		  <tr>
+			<td>...</td>
+			<td>...</td>
+			<td>...</td>
+			<td>...</td>
+		  </tr>
+		  <tr>
+			<td>...</td>
+			<td>...</td>
+			<td>...</td>
+			<td>...</td>
+		  </tr>
+	  </tbody>
+	</table>
+
+	
+	<h4 id="ajax" class="img" style="background: #ddd; margin-top:5em; clear:both !important; ">2. AJAX</h4>
+	<table>
+	  <tr>
+		<th>Fonction</th>
+		<th>Description </th>
+		<th>Fichier source</th>
+		<th>Nouvelle fonction</th>
+	  </tr>
+		<tbody>
+		  <tr>
+			<td>ActiveXObject("Microsoft.XMLHTTP")</td>
+			<td>
+				  Propre à Internet Explorer, <br> abandonnée dépuis ????.
+				  <ul type="cite">
+					  <li>❌ Dépréciée !</li> 
+					  <li>Elle envoyait des requêtes HTTP(GET, POST, etc.) en arrière-plan, Sans recharger la page(le principe même d’AJAX)</li>
+					  <li>Elle récupérer la réponse du serveur(texte,HTML, XML (d’où le nom XMLHttpRequest))</li>
+					  <li><b>Permettre des applications web dynamiques :</b><br> Avant 2005(IE5-IE6), c’était la seule façon de faire de l’AJAX dans IE.</li>
+				  </ul>
+				  
+			</td>
+			<td>accueil_liens_colonne5.js</td>
+			<td> XMLHttpRequest()<br>  ou mieux <br> <b>fetch()</b>.</td>
+		  </tr>
+		  <tr>
+			<td>if (window.XMLHttpRequest)</td>
+			<td>
+				<b>Détection de navigateur IE</b>
+				<ul type="cite">
+					<li>❌ Obsolète!</li>
+					<li>Cette détection servait uniquement à gérer IE5/IE6.</li>
+					<li>Tous les navigateurs modernes supportent XMLHttpRequest.</li>		    
+				 </ul>
+				
+			</td>
+			<td>accueil_liens_colonne5.js</td>
+			<td>❌ Supprimer</td>
+		  </tr>
+		  <tr>
+			<td>onreadystatechange</td>
+			<td>
+				<ul type="cite">
+					<li>⚠️ Ancien API !</li>
+					<li>
+					 Elle permet de réagir aux différentes étapes d’une requête AJAX.<br>Les 5 états possibles (readyState):
+					 <ol start="0">
+						<li>Requête non initialisée</li>
+						<li>Connexion au serveur établie</li>
+						<li>Requête reçue par le serveur</li>
+						<li>Réponse en cours de traitement</li>
+						<li>Réponse terminée (prête)</li>
+					 </ol>   
+					</li>
+					<li>Toujours supportée, mais considérée comme ancienne.</li>		    
+					<li>Plus verbeuse et moins lisible que les événements modernes ou <b>fetch()</b>.</li>		    
+				</ul>
+			</td>
+			<td>accueil_liens_colonne5.js</td>
+			<td>xmlhttp.onload ou fetch()</td>
+		  </tr>
+			<tr>
+			<td>AJAX manuel</td>
+			<td>⚠️ Ancien</td>
+			<td>accueil_liens_colonne5.js</td>
+			<td><b>fetch()</b></td>
+		  </tr>
+		</tbody>
+	</table>
+	
+	
+	<h4>capture_items.js: XMLHttpRequest vs fetch</h4>
+	
+	
+	<pre style="z-index:0 !important;"><code class="language-js"  >
+	function captureSousMenu(prfctr){ // prfctr=préfecture selectionnée dans le sous-menu
+		if (prfctr == "") { 
+			 document.getElementById("yivawo").innerHTML = ""; return; 
+		}else{ 
+			instanceXMLHttpRequest();// instance XMLHttpRequest for IE7+
+		   
+			//1.Connection[au serveur php] et Paramèttrage[prfctr est la prefecture choisie]  
+			xmlhttp.open("GET","SERVEUR/lectureBD_afficherNaissance.php?pr="+prfctr,true); 
+			//2.Envoi
+			xmlhttp.send(); 
+			//3.Réception réponse du serveur [xmlhttp.responseText] et affichage dans div yivawo
+			xmlhttp.onreadystatechange = function() { if (xmlhttp.readyState == 4 && xmlhttp.status == 200) { 
+				document.getElementById("yivawo").innerHTML = xmlhttp.responseText;}
+				//activerPopup();
+			};
+		}
+	}
+	</code></pre>
+	<pre><code class="language-js">
+
+	function captureSousMenu(prfctr) { // la mm fonction avec fetch
+		const cible = document.getElementById("yivawo");
+		if(prfctr === ""){ cible.innerHTML=""; return; }
+		fetch(`SERVEUR/lectureBD_afficherNaissance.php?pr=${encodeURIComponent(prfctr)}`)
+			.then(response => {
+				if (!response.ok) { throw new Error("Erreur réseau : " + response.status }
+				return response.text();
+			})
+			.then(data => {
+				cible.innerHTML = data;
+				// activerPopup(); // si tu veux le remettre
+			})
+			.catch(error => {
+				console.error("Erreur AJAX :", error); cible.innerHTML = "<p>Une erreur est survenue.</p>";
+			});
+	}
+	</code></pre>
+	
+		
+	<table>
+  <thead>
+    <tr>
+      <th>Fonction</th>
+      <th>Description</th>
+      <th>Fichier source</th>
+      <th>Nouvelle fonction</th>
+    </tr>
+  </thead>
+
+  <tbody>
+
+    <tr>
+      <td>ActiveXObject("Microsoft.XMLHTTP")</td>
+      <td>
+        Propre à Internet Explorer.  
+        Dépréciée et inutilisable aujourd’hui.  
+        Servait à envoyer des requêtes AJAX avant IE7.
+      </td>
+      <td>accueil_liens_colonne5.js</td>
+      <td><strong>XMLHttpRequest()</strong> ou <strong>fetch()</strong></td>
+    </tr>
+
+    <tr>
+      <td>if (window.XMLHttpRequest)</td>
+      <td>
+        Détection de navigateur IE5/IE6.  
+        Totalement obsolète.  
+        Tous les navigateurs modernes supportent XMLHttpRequest.
+      </td>
+      <td>accueil_liens_colonne5.js</td>
+      <td>❌ Supprimer</td>
+    </tr>
+
+    <tr>
+      <td>onreadystatechange</td>
+      <td>
+        API AJAX ancienne.  
+        Toujours supportée mais verbeuse.  
+        Utilise les états readyState (0 → 4).
+      </td>
+      <td>accueil_liens_colonne5.js</td>
+      <td><strong>xmlhttp.onload</strong> ou <strong>fetch()</strong></td>
+    </tr>
+
+    <tr>
+      <td>XMLHttpRequest()</td>
+      <td>
+        Ancienne manière de faire de l’AJAX.  
+        Fonctionne encore mais moins lisible.
+      </td>
+      <td>accueil_liens_colonne5.js</td>
+      <td><strong>fetch()</strong></td>
+    </tr>
+
+    <tr>
+      <td>captureSousMenu() — version XHR</td>
+      <td>Ancienne implémentation AJAX</td>
+      <td>accueil_liens_colonne5.js</td>
+      <td>
+        <pre><code class="language-js">
+function captureSousMenu(prfctr) {
+    if (prfctr === "") {
+        document.getElementById("yivawo").innerHTML = "";
+        return;
+    }
+
+    const xmlhttp = new XMLHttpRequest();
+    xmlhttp.open("GET", "SERVEUR/lectureBD_afficherNaissance.php?pr=" + prfctr, true);
+    xmlhttp.send();
+
+    xmlhttp.onreadystatechange = function () {
+        if (xmlhttp.readyState === 4 && xmlhttp.status === 200) {
+            document.getElementById("yivawo").innerHTML = xmlhttp.responseText;
+        }
+    };
+}
+        </code></pre>
+      </td>
+    </tr>
+
+    <tr>
+      <td>captureSousMenu() — version fetch</td>
+      <td>Version moderne recommandée</td>
+      <td>accueil_liens_colonne5.js</td>
+      <td>
+        <pre><code class="language-js">
+function captureSousMenu(prfctr) {
+    const cible = document.getElementById("yivawo");
+
+    if (prfctr === "") {
+        cible.innerHTML = "";
+        return;
+    }
+
+    fetch(`SERVEUR/lectureBD_afficherNaissance.php?pr=${encodeURIComponent(prfctr)}`)
+        .then(response => response.text())
+        .then(data => {
+            cible.innerHTML = data;
+        })
+        .catch(error => {
+            console.error("Erreur AJAX :", error);
+            cible.innerHTML = "Une erreur est survenue.";
+        });
+}
+        </code></pre>
+      </td>
+    </tr>
+
+  </tbody>
+</table>
+
+
+
+    <p class="img" style="color:#aaa; clear:both; margin-top:2em;">	
+	AJAX consiste à: <br> 
+		👉 Charger des donnéees dans la page(depuis le serveur) sans recharger la page.<br>
+		👉 Et surtout, sans naviguer vers d'autres pages(on reste sur la même page!).
+	</p>
+
+	
+</div><!-- fin #main -->
+
+</body>
+</html>
+
+
+
+ 

@@ -1,0 +1,99 @@
+<mxfile host="Electron" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/29.6.1 Chrome/142.0.7444.265 Electron/39.8.0 Safari/537.36" version="29.6.1">
+  <diagram name="Page-1" id="FGCMHuo3z6r3NBD4X5uP">
+    <mxGraphModel dx="1106" dy="661" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="0" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <UserObject label="&lt;b&gt;&lt;font style=&quot;font-size: 20px;&quot;&gt;include(&quot;inc/accueil/accueil_prefecture.php&quot;);&lt;/font&gt;&lt;/b&gt;" link="include(&quot;inc/accueil/accueil_prefecture.php&quot;);" id="gaj5bQq_hu4gvEV6XsxS-1">
+          <mxCell parent="1" style="ellipse;whiteSpace=wrap;html=1;" vertex="1">
+            <mxGeometry height="70" width="560" x="120" y="10" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <UserObject label="&lt;a id=&quot;zima&quot;  href=&quot;SERVEUR/                                                      &quot;&gt;" link="&lt;a id=&quot;print_&quot;  href=&quot;SERVEUR/colonne_imprimer_acte.php&quot;&gt;" id="gaj5bQq_hu4gvEV6XsxS-2">
+          <mxCell parent="1" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;rounded=0;fontSize=15;fontStyle=1" vertex="1">
+            <mxGeometry height="30" width="480" x="120" y="80" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <mxCell id="gaj5bQq_hu4gvEV6XsxS-3" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;rounded=0;fontSize=14;fontColor=#0000FF;fontStyle=1" value="&lt;font style=&quot;font-size: 16px;&quot;&gt;//&amp;nbsp; Cette table appellera le traitement&amp;nbsp; &quot;supprimer.php&quot;&lt;/font&gt;" vertex="1">
+          <mxGeometry height="30" width="500" x="610" y="80" as="geometry" />
+        </mxCell>
+        <mxCell id="gaj5bQq_hu4gvEV6XsxS-5" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;rounded=0;fontSize=16;fontStyle=1" value="&amp;lt;input type=&quot;button&quot;&amp;nbsp; value=&quot;Ordre alphabétique&quot;&amp;nbsp; &amp;nbsp; &amp;nbsp;class=&quot;boutonTrier&quot;/&amp;gt;" vertex="1">
+          <mxGeometry height="30" width="590" x="160" y="110" as="geometry" />
+        </mxCell>
+        <mxCell id="gaj5bQq_hu4gvEV6XsxS-6" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;rounded=0;" value="&lt;font style=&quot;font-size: 16px;&quot;&gt;&lt;b&gt;&amp;lt;/a&amp;gt;&lt;/b&gt;&lt;/font&gt;" vertex="1">
+          <mxGeometry height="30" width="60" x="120" y="130" as="geometry" />
+        </mxCell>
+        <mxCell id="gaj5bQq_hu4gvEV6XsxS-7" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;rounded=0;" value="&lt;font style=&quot;font-size: 16px;&quot;&gt;&lt;b&gt;&amp;lt;td&amp;nbsp; id=&quot;flip&quot; &amp;gt; ... &amp;lt;div id=&quot;panel&quot;&amp;gt;&amp;lt;/div&amp;gt; ... &amp;lt;/td&amp;gt;&lt;/b&gt;&lt;/font&gt;" vertex="1">
+          <mxGeometry height="30" width="450" x="120" y="150" as="geometry" />
+        </mxCell>
+        <mxCell id="gaj5bQq_hu4gvEV6XsxS-8" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;rounded=0;fontSize=16;fontStyle=1;fontColor=#0000FF;" value="// Conteneur de la table" vertex="1">
+          <mxGeometry height="30" width="200" x="500" y="150" as="geometry" />
+        </mxCell>
+        <mxCell id="gaj5bQq_hu4gvEV6XsxS-10" edge="1" parent="1" style="endArrow=classic;html=1;rounded=0;fontStyle=0;fontColor=#0000FF;" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <Array as="points">
+              <mxPoint x="399.5" y="180" />
+            </Array>
+            <mxPoint x="399.5" y="190" as="sourcePoint" />
+            <mxPoint x="400" y="230" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="gaj5bQq_hu4gvEV6XsxS-11" parent="1" style="rounded=1;whiteSpace=wrap;html=1;" value="&lt;font style=&quot;font-size: 20px;&quot;&gt;&lt;b style=&quot;&quot;&gt;js/accueil_commandes_panel.js&amp;nbsp;&lt;/b&gt;&lt;/font&gt;" vertex="1">
+          <mxGeometry height="40" width="400" x="200" y="240" as="geometry" />
+        </mxCell>
+        <mxCell id="gaj5bQq_hu4gvEV6XsxS-12" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;rounded=0;fontSize=16;fontStyle=1" value="&lt;font style=&quot;color: rgb(0, 0, 255);&quot;&gt;👉&amp;nbsp; // Ourir le panel&lt;/font&gt;" vertex="1">
+          <mxGeometry height="30" width="470" x="160" y="280" as="geometry" />
+        </mxCell>
+        <mxCell id="gaj5bQq_hu4gvEV6XsxS-14" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;rounded=0;fontSize=16;" value="&lt;b&gt;$(&quot;#flip&quot;).click(function(){ $(&quot;#panel&quot;).slideToggle(&quot;slow&quot;);});&lt;/b&gt;" vertex="1">
+          <mxGeometry height="30" width="560" x="195" y="310" as="geometry" />
+        </mxCell>
+        <mxCell id="gaj5bQq_hu4gvEV6XsxS-17" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;rounded=0;fontStyle=1;fontSize=16;fontColor=#0000FF;" value="👉&amp;nbsp; //&amp;nbsp; Charger la table en fonction du bouton cliqué(a#zima)" vertex="1">
+          <mxGeometry height="30" width="580" x="160" y="340" as="geometry" />
+        </mxCell>
+        <mxCell id="gaj5bQq_hu4gvEV6XsxS-18" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;rounded=0;fontSize=16;fontStyle=1" value="$(&#39; a#rectif, a#zima , a#print_ , a#trier &#39;).click(function(e) {" vertex="1">
+          <mxGeometry height="30" width="570" x="195" y="370" as="geometry" />
+        </mxCell>
+        <UserObject label="&lt;font style=&quot;font-size: 14px; color: rgb(0, 0, 255);&quot;&gt;👉 //&amp;nbsp; Charger dans le panel: &lt;/font&gt;&lt;font style=&quot;font-size: 14px; color: rgb(255, 0, 0);&quot;&gt;Table href&lt;/font&gt;&lt;font style=&quot;font-size: 14px; color: rgb(0, 0, 255);&quot;&gt;&amp;nbsp; &amp;nbsp;&amp;lt;a id=&quot;trier&quot;&amp;nbsp; &lt;/font&gt;&lt;font style=&quot;font-size: 14px; color: rgb(255, 0, 0);&quot;&gt;href=&quot;SERVEUR/colonne_supprimer_acte.php&quot;&lt;/font&gt;&lt;font style=&quot;font-size: 14px; color: rgb(0, 0, 255);&quot;&gt;&amp;gt;&lt;/font&gt;" link="👉 // appel de la table: Le href de  &lt;a id=&quot;print_&quot;  href=&quot;SERVEUR/colonne_imprimer_acte.php&quot; &gt;  par exemple" id="gaj5bQq_hu4gvEV6XsxS-19">
+          <mxCell parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;rounded=0;fontSize=16;fontStyle=1" vertex="1">
+            <mxGeometry height="30" width="770" x="240" y="400" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <mxCell id="gaj5bQq_hu4gvEV6XsxS-21" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;rounded=0;fontSize=16;fontStyle=1" value="$(&#39;#panel&#39;).load($(this).attr(&#39;href&#39;));" vertex="1">
+          <mxGeometry height="30" width="440" x="240" y="430" as="geometry" />
+        </mxCell>
+        <mxCell id="gaj5bQq_hu4gvEV6XsxS-23" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;rounded=0;fontSize=16;" value="&lt;b&gt;});&lt;/b&gt;" vertex="1">
+          <mxGeometry height="30" width="195" x="195" y="450" as="geometry" />
+        </mxCell>
+        <mxCell id="gaj5bQq_hu4gvEV6XsxS-27" edge="1" parent="1" style="endArrow=classic;html=1;rounded=0;fontStyle=0;fontColor=#0000FF;" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <Array as="points">
+              <mxPoint x="399.5" y="480" />
+            </Array>
+            <mxPoint x="399.5" y="490" as="sourcePoint" />
+            <mxPoint x="400" y="520" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="gaj5bQq_hu4gvEV6XsxS-32" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;rounded=0;fontSize=15;fontStyle=1" value="$table.=&#39;&amp;lt;tr&amp;gt;&amp;lt;th&amp;gt;Nom&amp;lt;/th&amp;gt;&amp;lt;th&amp;gt;Prenom&amp;lt;/th&amp;gt;&amp;lt;th&amp;gt;Numero&amp;lt;/th&amp;gt;&amp;lt;th&amp;gt;Prefecture&amp;lt;/th&amp;gt;&amp;lt;th&amp;gt; &amp;lt;/th&amp;gt;&amp;lt;/tr&amp;gt;&#39;;" vertex="1">
+          <mxGeometry height="30" width="795" x="195" y="610" as="geometry" />
+        </mxCell>
+        <mxCell id="gaj5bQq_hu4gvEV6XsxS-34" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;fontSize=26;" value="..." vertex="1">
+          <mxGeometry height="30" width="60" x="199" y="620" as="geometry" />
+        </mxCell>
+        <mxCell id="gaj5bQq_hu4gvEV6XsxS-36" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;rounded=0;fontStyle=1;fontSize=16;" value="$table.=&#39;&amp;lt;tr&amp;gt; … &amp;lt;td&amp;gt; &amp;lt;a href=&quot;SERVEUR/supprimer.php?n=&#39;.$ligne2[&quot;ID&quot;].&#39; &quot;&amp;gt;&amp;nbsp; Supprimer&amp;nbsp; &amp;lt;/a&amp;gt; &amp;lt;/td&amp;gt;&amp;lt;/tr&amp;gt;&#39;;" vertex="1">
+          <mxGeometry height="30" width="921" x="199" y="650" as="geometry" />
+        </mxCell>
+        <UserObject label="&lt;font style=&quot;font-size: 20px; color: rgb(255, 0, 0);&quot;&gt;SERVEUR/colonne_supprimer_acte.php&lt;/font&gt;" link="SERVEUR/colonne_imprimer_acte.php" id="gaj5bQq_hu4gvEV6XsxS-37">
+          <mxCell parent="1" style="ellipse;whiteSpace=wrap;html=1;" vertex="1">
+            <mxGeometry height="40" width="480" x="160" y="530" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <mxCell id="Gp_N6drWW7VQjHlnpXXW-2" parent="1" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;rounded=0;fontColor=#FF0000;fontStyle=1;fontSize=16;" value="colonne_supprimer_acte.php" vertex="1">
+          <mxGeometry height="30" width="229" x="341" y="80" as="geometry" />
+        </mxCell>
+        <mxCell id="3lutQ8o7ty36cHi8BKQu-1" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;rounded=0;" value="&lt;span style=&quot;font-size: 15px;&quot;&gt;&lt;b&gt;$R=mysqli\_query($conn , &quot;SELECT \* FROM&amp;nbsp; liste WHERE prefecture=&#39;&quot;.$\_SESSION\[&quot;v&quot;].&quot;&#39;&amp;nbsp; &lt;font style=&quot;color: rgb(255, 0, 0);&quot;&gt;ORDER BY&lt;/font&gt; nom&amp;nbsp; &quot;)&lt;/b&gt;&lt;/span&gt;" vertex="1">
+          <mxGeometry height="30" width="820" x="195" y="577.5" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

@@ -1,0 +1,696 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="uml/style.css" />
+	<link rel="stylesheet" href="uml/prism.css" media="screen" /> 
+	<!-- POUR  LE MENU ACCORDEON  --> 
+	<style>
+	  .btn:hover{ 
+	     text-decoration:none !important;
+		
+	   }
+	   
+	   /* Personnaliser les puces dans les liste */
+	   
+	   .custom-check, .custom-block , .installation li{
+			list-style: none;
+			padding-left: 0;
+		}
+
+		.custom-check li, .custom-block li, .installation li {
+			position: relative;
+			padding-left: 30px;
+		}
+		
+		.custom-check li::before, .custom-block li::before, .installation li::before {
+			content: "✅";
+			position: absolute;
+			left: 0;
+			top: 0;
+			font-size: 18px;
+		}
+		.installation li::before { content: "✔️" !important;} /* ça prend pas */
+		.custom-block li::before { content: "⛔"; }
+	   
+	</style>
+	<script src="uml/moteurJquery.js"> </script><!-- un peu vieux mais il tourne --> 
+	<script src="uml/prism.js" type="text/javascript" ></script>
+</head>
+<body>
+
+<div class="sidenav">
+  <!-- menu accordeon -->
+    <div id="aside" style="width:100%; margin-right:0;  height:99%; margin-bottom:0;  margin-top:0; padding-top:0; font-size:.8em; " > <!-- appliquer ce style sur base4.css -->
+		<ul class="navigation" style="width:100%;"  >	<!-- margin-top:-19.5%; pour LES GRAND ECRAN-->
+			<li class="toggleSubMenu"> <span >1. Authentification</span>
+				<ul class="subMenu" id="seulement_les_passeports" style="color:silver;" >
+				  <li><a href="#login">Login</a></li>
+				  <li><a href="#validerlogin" >Gestion des droits</a></li>
+				  <li><a href="#1.3" >Gestion des utilisateurs</a></li>
+				</ul>
+			</li>
+			<li class="toggleSubMenu" style="border:1px solid gray;  border-bottom:none;"><span >2. Accueil</span>
+				  <ul class="subMenu"  style="color:silver;" >						
+					<li><a href="#affichelien">Afficher: La table📌</a></li>
+					<li><a href="#affichedoc">Afficher: Le document</a></li>
+					<li> <a class="btn" href="#imprimer">&emsp;&#9632;&ensp; Bouton Imprimer</a></li>
+					<li><a class="btn" href="#modifier">&emsp;&#9632;&ensp;  Bouton Rectifier</a></li>
+					<li><a class="btn" href="#supprimer">&emsp;&#9632;&ensp;  Bouton Supprimer</a></li>
+					<li><a class="btn" href="#trier">&emsp;&#9632;&ensp; Bouton Trier</a></li>
+					<li><a href="#cherchenum">Recherche par numéro</a></li>
+					<li><a href="#cherchenom">Recherche par nom</a></li>
+				  </ul><!-- fin ul.subMenu -->
+			</li>
+			<li class="toggleSubMenu" style="border:1px solid gray; border-bottom:none; border-top:none;"><span>3. Resultat de recherche</span>
+				  <ul class="subMenu" id="seulement_les_caisses" style="color:silver;" >						
+					<li><a href="#resultatnum" >Résultat par numéro </a></li>
+					<li><a href="#resultatnom" >Résultat par nom</a></li>
+				  </ul>
+		    </li> 
+				    <!-- ######################## TASKS #####################################
+					
+ 					        Les 3 liens suivants(4.1, 4.2, 4.3) doivent être regroupés en 1 seul lien:
+					        Mais d'abord, i fo regrouper les 3 arborescences dans 1 seul shémas
+                           
+						    INCHA ALLAH
+							
+                         #################################################################### -->						
+			<li class="toggleSubMenu" style="border:1px solid gray;  border-top:none;"><span>4. Traitement du résultat </span>
+			     <ul class="subMenu"  style="color:silver;" >			        
+					<li><a href="#afficheresultat" >Afficher</a></li>
+					<li><a href="#imprimeresultat" >Imprimer</a></li>
+					<li><a href="#modifieresultat" >Rectifier</a></li>
+				  </ul>
+			</li>				
+			<li class="toggleSubMenu"><span>5. Nouveau document</span>
+				  <ul class="subMenu"  style="color:silver;" >						
+					<li><a href="#5.1" >Nouvel acte (Enregistrer)</a></li>
+					<li><a href="#5.2" >Nouvel acte (Afficher)</a></li>
+					<li><a href="#5.3" >Nouvel acte (Imprimer)</a></li>
+					<li><a href="#5.4" >Nouvel acte (Rectifier)</a></li>
+					<!-- <li><a href="#5.5" >Rectification(Enregistrer)</a></li> -->
+				  </ul>
+			</li>
+			<li class="toggleSubMenu"><span>6. Rectification </span>
+				  <ul class="subMenu"  style="color:silver;" >						
+					<li><a href="#6.1" >Edit (Enregistrer)</a></li>
+					<li><a href="#6.2" >Edit (Afficher)</a></li>
+					<li><a href="#6.3" >Edit (Imprimer)</a></li>
+					<li><a href="#6.4" >Edit (Recommencer)</a></li>
+				  </ul>
+			</li>
+			<li class="toggleSubMenu"><span>7. Affichage </span>
+				  <ul class="subMenu"  style="color:silver;" >						
+					
+					<li><a href="#afficheTable" >Afficher(table)</a></li>
+					<li><a href="#afficheDocument" >Afficher(document)</a></li>
+					<li><a href="#imprimeDocument" >Imprimer(document)</a></li>
+
+				  </ul>
+			</li>
+			<li class="toggleSubMenu"><span>8. Base de données </span>
+				  <ul class="subMenu"  style="color:silver;" >						
+					<li><a href="#8.1" >Utilisateurs</a></li>
+					<li><a href="#8.2" >Documents</a></li>
+				  </ul>
+			</li>
+			<li class="toggleSubMenu" style="border-top:1px solid gray;"><span>Structure/Installation </span>
+				  <ul class="subMenu"  style="color:silver;" >						
+					<li><a href="#9.1" >Structure</a></li>
+					<li><a href="#9.2" >Installation</a></li>
+				  </ul>
+			</li>
+			<li class="toggleSubMenu" ><span>Version SYMFONY</span>
+				  <ul class="subMenu"  style="color:silver;" >						
+					<li><a href="symfony.html#9.1" >Structure</a></li>
+					<li><a href="symfony.html#9.2">Installation</a></li>
+				  </ul>
+			</li>
+			<li class="toggleSubMenu" style="border-top:1px solid gray;"><span>Fonctions dépreciées</span>
+				  <ul class="subMenu"  style="color:silver;" >						
+					<li><a href="fonctionsObsoletes.html#php" >PHP</a></li>
+					<li><a href="fonctionsObsoletes.html#ajax">AJAX</a></li>
+
+				  </ul>
+			</li>
+		</ul>  		   
+    </div><!-- fin menu accordeon --> 
+</div><!-- fin #sidenav -->
+
+
+
+<div class="main" style="margin-right:0;">
+
+  <h1 id="login">Documentation du Projet(php pur) </h2>
+  <h2>Les principales fonctionnalités </h2> 
+  
+   <p class="img" style="background: #f7f7f9; clear:both !important; ">1. Page d'authentification (index.php)</p>
+   
+   <p><b><u>1.1 Login: Authentification </u></b></p>
+   <img src="uml/login/login.png" class="img" style="height:auto; padding:0;">
+   <div class="img" style="margin-bottom:0; color:gray; width:90.25%;">
+	   <ul type="cite">
+		   <li>Capture login/passwd saisis: <span style="color:#ececea">$_POST["pseudo_]</span> / <span style="color:#ececea">$_POST["motdepasse_]</span></li>
+		   <li>Comparaison aux valeurs table listeofficiers: $sql= select * from <span style="color:#ececea">listeofficiers</span> WHERE pseudo=<span style="color:#ececea">$_POST["pseudo_]</span> AND ...</li>
+		   <li>Stockage valeur user dans une variable session: <span style="color:#ececea">$_SESSION["user_role"]</span> = $row["user"];//🎁 pour la gestion des droits</li>
+ 	   
+	   </ul>
+   </div>
+   <img src="uml/login/loginShemas.png" class="img" style="height:auto; padding:0;">
+   
+   <p id="validerlogin"><b><u>1.2 Gestion des droits d'accès</u></b></p>
+   <p class="img" style="color:#aaa; width:90.25%; margin-bottom:0;">
+       Seuls les utilisteurs connectés avec un compte "admin" ont les droits de <span style="color:#ececea;">rectifier</span>
+	   un document erroné ou de <span style="color:#ececea;">supprimer</span> un faux document. Dans la pratique, ces privillèges
+	   reviennent seulement aux préfets.
+   </p> 
+   <img src="uml/accueil/login/dialogBox.png" class="img" style="height:auto; padding:0;">
+   
+   
+   
+   <p id="1.3"><b><u>1.3 Gestion des utilisateurs</u> (Ajouter <i style="color:gray">un utilisateur</i>, supprimer <i style="color:gray">un utilisateurs</i>, Afficher <i style="color:gray">tous les utilisateurs</i>)</b></p>
+   <img src="uml/accueil/login/userMngmnt.png" class="img" style="height:auto; padding:0;">
+   <h4>Ajouter/Suprimer un officier d'état civil<i style="color:#aaa">( userManagement.php )</i></h4>
+   <div class="img" style="color:#aaa; width:90.25%; margin-bottom:0;">
+        C'est un rôle à 4 privillèges:
+		<ul class="custom-check">
+			<li>Ajouter un officier d'état civil</li>
+			<li>Allouer un rôle "<span style="color:#ececea;">admin</span>" à un officier d'état civil(On le supprime et on le rajoute en tant qu'<span style="color:#ececea;">admin</span>)</li>
+			<li>Retirer le rôle "<span style="color:#ececea;">admin</span>" à un officier d'état civil(On le supprime et on le rajoute sans <span style="color:#ececea;">admin</span>)</li>
+			<li>Supprimer un officier d'état civil</li>
+		</ul>
+
+		L'user management n'a aucun rôle administratif. Il n'a même pas accès aux données de la base. Pas d'accès aux fonctionnalités allouées aux officiers d'état civil.
+		Il ne peut donc: 
+		<ul class="custom-block">
+			<li>Ni consulter les documents,</li>
+			<li>ni manipuler les données.</li>
+		</ul>
+   </div> 
+   <img src="uml/accueil/login/userManagement.png" class="img" style="height:auto; padding:0; ">
+   <h4 style="clear:both">Afficher tous les officiers d'état civil<i style="color:#aaa">( userManagement.php )</i></h4>
+   <!-- ⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️ task: STICKY(pour la capture de l'ECRAN => table des utilisateurs) avant showAllUsers1.png ⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️    --> 
+   <img src="uml/accueil/login/showAllUsers1.png" class="img" style="height:auto; padding:0; ">
+   
+   <div class="img" style="color:#aaa; width:90.25%; margin-bottom:0;">
+      <span style="color:#ececea;">userManagement.php</span>: <br>
+	  On ajoute le traitement dans la même page( php au-dessus de html).<br>
+	  Pas conventionnel mais facil à gerer( la meilleurs c'tjrs la plus simple   !)
+   </div>
+   <img src="uml/accueil/login/showAllUsers2.png" class="img" style="height:auto; padding:0; ">
+  
+  
+  
+  <p class="img" id="affichelien"  style="background: #f7f7f9; width:94%;"><span >2. Page d'accueil (accueil.php)</span></p>
+  <p><b><u>2.1 Ouverture de la table: "Afficher</u>"</b></p>
+
+  <img src="uml/accueil/Lien_Afficher/affichelien.png" class="img" style="height:auto; padding:0;">
+  <div class="img" style="width:90.25%; color:gray;">
+      Cette table apparaît en 3 étapes: <br>
+	  <ol>
+			 <li><b>Choisir la table(Capture de la prefecture):Quelle table ouvrir</b><br>
+				&emsp;&emsp;✔️ accueil_choisir_naissance.php &emsp;&RightArrow;&emsp; &lt;select onchange="captureCombo(this.value)"&gt; <br>
+				&emsp;&emsp;✔️ capture_item.js  &emsp;&RightArrow;&emsp; function captureCombo(prfctr) &emsp;&RightArrow;&emsp;  colonne_afficher_naissance.php?p="+prfct
+			 </li>
+			 <li><b>Ouverture du panel:</b><br>
+				&emsp;&emsp;✔️ accueil_prefecture.php &emsp;&RightArrow;&emsp; &lt;td class="listemenu" id="flip"&gt &lt;div id="panel" class="scrolbar"&gt <br>
+				&emsp;&emsp;✔️ accueil.commandes_panel.js  &emsp;&RightArrow;&emsp;  $("#flip").click(function(){ $("#panel").slideToggle("slow");});
+			 </li>
+			 <li><b>Chargement de la table:</b><br>
+				&emsp;&emsp;✔️ capture_item.js &emsp;&RightArrow;&emsp; function captureCombo(prfctr) { <br>
+				&emsp;&emsp;✔️ &emsp; xmlhttp.open("GET","SERVEUR/colonne_afficher_naissance.php?p="+prfctr,true )<br>
+				&emsp;&emsp;✔️ &emsp; document.getElementById("panel").innerHTML = xmlhttp.responseText;
+			 </li>
+	  </ol>
+	</div>
+	<div class="img" style="width:90.25%; color:#999;">
+	  Pour les autres tables relatives aux bouttons(Supprimer, Rectifier,Imprimer,Trier)<br>
+	  le chargement se fait differement:
+	  <ol start="3">
+			 <li><b>Chargement des la tables:</b><br>
+				&emsp;&emsp;✔️ accueil.commandes_panel.js &emsp;&RightArrow;&emsp; jQuery <br>
+				&emsp;&emsp;✔️ &emsp;  $(' a#rectif, a#zima , a#print_ , a#trier ').click(function(e){<br>
+				&emsp;&emsp;✔️ &emsp;&emsp; $('#panel').load($(this).<b style="color:blue">attr('<span style="color:green">href</span>')</b>);<br>
+				&emsp;&emsp;✔️ &emsp;  });
+			 </li>
+	  </ol>
+	  Dans in/accueil/accueil_prefecture.php on trouvera les href appelé par <b>attr(href)</b>:
+	  <ul type="none">
+	     <li>&lt;a id="zima"    &nbsp;<span style="color:green">href</span>="SERVEUR/colonne_supprimer_acte.php"&gt; &lt;input type="button"  value="Supprimer" /&gt;</li>
+	     <li>&lt;a id="rectif"  &nbsp;<span style="color:green">href</span>="SERVEUR/colonne_rectifier_acte.php"&gt; &lt;input type="button"  value="Rectifier" /&gt;</li>
+	     <li>&lt;a id="print_"  <span style="color:green">href</span>="SERVEUR/colonne_imprimer_acte.php"&gt;  input type="button"  value="Imprimer" /&gt;</li>
+	     <li>&lt;a id="trier"   &nbsp;&nbsp;&nbsp;<span style="color:green">href</span>="SERVEUR/trier.php"&gt;  &lt;input type="button"  value="Ordre alphabétique"/&gt;</li>
+	  </ul>
+	  Il faut choisir la table à ouvrir, avant de l'ouvrir(par un de ces 4 boutons)<br>
+	  Si au préalable on ne choisi pas la table, on ne peut pas l'ouvrir. <u>Un bug s'impose</u><br>
+      C'est pourquoi un alert  est posé au dessus de ces 4 boutons.	  
+    </div> 
+  <p class="img" style="width:90.25%; color:gray; margin-bottom:0;"> Etape1: Capture de la prefecture cliquée:Quelle table ouvrir</p>
+  <img src="uml/accueil/Lien_Afficher/2.1.E1.png" class="img" style="height:auto; padding:0;">  
+  <p class="img" style="width:90.25%; color:gray; margin-bottom:0;">Etape2: Ouverture du panel</p>
+  <img src="uml/accueil/Lien_Afficher/2.1.E2.png" class="img" style="height:auto; padding:0;">
+  <p class="img" style="width:90.25%; color:gray; margin-bottom:0;">Etape3: Chargement de la table</p>
+  <img src="uml/accueil/Lien_Afficher/chargement.png" class="img" style="height:auto; padding:0;">
+  Brouillon
+  <img src="uml/accueil/Lien_Afficher/afficher.png" class="img" style="height:auto; padding:0;">
+ 
+
+
+
+ 
+  <p id="affichedoc"><b><u>2.2 Afficher le document</u></b> &emsp;&RightArrow;&emsp;  lien "Afficher"</p>
+  <img src="uml/accueil/Lien_Afficher/affichedoc.png" class="img" style="height:auto; padding:0;">
+  
+   <ul type="cite">
+       <li>Arborescence vers l'affichage du document( dans un popup ) </li>
+       <li>...</li>
+   </ul>
+  <img src="uml/accueil/Lien_Afficher/showDoc.png" class="img" style="height:auto; padding:0;">
+  
+  <p id="imprimer">
+        <i>
+		    Chaque bouton affiche un lien à la dernière colonne de la table(à la place du lien "Afficher").<br>
+			Et le lien traite la fonction.
+		</i>
+  </p>
+   
+  <p ><b><u>2.3 Fonction: "Imprimer</u></b>"</p>
+  <img src="uml/accueil/Bouton_Imprimer/accueilimprimer.png" class="img" style="height:auto; padding:0;">  
+  <p style="margin-bottom:0;">
+      <u><i>L'affichage de la table</i></u> et <u><i>l'appel au fichier de traitement</i></u> sont assurés par un script jQuery( js/<b>accueil_commandes_panel.js</b> ).
+	   <br>C'est une solution jQuery qui fait du AJAX :
+  </p>
+  <ul type="cite" style="margin-top:.3em;">
+	   <li>Intercepter un clic, empêcher la navigation, charger du contenu dans un panel de la page d'accueil.</li>
+	   <li>Elle ouvre le panel</li>
+	   <li>Elle charge une table dans ce panel</li>
+   </ul>
+  
+  <img src="uml/accueil/Bouton_Imprimer/accueilBtnImprimer.png" class="img" style="height:auto; padding:0;"> 
+
+  <!-- Remarque -->
+  <img src="uml/accueil/Bouton_Imprimer/reparationimprimer.png" class="img" style="height:auto; padding:0;">
+ 
+ <p id="modifier"><b><u>2.4 Fonction: "Rectifier</u></b>"</p>
+ <img src="uml/accueil/Bouton_Rectifier/accueilrectifier.png" class="img" style="height:auto; padding:0;"> 
+
+  <ul type="cite">
+       <li>"<i style="color:blue;">js/accueil_commandes_panel.js</i>" renvoie à la table "<i style="color:blue;">SERVEUR/colonne_rectifier_acte.php</i>"</li>
+       <li>Et cette <b><i>table</i></b> renvoie à la page "<i style="color:blue;">modifier_.php</i>"</span> en la transmettant les données par url</li>
+  </ul>
+  <img src="uml/accueil/Bouton_Rectifier/accueilBtnRectifier.png" class="img" style="height:auto; padding:0;"> 
+
+  
+  <p id="supprimer"><b><u>2.5 Fonction: "Supprimer</u></b>"</p>
+  <img src="uml/accueil/Bouton_Supprimer/accueilsupprimer.png" class="img" style="height:auto; padding:0;">
+  
+   <ul type="cite">
+       <li><b>accueil_commandes_panel.js</b> capture le bouton "<b>Supprimer</b>" pour ouvrir le panel et charger la table "<b>colonne_supprimer_acte.php</b>"</li>
+       <li>La table <b>colonne_supprimer_acte.php</b> appelle le fichier "<b>supprimer.php</b>"</li>
+       <li>Le fichier "<b>supprimer.php</b>" traite la suppression.</li>
+   </ul>
+  <img src="uml/accueil/Bouton_Supprimer/accueilBtnSupprimer.png" class="img" style="height:auto; padding:0;"> 
+
+  
+  <p id="trier"><b><u>2.6 Fonction: "Trier</u></b>"</p>
+  <img src="uml/accueil/Bouton_Trier/accueiltrier.png" class="img" style="height:auto; padding:0;">
+  <p><b><i>accueil_commandes_panel.js</i></b> capture la commande "<b><i>Ordre alphabétique</i></b>" pour faire les 2 tâches suivantes:</p>
+  <ul type="cite">
+       <li>Ouverture d'un conteneur dans la page d'accueil: Un panel</li>
+       <li>Chargement du fichier "<b>trier.php</b>" dans ce panel</li>
+   </ul>
+   <p>Ce fichier "trier.php" contient: Une table et son traitement( tri document par ordre alphabétique des noms )</p>   
+   <img src="uml/accueil/Bouton_Trier/accueilBtnTrier.png" class="img" style="height:auto; padding:0; margin-bottom:0;">
+   <p>
+     Quant au fichier <b>afficher.php?n='.$ligne["ID"].'</b> :
+	 <br> Il récupere l'identifiant transmis, pour extraire les données relatives, et les mettre sur un document formaté (inclu dans un popup).
+     <br> Le popup est défini dans "<b>trier.php</b>", suite à l'action sur le lien "<b>Afficher</b>".
+   </p>
+  
+  <p id="cherchenum"><b><u>2.7 Fonctionnalité: "Recherche de document</u></b>"</p>
+  <img src="uml/accueil/cherchedocument.png" class="img"  style="height:auto; padding:0;">
+  <p><b><u id="271">2.7.1 Recherche par: "Numéro de document</u></b>"</p>
+  <img src="uml/accueil/cherchenum/cherchenum.png" class="img"  style="height:auto;  padding:0;">
+  
+  <p id="cherchenom"><b><u id="272">2.7.2 Recherche par: "nom</u></b>"</p>
+  <img src="uml/accueil/cherchenom/cherchenom.png" class="img"  style="height:auto;  padding:0;">
+  
+  
+
+  <p class="img" id="resultatnum" style="background: #f7f7f9; width:94%">3. Affichage du résultat de la recherche (lectureBD2.php)</p>
+  
+  <p><b><u>3.1 Résultat trouvé de la recherche par numéro</u></b></p>
+  <img src="uml/accueil/cherchenum/resultbynumber.png" class="img"  style="height:auto; padding:0;">
+ 
+  <ul type="cite" style="clear:both">
+       <li>L'affichage du résultat de recherche "by <b style="color:blue;">number</b>" est fait dans <i style="color:#777;">lectureBD2.php</i>, par : <i style="color:#777;"> SERVEUR/lectureBD2_searchPlayBack.php</i> </li>
+	   <li> <b style="color:blue;">num</b> provient de la page "<b>accueil.php</b>" &emsp; &#8658; &emsp; <i style="color:#777;"> header("Location:lectureBD2.php?<b style="color:blue;">num</b>=".$numero );</i> 👉 <a href="#271">voir 2.7.1</a></li>
+       <li style="color:transparent"></li>
+	   <li>"<b>lectureBD2.php</b>" &emsp; &#8658; &emsp;<i style="color:#777;">if(!empty($_GET['<b style="color:blue;">num</b>'])) { </i> include("<i style="color:#777;">SERVEUR/lectureBD2_searchPlayBack.php</i>"); <i style="color:#777;"> }</i></li>
+	   <li style="color:transparent;">...</li>
+	   <li>Les traitements du résultat de recherche par <b style="color:blue;">numéro</b> seront donc appellés par: <i style="color:#777;">SERVEUR/lectureBD2_searchPlayBack.php</i></li>     
+       
+   </ul>
+  <img src="uml/mediaQuery.png" class="img"  style="height:auto">
+  
+  <p id="resultatnom"><b><u>3.2 Résultat trouvé de la recherche par nom</u></b></p>
+  <img src="uml/accueil/cherchenom/resultbyname.png" class="img"  style="height:auto; padding:0;">
+  <ul type="cite" style="clear:both">
+       <li>L'affichage du résultat de recherche "by <b style="color:blue;">name</b>" est fait dans <i style="color:#777;">lectureBD2.php</i>, par :<i style="color:#777;"> SERVEUR/lectureBD2_searchPlayBackByName.php</i> </li>	   
+	   <li> <b style="color:blue;">nom</b> provient de la page "<b>accueil.php</b>" &#8658; <i style="color:#777;"> header("Location: lectureBD2.php?<b style="color:blue;">nom</b>=".$nomm );</i> 👉 <a href="#272">voir 2.7.2</a></li>
+       <li style="color:transparent"></li>
+	   <li>"<b>lectureBD2.php</b>" &emsp; &#8658; &emsp;<i style="color:#777;">if(!empty($_GET['<b style="color:blue;">nom</b>'])) { </i> include("<i style="color:#777;">SERVEUR/lectureBD2_searchPlayBackByName.php</i>"); <i style="color:#777;"> }</i></li>
+	   <li style="color:transparent;">...</li>
+	   <li>Les traitements du résultat de recherche par <b style="color:blue;">nom</b> seront donc appellés par: <i style="color:#777;">SERVEUR/lectureBD2_searchPlayBackByName.php</i></li>       
+      
+  </ul>
+  <img src="uml/mediaQuery.png" class="img"  style="height:auto">
+  <!-- #####################################################################################################################
+      
+	  Juste les arborescences pour les 3 fonctionnalités(Affichier, Imprimer, Modifier => 4.1, 4.2, 4.3 ). 
+	  Car l'image ci-haut, les situe déjà!
+	  TASK1:
+	  Même les 3 arboressence doivent être dans un même schema pour plus de lisibilité.
+      TASK2:
+	  Ansi, dans le menu "Resultat de recherche": Regrouper les 3 liens(4.1, 4.2, 4.3) en 1 seul lien: "Afficher,Imprimer,Modifier".	  
+      
+	  ( mais je vais faire temporairement, 3 les shémas séparés ! )
+
+      INCHA ALLAH
+	  
+  ############################################################################################################################### -->
+  
+  <p class="img" id="afficheresultat" style="background: #f7f7f9; width:94%">4. Traitement du résultat de recherche: Le document trouvé (lectureBD2.php)</p>
+  
+  
+  <p><b><u>4.1 Afficher: Le document trouvé</u></b>(suite à la recherche éffectuée en page d'accueil)</p>
+  <ul type="cite">
+     <li><b>lectureBD2_searchPlayBack.php</b>( si recherche par num). </li>     
+     <li><b>lectureBD2_searchPlayBackByName.php</b>( si recherche par nom). </li>     
+     <li style="color:transparent"></li>
+	 <li><i style="font-size:.9em; color:#777;">&lt;a id="lien"  href="#" onclick="popup_lectureBD2();"&gt; Afficher &lt;/a&gt; </i></li>
+     <li style="color:transparent"></li>
+     <li><i style="font-size:.9em; color:#777;"> onclick="popup_lectureBD2(); ⇒  renvoie à </i> lectureBD.js<i style="font-size:.9em; color:#777;">(ligne158)</i> </li>
+     <li>lectureBD.js ⇒ <i style="font-size:.9em; color:#777;"> function popup_lectureBD2() &nbsp; { wind'ow.open("<span style="color:black">afficherdanspop.php</span>",'Popup','...ici définition d'un popup d'affichage...' }</i>   </li> 
+  </ul> 
+  <img src="uml/variables.png" class="img"  style="height:auto">
+  
+  
+  <p id="imprimeresultat"><b><u>4.2 Imprimer: Le document trouvé</u></b>(suite à la recherche éffectuée en page d'accueil)</p>
+  <ul type="cite">
+     <li><b>lectureBD2_searchPlayBack.php</b>( si recherche par num). </li>     
+     <li><b>lectureBD2_searchPlayBackByName.php</b>( si recherche par nom). </li>     
+     <li style="color:transparent"></li>
+	 <li><i style="font-size:.9em; color:#777;"> &lt;a href="<b style="color:black">imprimer.php</b>?n='.$donnees["ID"].'"&gt; Imprimer &lt;/a&gt; </i></li>
+  </ul>
+  <img src="uml/variables.png" class="img"  style="height:auto">
+  
+  
+  <p id="modifieresultat"><b><u>4.3 Modifier: Le document trouvé</u></b>(suite à la recherche éffectuée en page d'accueil)</p>
+  <ul type="cite">   
+	 <li><b>lectureBD2_searchPlayBack.php</b>( si recherche par num). </li>     
+     <li><b>lectureBD2_searchPlayBackByName.php</b>( si recherche par nom). </li>
+     <li style="color:transparent"></li>
+	 <li><i style="font-size:.9em; color:#777;">href="<b style="color:black">modifier_.php</b>?n='.$donnees["ID"].' & nom_='.$donnees["nom"].' & prenom_='.$donnees["prenom"].'   & ... etc</i></li>
+  </ul>  
+  <img src="uml/variables.png" class="img"  style="height:auto">
+  
+  <h4><u>Remarque</u></h4>
+   <p>
+       Il serait préférable de rassembler les 3 traitements du résultat de recherche(Afficher, Imprimer, modifier)
+	   dans un même fichier aulieu de les faire dans deux fichiers séparés(lectureBD2_searchPlayBack.php et lectureBD2_searchPlayBackByName.php)
+   </p>
+  
+  <p class="img" id="5.1" style="background: #f7f7f9; width:94%">5. Nouveau document 👉 <span style="color:blue">ecritureBD.php</span></p>
+  
+  <p><b><u>5.1: Nouvel acte</u>(btn Enregistrer) </b></p>
+  <img src="uml/ecritureBD/ecritureBD.png" class="img"  style="height:auto; padding:0;">
+  <img src="uml/mediaQuery.png" class="img"  style="height:auto">
+  
+  <p id="5.2"><b><u>5.2: Nouvel acte</u>(btn Afficher)</b></p>
+  <img src="uml/ecritureBD/nouvelacteAfficher.png" class="img"  style="height:auto; padding:0;">
+  
+  <p id="5.3"><b><u>5.3: Nouvel acte</u>(btn Imprimer)</b></p>
+  <img src="uml/ecritureBD/nouvelacteImprimer.png" class="img"  style="height:auto; padding:0;">
+  
+  <p id="5.4"><b><u>5.4: Nouvel acte</u>(btn Rectifier)</b></p>
+   <p class="img" style="color:#aaa; width:90%;">
+       Seuls les utilisteurs connectés avec un compte "admin" ont les droits de <span style="color:#ececea;">rectifier</span>
+	   un document erroné ou de <span style="color:#ececea;">supprimer</span> un faux document. Dans les pratique, ces privillèges
+	   reviennent seulement aux préfets.👇<br><br>
+	   Dans le cas de saisie d'un nouveau document, la "<b style="color:#ececea;">rectification</b>" n'est pas restreinte.
+	   Elle est accessible à l'agent administratif ordinaire, qui saisi le nouveau document.<br><br><br>
+	   
+	   &bull; Si le bouton "<span style="color:#ececea;">Enregistrer</span>" n'est pas encore actionné: <br>
+	   &emsp;&emsp;&#8620; On recharge  les données dans tous les champs de saisie  ✍️<br><br>
+	   &bull; Si le bouton "<span style="color:#ececea;">Enregistrer</span>" est actionné: <br>
+	   &emsp;&emsp;&#8620; On redirige vers modifier.php avec transmission du numero de l'acte: <span style="color:#0099ff;">modifier_.php?<b style="color:#ff5050;">acte_=N°</b></span>  ✍️<br>
+   </p>
+  <img src="uml/ecritureBD/nouvelacteRectifier.png" class="img"  style="height:auto; padding:0;">
+  
+  <p class="img" id="6.1" style="background: #f7f7f9; width:94%">6: Rectification de document  👉 <span style="color:blue">modifier_.php</span></p>
+  
+  
+  <p><b><u>6.1: Rectification</u> (btn Enregistrer)</b></p>
+  <img src="uml/ecritureBD/edit.png" class="img"  style="height:auto; padding:0;">
+  <img src="uml/mediaQuery.png" class="img"  style="height:auto">
+  
+  <p id="6.2"><b><u>6.2: Rectification</u>(btn Afficher)</b></p>
+  <img src="uml/ecritureBD/editAfficher.png" class="img"  style="height:auto; padding:0;">
+  
+  <p id="6.3"><b><u>6.3: Rectification</u>(btn Imprimer)</b></p>
+  <img src="uml/ecritureBD/editImprimer.png" class="img"  style="height:auto; padding:0;">
+  
+   <p id="6.4"><b><u>6.4: Rectification</u>(btn Recommencer)</b></p>
+   <p class="img" style="color:#aaa; width:90%;">
+       Seuls les utilisteurs connectés avec un compte "admin" ont les droits de <span style="color:#ececea;">rectifier</span>
+	   un document erroné ou de <span style="color:#ececea;">supprimer</span> un faux document. Dans les pratique, ces privillèges
+	   reviennent seulement aux préfets.👇<br><br>
+	   
+	   &bull; Si le bouton "<span style="color:#ececea;">Enregistrer</span>" n'est pas encore actionné: <br>
+	   &emsp;&emsp;&#8620; On recharge  les données dans tous les champs de saisie  ✍️<br><br>
+	   &bull; Si le bouton "<span style="color:#ececea;">Enregistrer</span>" est actionné: <br>
+	   &emsp;&emsp;&#8620; On redirige vers modifier.php avec transmission du numero de l'acte: <span style="color:#0099ff;">modifier_.php?<b style="color:#ff5050;">acte_=N°</b></span>  ✍️<br>
+   </p>
+  <img src="uml/ecritureBD/nouvelacteRectifier.png" class="img"  style="height:auto; padding:0;">
+  
+  
+  
+  
+  
+  <p class="img" id="afficheTable" style="background: #f7f7f9; width:94%">7. Affichage des documents 👉 <span style="color:blue">lectureBD.php</span></p> 
+  
+  <p><b><u>7.1 Afficher</u> (table)</b></p>
+  <img src="uml/LectureBD/lectureBD.png" class="img"  style="height:auto; padding:0;"> 
+  <img src="uml/LectureBD/lectureBD_afficher.png" class="img"  style="height:auto; padding:0; margin-bottom:0;">   
+  <p class="img" <i style="width:90.5%">
+     ✔️ <i style="color:gray">window.open(...popup..)</i> est remplacé par la fonction <i style="color:gray">ouvrePop(\'afficher.php?n='.$ligne['ID'].'\')</i><br>
+	 ✔️ <i style="color:gray">function ouvrePop(url){...}</i> se trouve dans <i style="color:#ececea">lectureBD.js</i>
+  </p> 
+  
+  
+  <p id="afficheDocument"><b><u>7.2: Afficher</u> (document)</b></p>
+  <img src="uml/lectureBD/affichedocument.png" class="img"  style="height:auto; padding:0;">
+  <img src="uml/lectureBD/affichedocumentshemas.png" class="img"  style="height:auto; padding:0;">
+
+  
+  <p id="imprimeDocument"><b><u>7.3: Imprimer</u> (document)</b></p>
+  <img src="uml/lectureBD/print.png" class="img"  style="height:auto; padding:0;">
+  <p class="img" style="color:#aaa;">
+     C'est le même schémas que "<u>7.2 Afficher(document)</u>". La seule differrence:<br>
+     &emsp;👉 Le lien "<u>Afficher</u>" renvoie vers href="<span style="color:#ececea;">afficher.php</span>?n='.$ligne["ID"].'" <br>
+     &emsp;👉 Le lien "<u>Imprimer</u>" renvoie vers href="<span style="color:#ececea;">imprimer.php</span>?n='.$ligne["ID"].'" <br>
+  </p>
+  
+  <p class="img" id="8.1" style="background: #f7f7f9; width:94%">8. Base de données 👉 <span style="color:blue">etatcivil.sql</span></p> 
+  
+  <p><b><u>8.1 listeofficiers</u> (table utilisateurs - agents administratifs)</b></p>
+  <img src="uml/base/users.png" class="img"  style="height:auto; padding:0;">
+  <p style="margin-bottom:0;"><i>Version copier/coller :</i></p> 
+  <div class="img" style="font-size:.8.5em; padding:0; border-radius:7px;">
+	  <pre style="margin:0; border-radius:50px;"><code class="language-sql">
+			CREATE TABLE `listeofficiers` (
+				`ID` INT(10) NOT NULL AUTO_INCREMENT,
+				`pseudo` VARCHAR(30) NOT NULL COLLATE 'utf8mb3_unicode_ci',
+				`motdepasse` VARCHAR(30) NOT NULL COLLATE 'utf8mb3_unicode_ci',
+				`user` VARCHAR(30) NULL DEFAULT NULL COLLATE 'utf8mb3_unicode_ci',
+				PRIMARY KEY (`ID`) USING BTREE
+			)
+			COLLATE='utf8mb3_unicode_ci'
+			ENGINE=MyISAM
+			AUTO_INCREMENT=10
+			;
+	   </code></pre>
+   </div>
+  
+  Connection au serveur mysql: <b><i style="color:green; border: 7px solid #336600; padding:0 17px;">mysql -u root</i></b> 👇  
+  <img src="uml/base/usersDescribe.png" class="img"  style="height:auto; padding:0;">   
+  <img src="uml/base/usersSelect.png" class="img"  style="height:auto; padding:0;">  
+  <div class="img" style="color:#aaa; width:90.25%; margin-bottom:0;">
+      <h3 style="color:#ececea;">Refactoring : </h3> 
+	  Pour la coherence du <b>model de donnéees</b>, il faut renommer le champs <i style="color:#ececea;">user</i> en <i style="color:#ececea;">roles</i>.<br>
+	  Deux précautions  préalables:<br>
+	  &emsp; ✔️ Poser un <b>commit de backup</b><br> 
+	  &emsp; ✔️ Opérer dans une nouvelle branche(merge par la suite)<br>
+	  Cela implique non seulement la table <i style="color:#ececea;">listeofficiers</i> mais aussi toute <i style="color:#ececea;">la logique applicative</i>. 
+  </div>
+  
+  
+  <p id="8.2"><b><u>8.2: liste </u> (table  stockage des documents)</b></p>
+  <img src="uml/base/liste.png" class="img"  style="height:auto; padding:0;">
+  <p style="margin-bottom:0;"><i>Version copier/coller :</i></p> 
+  <div class="img" style="font-size:.8.5em; padding:0; border-radius:7px;">
+	    <pre style="margin:0; border-radius:50px;"><code class="language-sql">
+			CREATE TABLE `liste` (
+				`ID` INT(10) NOT NULL AUTO_INCREMENT,
+				`prefecture` VARCHAR(30) NOT NULL COLLATE 'utf8mb3_unicode_ci',
+				`centretatcivil` VARCHAR(30) NOT NULL COLLATE 'utf8mb3_unicode_ci',
+				`registre` INT(10) NULL DEFAULT NULL,
+				`acte` INT(10) NOT NULL,
+				`date_acte` DATE NOT NULL,
+				`nom` VARCHAR(30) NOT NULL COLLATE 'utf8mb3_unicode_ci',
+				`prenom` VARCHAR(30) NOT NULL COLLATE 'utf8mb3_unicode_ci',
+				`delivre_a` VARCHAR(30) NOT NULL COLLATE 'utf8mb3_unicode_ci',
+				`delivre_le` VARCHAR(30) NOT NULL COLLATE 'utf8mb3_unicode_ci',
+				`delivre_an` VARCHAR(30) NOT NULL COLLATE 'utf8mb3_unicode_ci',
+				`num_serie` INT(10) NOT NULL,
+				`naissance_jour_moi` VARCHAR(30) NOT NULL COLLATE 'utf8mb3_unicode_ci',
+				`naissance_an` VARCHAR(30) NOT NULL COLLATE 'utf8mb3_unicode_ci',
+				`naissance_heure` VARCHAR(30) NULL DEFAULT NULL COLLATE 'utf8mb3_unicode_ci',
+				`naissance_minuite` VARCHAR(30) NULL DEFAULT NULL COLLATE 'utf8mb3_unicode_ci',
+				`naissance_nom_prenom` VARCHAR(30) NOT NULL COLLATE 'utf8mb3_unicode_ci',
+				`naissance_lieu` VARCHAR(30) NOT NULL COLLATE 'utf8mb3_unicode_ci',
+				`naissance_sexe` VARCHAR(30) NOT NULL COLLATE 'utf8mb3_unicode_ci',
+				`pere_nom_prenom` VARCHAR(30) NOT NULL COLLATE 'utf8mb3_unicode_ci',
+				`pere_datenaisance` VARCHAR(30) NULL DEFAULT NULL COLLATE 'utf8mb3_unicode_ci',
+				`pere_lieunaissance` VARCHAR(30) NULL DEFAULT NULL COLLATE 'utf8mb3_unicode_ci',
+				`pere_profession` VARCHAR(30) NULL DEFAULT NULL COLLATE 'utf8mb3_unicode_ci',
+				`pere_villederesidence` VARCHAR(30) NULL DEFAULT NULL COLLATE 'utf8mb3_unicode_ci',
+				`mere_nom_prenom` VARCHAR(30) NOT NULL COLLATE 'utf8mb3_unicode_ci',
+				`mere_datenaisance` VARCHAR(30) NULL DEFAULT NULL COLLATE 'utf8mb3_unicode_ci',
+				`mere_lieunaissance` VARCHAR(30) NULL DEFAULT NULL COLLATE 'utf8mb3_unicode_ci',
+				`mere_profession` VARCHAR(30) NULL DEFAULT NULL COLLATE 'utf8mb3_unicode_ci',
+				`mere_villederesidenc` VARCHAR(30) NULL DEFAULT NULL COLLATE 'utf8mb3_unicode_ci',
+				`declaration_faite_par` VARCHAR(60) NOT NULL COLLATE 'utf8mb3_unicode_ci',
+				`datejugement` VARCHAR(30) NOT NULL COLLATE 'utf8mb3_unicode_ci',
+				`declaration_recue_pa` VARCHAR(60) NOT NULL COLLATE 'utf8mb3_unicode_ci',
+				`Edit` VARCHAR(255) NULL DEFAULT NULL COLLATE 'utf8mb3_unicode_ci',
+				`Imprimer` VARCHAR(255) NULL DEFAULT NULL COLLATE 'utf8mb3_unicode_ci',
+				`Delete_` VARCHAR(255) NULL DEFAULT NULL COLLATE 'utf8mb3_unicode_ci',
+				PRIMARY KEY (`ID`) USING BTREE
+			)
+			COLLATE='utf8mb3_unicode_ci'
+			ENGINE=MyISAM
+			AUTO_INCREMENT=72
+			;
+	    </code></pre>
+  </div>
+  <img src="uml/base/listeDescribe.png" class="img"  style="height:auto; padding:0; margin-bottom:0;">
+  <p style=><i> On peut toujours trouver les tables dans le dossier /sql ⚠️ </i></p>
+  
+  
+  <p class="img" id="9.1" style="background: #f7f7f9; width:94%">9. Structure et installation 👉 (<s style="color:blue">sans framework</s>)</p>
+  
+  <p><b><u>9.1: Structure</u> </b> <s>(MVC)</s></p>
+  <img src="uml/structure/structurephp.png" class="img"  style="height:auto; padding:0;">
+  
+  
+  <p id="9.2"><b><u>9.2: Installation</u></b></p>
+  <!-- <img src="uml/structure/installationphp.png" class="img"  style="height:auto; padding:0;"> -->
+    <div class="img" style="color:#aaa; width:90%;">
+       3 Outils indispensables:
+	  <ul class="custom-check instalation" style="margin-left:2em;">
+           <li>Un moteur php(PHP 7.4, PHP 8.4 - mieux pour maintenir un projet existant, ...)</li>
+           <li>Un serveur web( apache, nginx, ... )</li>
+           <li>Un serveur de données( mysql, postgree, ...)</li>
+       </ul>
+      Pour windows: Le serveur local <b>laragon</b> contient ces 3 outils<br>
+      Pour linux: ... <br>
+      Pour mac: ... <br>	   
+   </div>
+
+   
+  
+   
+  
+  
+  
+  
+  
+  
+  
+  <hr style="clear:both;">
+   TASKS
+  <hr style="clear:both;">
+  <div class="task">
+  
+      <p>
+	    Task0:  <br><br>
+
+		0.1 ecritureBD.php et modifier_.php<br>
+		    👉  Gerer la saisie(interdiction et message) si le numero de document entré existe déjà<br><br>
+             		
+        INCHA ALLAH		
+	</p>
+  
+  
+  
+    <p>
+	    Task1: lectureBD.php (dans Documentation)<br><br>
+
+	    1.1 Faire les captures relatifs aux 5 items du menu : "6. Affichage documents"<br>
+	    1.2 Integrer ces images .png et leur ancrage, en attendant les shemas draw.io<br>
+		1.3 Ajouter classe="scrolbar" dans tous les div#panel des schemas .png (utiliser Paint)  <br><br>
+		
+		INCHA ALLAH
+		
+	</p>
+	<p>
+	  Task2: accueil.php<br><br>
+	   2.1  Afficher: Metttre le onclik(qui lance le popup)dans une fonction() ??????????  voir  copilote<br>
+	   2.2  Remplacer les liens   par des icones:<br>
+	       &emsp;&emsp; "Afficher", "Imprimer", "Rectifier","Supprimer".
+	   <br><br>
+	   
+	   INCHA ALLAH
+	 </p>
+
+	<p>
+	  Task3: LectureBD.php<br><br>
+	   
+	    3.1  Remplacer les liens "Imprimer" et "Afficher" par des icones<br>
+
+		3.2  Afficher: Metttre le onclik(qui lance le popup)dans une fonction() ??????????<br><br>
+
+			
+		INCHA ALLAH
+	</p>
+	<hr>
+	<p>
+	   Nombre de fichiers du Projet<br><br>
+	   C:\laragon\www\etacivil23(b1)<br>
+	  👉  find . -name "*.php" | wc -l
+		 => 58
+	</p>
+
+	
+	<div style="border:1px solid #aaa; padding:1em;">
+
+		<ul type="cite" style="margin-left:2em;">
+			<li>👉 Un fichier include n'a pas besoin de connection( utilise la connection de la page source)</li>
+			<li>👉 Un fichier header location (redirection ) a besoin de nouvelle connection</li>
+			<li>👉 Les solutions les plus simple sont tjrs les meilleurs</li>
+		</ul> 
+	</div>
+	
+	
+	
+	
+	
+</div><!-- Task ->
+  
+</div><!-- fin #main -->
+</body>
+</html> 
