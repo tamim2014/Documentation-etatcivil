@@ -59,6 +59,7 @@
 					<li><a class="btn" href="#modifier">&emsp;&#9632;&ensp;  Bouton Rectifier</a></li>
 					<li><a class="btn" href="#supprimer">&emsp;&#9632;&ensp;  Bouton Supprimer</a></li>
 					<li><a class="btn" href="#trier">&emsp;&#9632;&ensp; Bouton Trier</a></li>
+					<li><a class="btn" href="#alertbug">&emsp;&#9632;&ensp; Alert</a></li>
 					<li><a href="#cherchenum">Recherche par numéro</a></li>
 					<li><a href="#cherchenom">Recherche par nom</a></li>
 				  </ul><!-- fin ul.subMenu -->
@@ -144,7 +145,7 @@
 <div class="main" style="margin-right:0;">
 
   <h1 id="login">Documentation du Projet(php pur) </h2>
-  <h2>Les principales fonctionnalités </h2> 
+  <h2>Les principales fonctionnalités(guide visuel) </h2> 
   
    <p class="img" style="background: #f7f7f9; clear:both !important; ">1. Page d'authentification (index.php)</p>
    
@@ -328,6 +329,23 @@
 	 <br> Il récupere l'identifiant transmis, pour extraire les données relatives, et les mettre sur un document formaté (inclu dans un popup).
      <br> Le popup est défini dans "<b>trier.php</b>", suite à l'action sur le lien "<b>Afficher</b>".
    </p>
+     
+  <p id="alertbug"><b><u>Alert bug utilisateur</u>:</b> Usage des boutons(Supprimer,Rectifier,Imprimer,Trier)</p>
+  <img src="uml/accueil/alertbugbouton1.png" class="img" style="height:auto; padding:0;">
+  <div class="img" style="color:#aaa; width:90.25%; margin-bottom:0;">
+		Dans la page d'accueil, on ne pas traiter les documents relatifs à une prefecture, 
+		sans choisir au préalable, dans quelle prefecture on veut intervenir. Sinon un bug de fonctionnement s'impose.<br>
+		C'est pourquoi l'alert(Veuillez <b>choisir la table</b> avant de traiter ses donnees) est implementé. 
+		<ul class="custom-block">
+			<li>Pas d'accès au bouton "Supprimer"</li>
+			<li>Pas d'accès au bouton "Rectifier"</li>
+			<li>Pas d'accès au bouton "Imprimer"</li>
+			<li>Pas d'accès au bouton "Trier"</li>
+		</ul>
+		Avant de choisir dans quelle prefecture on veut intervenir.<br> 
+		&Agrave; noter que ce problème reste spécifique au procédurale. Il ne se pose pas dans la logique applicative de symfony.
+  </div> 
+  <img src="uml/accueil/alertbugbouton2.png" class="img" style="height:auto; padding:0; ">
   
   <p id="cherchenum"><b><u>2.7 Fonctionnalité: "Recherche de document</u></b>"</p>
   <img src="uml/accueil/cherchedocument.png" class="img"  style="height:auto; padding:0;">

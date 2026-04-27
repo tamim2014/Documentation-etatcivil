@@ -1,0 +1,41 @@
+   accuei/acte/table_supprimer.html.twig  
+       |
+       |  <a> <button class="btn-supprimer" data-id="{{ acte.id }}"> Supprimer  </button>  </a>
+       |    
+       |
+   accueil_commandes_pannel.js
+       |  
+       |     $(document).on('click', '.btn-supprimer', function (e) {
+       |          let id = $(this).data('id');
+       |          let ligne = $(this).closest('tr');
+       |
+       |          $.ajax({
+       |              url: '/supprimer/' + id,
+       |              type: 'POST',
+       |              dataType: 'json',
+       |              success: function (response) {..},
+       |              error: function (xhr) {...}  //  xhr= ça vt dire quoi? voir F12
+       |         });
+       |
+       |     });
+       |
+ActeController.php 
+       |
+       |   #[Route('/supprimer/{id}', name: 'supprimer_acte', methods: ['POST'])]
+       |    public function supprimer(int $id, ListeRepository $repo, EntityManagerInterface $em){
+       |           $ligne = $repo->find($id);
+       |    
+       |           $em->remove($ligne);
+       |           $em->flush();
+       |
+       |           return $this->json(['success' => true], 200);
+       |    }
+       |
+alert("Suppression effectuée !");               
+alert("Erreur : " + response.message);                
+                
+
+
+         
+
+      

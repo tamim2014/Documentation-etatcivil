@@ -1,0 +1,34 @@
+   src/Controller/UsermanagementController.php 
+            |
+            |  // 👁 Afficher les officiers d'états civil(les utilisateurs) 
+            |
+            |  public function usermanagement(Request $request, ListeofficiersRepository $repo, ManagerRegistry $doctrine): Response 
+            |  {                                              
+            |      $officiers = $repo->findAll(); 🎯   //$officiers = "SELECT * FROM listeofficiers"; 
+            |                                          //$resultat = mysqli_query($conn, $officiers);
+            |       
+            |      return $this->render('usermanagement.html.twig', [          
+            |           'officiers' => $officiers,                             
+            |      ]);
+            |  }
+            |
+   template/usermanagement.html.twig
+            |
+            | <table class="officiers scrolbar" cellpadding="5" >   
+            |      <tr> 
+            |           <th>ID</th><th>Pseudo</th><th>User</th> 
+            |      
+            |      </tr>
+            |      {% for o in officiers %}                         // while($ligne = $resultat->fetch_assoc()){
+            |                <tr>
+            |                      <td> {{ o.id }}     </td>      // echo "   <td>".$ligne['ID']."</td>   ";
+            |                      <td> {{ o.pseudo }} </td>     // echo "   <td>".$ligne['pseudo']."</td> ";
+            |                      <td> {{ o.user }}   </td>    // echo "   <td>".$ligne['user']."</td> ";
+            |                </tr>
+            |      {% endfor %}                                //}
+            |</table>
+            |    
+            |
+      Rendu: Liste des officiers(⚠️⚠️⚠️ mais i fo ajouter la PREFECTURE correspondante⚠️⚠️⚠️ ) -> requete sql joint table liste
+
+

@@ -1,0 +1,99 @@
+    
+
+  templates/login.html.twig // index.php
+            |
+            | <form id="formSource" method="post" action="{{ path('login') }}"   name="form1">  // include("SERVEUR/authentification.php");
+            |     Login:       <input  type="text"   id="login_"    name="pseudo_" >
+            |     Mot de passe:<input type="password"  id="pswd_"   name="motdepasse_">
+            |     <input  type="submit"  value="Valider"   name="envoie"  />
+            | </form>
+            |
+    src/Controller/LoginController.php   //SERVEUR/authentification.php   
+            |                              
+            | $login = $request->request->get('pseudo_');          //$login = $_POST['pseudo_'];                                  
+            | $mdp   = $request->request->get('motdepasse_');      //$mdp = $_POST['motdepasse_'];
+            |
+            | if ($request->isMethod('POST')) {
+            |     if ($login === "usermanagement" && $mdp === "8888") {
+	    |	      return $this->redirectToRoute('usermanagement');   //header("Location: userManagement.php"); exit;			
+	    |     }
+            | }   
+            |
+     usermanagement.html.twig 
+
+--------------------------------------------------------------------------------------------------
+
+
+1ere branche: AJOUT => draw.io( i fo reduire la police à 12px au lieu de 16px) INCHA ALLAH
+
+usermanagement.html.twig  //userManagement.php (branche1) 
+            |
+            |  // ✅ Ajouter un utilisateur  
+            |
+            |  <form method="POST" action="{{ path('usermanagement') }}">  //<form method="POST" action="userManagement.php"> on pt virer action
+            |      <input type="text"      name="pseudo" required>
+            |      <input type="password"  name="mdp" required>
+            |      <input type="text"      name="user">
+            |      <button type="submit"   name="ajouter">Ajouter</button>
+            | </form>
+            |
+src/Controller/UsermanagementController.php  
+            | 
+            |  if ($request->isMethod('POST')) {
+            |       $login = $request->request->get('pseudo');      //$pseudo = mysqli_real_escape_string($conn, $_POST['pseudo']);
+            |       $mdp   = $request->request->get('motdepasse');  //$mdp    = mysqli_real_escape_string($conn, $_POST['mdp']);
+            |       $user   = $request->request->get('user');      //$user   = mysqli_real_escape_string($conn, $_POST['user']);
+            |
+            |      if ($request->request->has('pseudo') && $request->request->has('motdepasse')) {  //if (isset($_POST['ajouter'])) {
+            |            $officier = new Listeofficiers();
+            |            $officier->setPseudo($login);               
+            |            $officier->setMotdepasse($mdp);            
+            |            $officier->setUser($user);
+            |
+            |            $em = $doctrine->getManager();
+            |            $em->persist($officier);🎯  //$sql = "INSERT INTO listeofficiers (pseudo, motdepasse, user) VALUES ('$pseudo', '$mdp', '$user')";
+            |            $em->flush();
+            |            return $this->redirectToRoute('usermanagement');          
+            |       }
+            |  }
+            |
+  $this->addFlash('success', 'Utilisateur ajouté avec succès.'); //echo $message ;
+
+
+
+--------------------------------------------------------------------------------------------------
+
+
+  2ème branche: Suppression =>  draw.io( i fo reduire la police à 12px au lieu de 16px) INCHA ALLAH
+
+
+   usermanagement.html.twig 👉 userManagement.php (branche2)
+            |
+            |  // ⛔ Suprimer un utilisateur
+            |
+            |  <form method="POST">        //<form method="POST" action="userManagement.php">
+            |       <input  type="text"   name="pseudo_del" required>            
+            |       <button type="submit" name="supprimer">Supprimer</button>    
+            |  </form>
+            |
+ src/Controller/UsermanagementController.php  
+            |  public function usermanagement(Request $request, ListeofficiersRepository $repo, ManagerRegistry $doctrine): Response {
+            |
+            |      if ($request->isMethod('POST')) {
+            |
+            |           $pseudoDel = $request->request->get('pseudo_del');   //$pseudo_del = mysqli_real_escape_string($conn, $_POST['pseudo_del']);
+            |
+            |           if ($request->request->has('pseudo_del')) { // if (isset($_POST['supprimer'])) {
+            |
+            |                 $officier = $repo->findOneBy(['pseudo' => $pseudoDel]); 🎯
+            |
+            |                 $em = $doctrine->getManager();
+            |                 $em->remove($officier); 🎯 // $sql = "DELETE FROM listeofficiers WHERE pseudo = '$pseudo_del'";
+            |                 $em->flush();
+            |                 return $this->redirectToRoute('usermanagement');
+            |           }      
+            |      }
+            | }
+            |
+   $this->addFlash('success', 'Utilisateur supprimé avec succès.'); // echo $message ;
+

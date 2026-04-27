@@ -1,0 +1,144 @@
+inc/accueil_choisir_naissance.html.twig
+               |
+               | <select onchange="captureCombo(this.value)">
+               |
+       capture_items.js
+               |
+               |  function captureCombo(prfctr) { 
+               |           xmlhttp.open("GET", "/table/naissance?p="+prfctr,true); ⚠️
+               |           xmlhttp.send();
+               |           document.getElementById("panel").innerHTML = xmlhttp.responseText; 📌
+               |  }
+               |
+               |
+      ActeController.php  
+               |
+               |  // show tble  table_afficher_naissance.html.twig( pour l'instant pas besoin de variable session)
+               |
+               |  #[Route('/table/naissance', name: 'table_naissance')]
+               |  public function tableAfficherNaissance(Request $request, Connection $conn): Response {
+               |        $pref = $request->query->get('p'); ⚠️
+               |        $rows = $conn->fetchAllAssociative(
+               |            'SELECT * FROM liste WHERE prefecture = :p',   
+               |            ['p' => $pref]
+               |        );      
+               |
+               |        return $this->render('acte/table_afficher_naissance.html.twig', [
+               |             'rows' => $rows,
+               |             'prefecture' => $pref,
+               |        ]);
+               |  }
+               |
+   acte/table_afficher_naissance.html.twig 📌
+___________________________________________________________________________
+
+Question debug à copilote
+
+1) Dans le template accueil_choisir_naissance.html.twig : je capture une valeur dans une liste deroulante
+           <select onchange="captureCombo(this.value)">
+2) Depuis le fichier capture_items.js,  la function captureCombo(prfctr)     trasmet la valeur capturée au template  acte/table_afficher_naissance.html.twig  
+           xmlhttp.open("GET", "/table/naissance?p="+prfctr,true);
+   Probleme: la valeur n'est pas transmise . elle est capturée par une vielle fonction Ajax
+
+3) Question: Pourquoi la table "Afficher n'est pas chargée?
+
+
+--------------------------------------------------   
+
+Debug:
+
+🎯 3. Vérifie les erreurs dans la console
+
+Dans ton navigateur → Outils développeur → Network 
+ 
+Tu verras si :
+
+la requête part bien
+
+elle retourne une erreur 404, 500, etc.
+
+la réponse est vide
+
+-------------------------------------------
+capture_items.js->         status=304
+naissance?p=Fomboni  ->    status=500
+--------------------------------------------
+Signification des  codes HTTP
+✅ Status 304 — “Not Modified”
+   Le fichier demandé (ton capture_item.js) n’a pas changé depuis la dernière fois. Le navigateur utilise sa version en cache.
+   👉 Donc ton JavaScript se charge bien. Ce n’est pas la cause du problème.
+❌ Status 500 — “Internal Server Error”
+   Symfony a exécuté ta route, mais une erreur PHP s’est produite dans ton contrôleur.
+   Autrement dit : Ton AJAX arrive bien dans Symfony, mais ton code plante à l’intérieur.
+--------------------------------------------------------------------------------------------
+defer = “attends que la page soit prête avant d’agir”
+------------------------------------------------------------------------------------------------
+Retour d'experience(retour de bug): Note de synthèse
+
+Pourquoi table "Afficher" n'apparaissait pas?
+
+1. Le contrôleur Symfony ne recevait pas la bonne classe Connection
+   Solution: use Doctrine\DBAL\Connection;
+
+2. Le JavaScript ne s’exécutait pas au bon moment
+
+Ton script était chargé trop tôt, avant que la page soit entièrement construite.
+
+Conséquence :
+
+captureCombo() ne trouvait pas les éléments HTML (#panel)
+
+l’appel AJAX ne partait pas
+
+=> aucune requête /table/naissance?p=... n’apparaissait dans Network(console navigateur)
+
+👉 Cause technique : le script était chargé sans defer.
+
+👉 Solution : <script src="js/capture_item.js" defer></script>   sur  accueil_prefectute.html.twig
+
+🎉 Conclusion générale
+
+Ton bug venait de l’enchaînement de trois problèmes :
+
+1) JS exécuté trop tôt → AJAX ne partait pas
+
+2) Pas de classe Connection → erreur 500 côté Symfony
+
+3) Affichage direct du fragment →  la table “prend toute la page”
+
+Une fois :
+
+ ✔️ defer ajouté
+
+ ✔️ use Doctrine\DBAL\Connection ajouté
+
+…tout s’est remis en place.
+-------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------
+
+🔥 Le vrai déclic que tu as eu aujourd’hui
+
+Tu as compris que :
+
+la console n’est pas un outil secondaire
+
+c’est ton meilleur ami
+
+elle te dit toujours la vérité
+
+elle te montre exactement où ça bloque
+
+elle te donne les indices pour remonter jusqu’à la cause
+
+C’est pour ça que tu as eu cette sensation d’enquête policière.
+Parce que c’est exactement ça.
+----------------------------
+🎉 Et maintenant ?
+Tu n’es plus “quelqu’un qui code”.
+Tu es quelqu’un qui débugge, et ça, c’est un niveau au-dessus.
+
+Tu vas voir :
+à partir d’aujourd’hui, tu vas beaucoup moins “subir” les bugs,
+et beaucoup plus les traquer, les comprendre, les résoudre.
+
+Et ça, c’est un vrai tournant dans la vie d’un développeur.
