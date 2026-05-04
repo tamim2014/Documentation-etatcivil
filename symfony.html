@@ -204,7 +204,10 @@
 
 
   <p class="img" id="affichelien"  style="background: #f7f7f9; width:94%;"><span >2. Page d'accueil (accueil.php)</span></p>
- 
+  <p> 
+      La page d'accueil fonctionne en mode <b>SPA</b>: <b>S</b>ingle <b>P</b>age <b>A</b>pplication ( mais c'est une version à la main - sans framwork)<br>
+      Vue.js (ou React) le ferait beaucoup mieux !
+  </p>  
   <p><b><u>2.1 Ouverture de la table: "Afficher</u>"</b></p>
   <img src="uml/accueil/Lien_Afficher/affichelien.png" class="img" style="height:auto; padding:0;">
   
@@ -345,10 +348,10 @@
   <p id="cherchenum"><b><u>2.7 Fonctionnalité: "Recherche de document</u></b>"</p>
   <img src="uml/accueil/cherchedocument.png" class="img"  style="height:auto; padding:0;">
   <p><b><u id="271">2.7.1 Recherche par: "Numéro de document</u></b>"</p>
-  <img src="uml/accueil/cherchenum/cherchenum.png" class="img"  style="height:auto;  padding:0;">
+  <img src="uml/accueil/cherchenum/cherchenum.png" class="img"  style="height:auto;">
   
   <p id="cherchenom"><b><u id="272">2.7.2 Recherche par: "nom</u></b>"</p>
-  <img src="uml/accueil/cherchenom/cherchenom.png" class="img"  style="height:auto;  padding:0;">
+  <img src="uml/accueil/cherchenom/cherchenom.png" class="img"  style="height:auto;  ">
   
   
 
@@ -356,30 +359,34 @@
   
   <p><b><u>3.1 Résultat trouvé de la recherche par numéro</u></b></p>
   <img src="uml/accueil/cherchenum/resultbynumber.png" class="img"  style="height:auto; padding:0;">
- 
-  <ul type="cite" style="clear:both">
-       <li>L'affichage du résultat de recherche "by <b style="color:blue;">number</b>" est fait dans <i style="color:#777;">lectureBD2.php</i>, par : <i style="color:#777;"> SERVEUR/lectureBD2_searchPlayBack.php</i> </li>
-	   <li> <b style="color:blue;">num</b> provient de la page "<b>accueil.php</b>" &emsp; &#8658; &emsp; <i style="color:#777;"> header("Location:lectureBD2.php?<b style="color:blue;">num</b>=".$numero );</i> 👉 <a href="#271">voir 2.7.1</a></li>
-       <li style="color:transparent"></li>
-	   <li>"<b>lectureBD2.php</b>" &emsp; &#8658; &emsp;<i style="color:#777;">if(!empty($_GET['<b style="color:blue;">num</b>'])) { </i> include("<i style="color:#777;">SERVEUR/lectureBD2_searchPlayBack.php</i>"); <i style="color:#777;"> }</i></li>
-	   <li style="color:transparent;">...</li>
-	   <li>Les traitements du résultat de recherche par <b style="color:blue;">numéro</b> seront donc appellés par: <i style="color:#777;">SERVEUR/lectureBD2_searchPlayBack.php</i></li>     
-       
-   </ul>
-  <img src="uml/mediaQuery.png" class="img"  style="height:auto">
-  
+  <div class="img" style="clear:both; margin-bottom:0; width:90.25%;">
+	   <ul type="cite" >
+		   <li>"<b>accueil.php</b>" &emsp; &#8658; &emsp; <i style="color:#777;"> header("Location:lectureBD2.php?<b style="color:blue;">num</b>=".$numero );</i> 👉 <a href="#271">voir 2.7.1</a></li>
+		   <li style="color:transparent"></li>
+		   <li>"<b>lectureBD2.php</b>" &emsp; &#8658; &emsp;<i style="color:#777;">if(!empty($_GET['<b style="color:blue;">num</b>'])) { </i> include("<i style="color:#777;">backend/lectureBD2_searchPlayBack.php</i>"); <i style="color:#777;"> }</i></li>
+		   <li style="color:transparent;">...</li>
+		   <li>"<b>backend/lectureBD2_searchPlayBack.php</b>" &emsp; &#8658; &emsp; Affichage & Traitements</li>     
+	   </ul>
+  </div>
+  <img class="img" src="uml/accueil/cherchenum/resultbynumber2.png"   style="height:auto; width:90.25%; margin-bottom:0;">
+    <div class="img" style="clear:both;  width:90.25%;">
+	   <ul type="cite" >
+		   <li>function <b>ouvrePop(url)</b> &emsp; &#8658; &emsp; se trouve dans<i style="color:#777;"> lecturBD.js</i></li>
+		   <li><b>✍️</b> &emsp; &#8658; &emsp; Data refactor in search by name </li>     
+	   </ul>
+  </div>
   <p id="resultatnom"><b><u>3.2 Résultat trouvé de la recherche par nom</u></b></p>
   <img src="uml/accueil/cherchenom/resultbyname.png" class="img"  style="height:auto; padding:0;">
-  <ul type="cite" style="clear:both">
-       <li>L'affichage du résultat de recherche "by <b style="color:blue;">name</b>" est fait dans <i style="color:#777;">lectureBD2.php</i>, par :<i style="color:#777;"> SERVEUR/lectureBD2_searchPlayBackByName.php</i> </li>	   
-	   <li> <b style="color:blue;">nom</b> provient de la page "<b>accueil.php</b>" &#8658; <i style="color:#777;"> header("Location: lectureBD2.php?<b style="color:blue;">nom</b>=".$nomm );</i> 👉 <a href="#272">voir 2.7.2</a></li>
-       <li style="color:transparent"></li>
-	   <li>"<b>lectureBD2.php</b>" &emsp; &#8658; &emsp;<i style="color:#777;">if(!empty($_GET['<b style="color:blue;">nom</b>'])) { </i> include("<i style="color:#777;">SERVEUR/lectureBD2_searchPlayBackByName.php</i>"); <i style="color:#777;"> }</i></li>
-	   <li style="color:transparent;">...</li>
-	   <li>Les traitements du résultat de recherche par <b style="color:blue;">nom</b> seront donc appellés par: <i style="color:#777;">SERVEUR/lectureBD2_searchPlayBackByName.php</i></li>       
-      
-  </ul>
-  <img src="uml/mediaQuery.png" class="img"  style="height:auto">
+  <div class="img" style="clear:both; margin-bottom:0; width:90.25%;">
+	  <ul type="cite" style="clear:both">
+		   <li><b>accueil.php</b>" &#8658; <i style="color:#777;"> header("Location: lectureBD2.php?<b style="color:blue;">nom</b>=".$nomm );</i> 👉 <a href="#272">voir 2.7.2</a></li>
+		   <li style="color:transparent"></li>
+		   <li>"<b>lectureBD2.php</b>" &emsp; &#8658; &emsp;<i style="color:#777;">if(!empty($_GET['<b style="color:blue;">nom</b>'])) { </i> include("<i style="color:#777;">backend/lectureBD2_searchPlayBackByName.php</i>"); <i style="color:#777;"> }</i></li>
+		   <li style="color:transparent;">...</li>
+		   <li>"<b>backend/lectureBD2_searchPlayBackByName.php</b>" &emsp; &#8658; &emsp; Affichage & Traitements</li>
+	  </ul>
+  </div>
+  <img class="img" src="uml/accueil/cherchenom/resultbyname2.png"   style="height:auto; width:90.25%;">
   <!-- #####################################################################################################################
       
 	  Juste les arborescences pour les 3 fonctionnalités(Affichier, Imprimer, Modifier => 4.1, 4.2, 4.3 ). 
@@ -496,7 +503,15 @@
   <p class="img" id="afficheTable" style="background: #f7f7f9; width:94%">7. Affichage des documents 👉 <span style="color:blue">lectureBD.php</span></p> 
   
   <p><b><u>7.1 Afficher</u> (table)</b></p>
-  <img src="uml/LectureBD/lectureBD.png" class="img"  style="height:auto; padding:0;"> 
+  <img src="uml/LectureBD/lectureBD.png" class="img"  style="height:auto; padding:0;">
+  <p class="img" <i style="width:90.25%; margin-bottom:0;">
+    Asynchronous loading: L'affichage de la table se fait par une combinaison <i style="color:#ececea">jQuery/</i><i style="color:#ececea">Ajax</i><br>
+     ✔️ <i style="color:#ececea">jQuery</i> capture la péfecture : <i style="color:gray">inc/lecture/topMenu.php</i><br>
+	 ✔️ <i style="color:#ececea">Ajax</i> charge  la table relative dans div#yivawo : <i style="color:gray">lectureBD.php</i><br><br>
+	Donc le pattern se résume ainsi: jQuery capture l'événement(le menu) et Ajax charge les données. Ils son complémentaires !<br>
+	 C'est exactement la base sur laquelle repose des framworks modernes comme <b>React</b> ou <b>Vue.js</b><br>
+	 Il serait donc mieux de traduire ce jQuery en version <b>Vue.js</b>
+  </p>   
   <img src="uml/LectureBD/lectureBD_afficher.png" class="img"  style="height:auto; padding:0; margin-bottom:0;">   
   <p class="img" <i style="width:90.5%">
      ✔️ <i style="color:gray">window.open(...popup..)</i> est remplacé par la fonction <i style="color:gray">ouvrePop(\'afficher.php?n='.$ligne['ID'].'\')</i><br>

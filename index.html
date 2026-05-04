@@ -147,7 +147,7 @@
   <h1 id="login">Documentation du Projet(php pur) </h2>
   <h2>Les principales fonctionnalités(guide visuel) </h2> 
   
-   <p class="img" style="background: #f7f7f9; clear:both !important; ">1. Page d'authentification (index.php)</p>
+   <p class="img" style="background: #f7f7f9; clear:both !important; ">1. Page d'authentification 👉 <span style="color:blue"> index.php</span></p>
    
    <p><b><u>1.1 Login: Authentification </u></b></p>
    <img src="uml/login/login.png" class="img" style="height:auto; padding:0;">
@@ -204,8 +204,11 @@
   
   
   
-  <p class="img" id="affichelien"  style="background: #f7f7f9; width:94%;"><span >2. Page d'accueil (accueil.php)</span></p>
-  <p> La page d'accueil fonctionne en mode <b>SPA</b>: <b>S</b>ingle <b>P</b>age <b>A</b>pplication ( mais c'est une version à la main - sans framwork)</p>  
+  <p class="img" id="affichelien"  style="background: #f7f7f9; width:94%;"><span >2. Page d'accueil 👉 <span style="color:blue"> accueil.php</span></span></p>
+  <p> 
+      La page d'accueil fonctionne en mode <b>SPA</b>: <b>S</b>ingle <b>P</b>age <b>A</b>pplication ( mais c'est une version à la main - sans framwork)<br>
+      Vue.js (ou React) le ferait beaucoup mieux !
+  </p>  
   <p><b><u>2.1 Ouverture de la table: "Afficher</u>"</b></p>
 
   <img src="uml/accueil/Lien_Afficher/affichelien.png" class="img" style="height:auto; padding:0;">
@@ -222,7 +225,7 @@
 			 </li>
 			 <li><b>Chargement de la table:</b><br>
 				&emsp;&emsp;✔️ capture_item.js &emsp;&RightArrow;&emsp; function captureCombo(prfctr) { <br>
-				&emsp;&emsp;✔️ &emsp; xmlhttp.open("GET","SERVEUR/colonne_afficher_naissance.php?p="+prfctr,true )<br>
+				&emsp;&emsp;✔️ &emsp; xmlhttp.open("GET","backend/colonne_afficher_naissance.php?p="+prfctr,true )<br>
 				&emsp;&emsp;✔️ &emsp; document.getElementById("panel").innerHTML = xmlhttp.responseText;
 			 </li>
 	  </ol>
@@ -240,10 +243,10 @@
 	  </ol>
 	  Dans in/accueil/accueil_prefecture.php on trouvera les href appelé par <b>attr(href)</b>:
 	  <ul type="none">
-	     <li>&lt;a id="zima"    &nbsp;<span style="color:green">href</span>="SERVEUR/colonne_supprimer_acte.php"&gt; &lt;input type="button"  value="Supprimer" /&gt;</li>
-	     <li>&lt;a id="rectif"  &nbsp;<span style="color:green">href</span>="SERVEUR/colonne_rectifier_acte.php"&gt; &lt;input type="button"  value="Rectifier" /&gt;</li>
-	     <li>&lt;a id="print_"  <span style="color:green">href</span>="SERVEUR/colonne_imprimer_acte.php"&gt;  input type="button"  value="Imprimer" /&gt;</li>
-	     <li>&lt;a id="trier"   &nbsp;&nbsp;&nbsp;<span style="color:green">href</span>="SERVEUR/trier.php"&gt;  &lt;input type="button"  value="Ordre alphabétique"/&gt;</li>
+	     <li>&lt;a id="zima"    &nbsp;<span style="color:green">href</span>="backend/colonne_supprimer_acte.php"&gt; &lt;input type="button"  value="Supprimer" /&gt;</li>
+	     <li>&lt;a id="rectif"  &nbsp;<span style="color:green">href</span>="backend/colonne_rectifier_acte.php"&gt; &lt;input type="button"  value="Rectifier" /&gt;</li>
+	     <li>&lt;a id="print_"  <span style="color:green">href</span>="backend/colonne_imprimer_acte.php"&gt;  input type="button"  value="Imprimer" /&gt;</li>
+	     <li>&lt;a id="trier"   &nbsp;&nbsp;&nbsp;<span style="color:green">href</span>="backend/trier.php"&gt;  &lt;input type="button"  value="Ordre alphabétique"/&gt;</li>
 	  </ul>
 	  Il faut choisir la table à ouvrir, avant de l'ouvrir(par un de ces 4 boutons)<br>
 	  Si au préalable on ne choisi pas la table, on ne peut pas l'ouvrir. <u>Un bug s'impose</u><br>
@@ -299,7 +302,7 @@
  <img src="uml/accueil/Bouton_Rectifier/accueilrectifier.png" class="img" style="height:auto; padding:0;"> 
 
   <ul type="cite">
-       <li>"<i style="color:blue;">js/accueil_commandes_panel.js</i>" renvoie à la table "<i style="color:blue;">SERVEUR/colonne_rectifier_acte.php</i>"</li>
+       <li>"<i style="color:blue;">js/accueil_commandes_panel.js</i>" renvoie à la table "<i style="color:blue;">backend/colonne_rectifier_acte.php</i>"</li>
        <li>Et cette <b><i>table</i></b> renvoie à la page "<i style="color:blue;">modifier_.php</i>"</span> en la transmettant les données par url</li>
   </ul>
   <img src="uml/accueil/Bouton_Rectifier/accueilBtnRectifier.png" class="img" style="height:auto; padding:0;"> 
@@ -351,41 +354,45 @@
   <p id="cherchenum"><b><u>2.7 Fonctionnalité: "Recherche de document</u></b>"</p>
   <img src="uml/accueil/cherchedocument.png" class="img"  style="height:auto; padding:0;">
   <p><b><u id="271">2.7.1 Recherche par: "Numéro de document</u></b>"</p>
-  <img src="uml/accueil/cherchenum/cherchenum.png" class="img"  style="height:auto;  padding:0;">
-  
+  <img src="uml/accueil/cherchenum/cherchenum.png" class="img"  style="height:auto; ">
   <p id="cherchenom"><b><u id="272">2.7.2 Recherche par: "nom</u></b>"</p>
-  <img src="uml/accueil/cherchenom/cherchenom.png" class="img"  style="height:auto;  padding:0;">
+  <img src="uml/accueil/cherchenom/cherchenom.png" class="img"  style="height:auto; ">
   
   
 
-  <p class="img" id="resultatnum" style="background: #f7f7f9; width:94%">3. Affichage du résultat de la recherche (lectureBD2.php)</p>
+  <p class="img" id="resultatnum" style="background: #f7f7f9; width:94%">3. Affichage du résultat de la recherche 👉 <span style="color:blue"> lectureBD2.php</span></p>
   
   <p><b><u>3.1 Résultat trouvé de la recherche par numéro</u></b></p>
   <img src="uml/accueil/cherchenum/resultbynumber.png" class="img"  style="height:auto; padding:0;">
- 
-  <ul type="cite" style="clear:both">
-       <li>L'affichage du résultat de recherche "by <b style="color:blue;">number</b>" est fait dans <i style="color:#777;">lectureBD2.php</i>, par : <i style="color:#777;"> SERVEUR/lectureBD2_searchPlayBack.php</i> </li>
-	   <li> <b style="color:blue;">num</b> provient de la page "<b>accueil.php</b>" &emsp; &#8658; &emsp; <i style="color:#777;"> header("Location:lectureBD2.php?<b style="color:blue;">num</b>=".$numero );</i> 👉 <a href="#271">voir 2.7.1</a></li>
-       <li style="color:transparent"></li>
-	   <li>"<b>lectureBD2.php</b>" &emsp; &#8658; &emsp;<i style="color:#777;">if(!empty($_GET['<b style="color:blue;">num</b>'])) { </i> include("<i style="color:#777;">SERVEUR/lectureBD2_searchPlayBack.php</i>"); <i style="color:#777;"> }</i></li>
-	   <li style="color:transparent;">...</li>
-	   <li>Les traitements du résultat de recherche par <b style="color:blue;">numéro</b> seront donc appellés par: <i style="color:#777;">SERVEUR/lectureBD2_searchPlayBack.php</i></li>     
-       
-   </ul>
-  <img src="uml/mediaQuery.png" class="img"  style="height:auto">
+  <div class="img" style="clear:both; margin-bottom:0; width:90.25%;">
+	   <ul type="cite" >
+		   <li>"<b>accueil.php</b>" &emsp; &#8658; &emsp; <i style="color:#777;"> header("Location:lectureBD2.php?<b style="color:blue;">num</b>=".$numero );</i> 👉 <a href="#271">voir 2.7.1</a></li>
+		   <li style="color:transparent"></li>
+		   <li>"<b>lectureBD2.php</b>" &emsp; &#8658; &emsp;<i style="color:#777;">if(!empty($_GET['<b style="color:blue;">num</b>'])) { </i> include("<i style="color:#777;">backend/lectureBD2_searchPlayBack.php</i>"); <i style="color:#777;"> }</i></li>
+		   <li style="color:transparent;">...</li>
+		   <li>"<b>backend/lectureBD2_searchPlayBack.php</b>" &emsp; &#8658; &emsp; Affichage & Traitements</li>     
+	   </ul>
+  </div>
+  <img class="img" src="uml/accueil/cherchenum/resultbynumber2.png"   style="height:auto; width:90.25%; margin-bottom:0;">
+  <div class="img" style="clear:both;  width:90.25%;">
+	   <ul type="cite" >
+		   <li>function <b>ouvrePop(url)</b> &emsp; &#8658; &emsp; se trouve dans<i style="color:#777;"> lecturBD.js</i></li>
+		   <li><b>✍️</b> &emsp; &#8658; &emsp; Data refactor in search by name </li>     
+	   </ul>
+  </div>
   
   <p id="resultatnom"><b><u>3.2 Résultat trouvé de la recherche par nom</u></b></p>
   <img src="uml/accueil/cherchenom/resultbyname.png" class="img"  style="height:auto; padding:0;">
-  <ul type="cite" style="clear:both">
-       <li>L'affichage du résultat de recherche "by <b style="color:blue;">name</b>" est fait dans <i style="color:#777;">lectureBD2.php</i>, par :<i style="color:#777;"> SERVEUR/lectureBD2_searchPlayBackByName.php</i> </li>	   
-	   <li> <b style="color:blue;">nom</b> provient de la page "<b>accueil.php</b>" &#8658; <i style="color:#777;"> header("Location: lectureBD2.php?<b style="color:blue;">nom</b>=".$nomm );</i> 👉 <a href="#272">voir 2.7.2</a></li>
-       <li style="color:transparent"></li>
-	   <li>"<b>lectureBD2.php</b>" &emsp; &#8658; &emsp;<i style="color:#777;">if(!empty($_GET['<b style="color:blue;">nom</b>'])) { </i> include("<i style="color:#777;">SERVEUR/lectureBD2_searchPlayBackByName.php</i>"); <i style="color:#777;"> }</i></li>
-	   <li style="color:transparent;">...</li>
-	   <li>Les traitements du résultat de recherche par <b style="color:blue;">nom</b> seront donc appellés par: <i style="color:#777;">SERVEUR/lectureBD2_searchPlayBackByName.php</i></li>       
-      
-  </ul>
-  <img src="uml/mediaQuery.png" class="img"  style="height:auto">
+  <div class="img" style="clear:both; margin-bottom:0; width:90.25%;">
+	  <ul type="cite" style="clear:both">
+		   <li><b>accueil.php</b>" &#8658; <i style="color:#777;"> header("Location: lectureBD2.php?<b style="color:blue;">nom</b>=".$nomm );</i> 👉 <a href="#272">voir 2.7.2</a></li>
+		   <li style="color:transparent"></li>
+		   <li>"<b>lectureBD2.php</b>" &emsp; &#8658; &emsp;<i style="color:#777;">if(!empty($_GET['<b style="color:blue;">nom</b>'])) { </i> include("<i style="color:#777;">backend/lectureBD2_searchPlayBackByName.php</i>"); <i style="color:#777;"> }</i></li>
+		   <li style="color:transparent;">...</li>
+		   <li>"<b>backend/lectureBD2_searchPlayBackByName.php</b>" &emsp; &#8658; &emsp; Affichage & Traitements</li>
+	  </ul>
+  </div> 
+ <img src="uml/accueil/cherchenom/resultbyname2.png" class="img"  style="height:auto; width:90.25%;"> 
   <!-- #####################################################################################################################
       
 	  Juste les arborescences pour les 3 fonctionnalités(Affichier, Imprimer, Modifier => 4.1, 4.2, 4.3 ). 
@@ -401,7 +408,7 @@
 	  
   ############################################################################################################################### -->
   
-  <p class="img" id="afficheresultat" style="background: #f7f7f9; width:94%">4. Traitement du résultat de recherche: Le document trouvé (lectureBD2.php)</p>
+  <p class="img" id="afficheresultat" style="background: #f7f7f9; width:94%">4. Traitement du résultat de recherche: Le document trouvé 👉 <span style="color:blue">lectureBD2.php</span></p>
   
   
   <p><b><u>4.1 Afficher: Le document trouvé</u></b>(suite à la recherche éffectuée en page d'accueil)</p>
@@ -504,17 +511,21 @@
   <p><b><u>7.1 Afficher</u> (table)</b></p>
   <img src="uml/LectureBD/lectureBD.png" class="img"  style="height:auto; padding:0;"> 
   <p class="img" <i style="width:90.25%; margin-bottom:0;">
-    Asynchronous loading: L'affichage de la table se fait par une combinaison <i style="color:#ececea">jQuery/</i><i style="color:#ececea">Ajax</i><br>
-     ✔️ <i style="color:#ececea">jQuery</i> capture la péfecture : <i style="color:gray">inc/lecture/topMenu.php</i><br>
-	 ✔️ <i style="color:#ececea">Ajax</i> charge  la table relative dans div#yivawo : <i style="color:gray">lectureBD.php</i><br><br>
-	Donc le pattern se résume ainsi: jQuery capture l'événement(le menu) et Ajax charge les données. Ils son complémentaires !<br>
-	 C'est exactement la base sur laquelle repose des framworks modernes comme <b>React</b> ou <b>Vue.js</b><br>
-	 Toutefois, il serait mieux de traduire ce jQury en version <b>Vue.js</b> moderne.
+    Asynchronous loading: L'affichage de la table se fait par une combinaison <i style="color:#ececea">jQuery/ajax/php/ajax</i> en 4 étapes:<br><br>
+     ✔️ <i style="color:#ececea">jQuery</i> capture la <u>péfecture</u>(<i style="color:gray">inc/lecture/topMenu.php</i>) et la transmet à Ajax<br>
+	 ✔️ <i style="color:#ececea">Ajax</i> la transmet en GET au fichier lectureBD_afficherNaissance.php <br>
+	 ✔️ <i style="color:#ececea">lectureBD_afficherNaissance.php</i> fait un SELECT sur cette prefcture pour remplir sa table<br>
+	 ✔️ <i style="color:#ececea">Ajax</i> recupere la table remplie pour la charger dans une div( ici la <i style="color:gray">div#yivawo</i>).<br><br>
+	Donc le pattern se résume ainsi: jQuery capture l'événement(le menu) et Ajax charge les données. Ils sont complémentaires !<br>
+	 C'est exactement la base sur laquelle repose les framworks modernes comme <b>React</b> ou <b>Vue.js</b><br>
+	 Il serait donc mieux de traduire ce jQuery en version <b>Vue.js</b>
   </p> 
   <img src="uml/LectureBD/lectureBD_afficher.png" class="img"  style="height:auto; padding:0; margin-bottom:0;">   
   <p class="img" <i style="width:90.5%">
-     ✔️ <i style="color:gray">window.open(...popup..)</i> est remplacé par la fonction <i style="color:gray">ouvrePop(\'afficher.php?n='.$ligne['ID'].'\')</i><br>
-	 ✔️ <i style="color:gray">function ouvrePop(url){...}</i> se trouve dans <i style="color:#ececea">lectureBD.js</i>
+    <i style="color:#ececea">lectureBD_afficherNaissance.php</i> a 3 missions:<br>
+     ✔️ Récuperer la <u>prefecture</u> transmise en GET ( par la fonction ajax) <br>
+	 ✔️ Stocker cette prefecture dans une veriable session( pour lectureBD.php)<br>
+     ✔️ Faire un SELECT filtré sur cette prefecture( pour remplir sa table)<br> 	 
   </p> 
   
   
@@ -552,7 +563,7 @@
 	   </code></pre>
    </div>
   
-  Connection au serveur mysql: <b><i style="color:green; border: 7px solid #336600; padding:0 17px;">mysql -u root</i></b> 👇  
+  Connection au backend mysql: <b><i style="color:green; border: 7px solid #336600; padding:0 17px;">mysql -u root</i></b> 👇  
   <img src="uml/base/usersDescribe.png" class="img"  style="height:auto; padding:0;">   
   <img src="uml/base/usersSelect.png" class="img"  style="height:auto; padding:0;">  
   <div class="img" style="color:#aaa; width:90.25%; margin-bottom:0;">
@@ -630,10 +641,10 @@
        3 Outils indispensables:
 	  <ul class="custom-check instalation" style="margin-left:2em;">
            <li>Un moteur php(PHP 7.4, PHP 8.4 - mieux pour maintenir un projet existant, ...)</li>
-           <li>Un serveur web( apache, nginx, ... )</li>
-           <li>Un serveur de données( mysql, postgree, ...)</li>
+           <li>Un backend web( apache, nginx, ... )</li>
+           <li>Un backend de données( mysql, postgree, ...)</li>
        </ul>
-      Pour windows: Le serveur local <b>laragon</b> contient ces 3 outils<br>
+      Pour windows: Le backend local <b>laragon</b> contient ces 3 outils<br>
       Pour linux: ... <br>
       Pour mac: ... <br>	   
    </div>

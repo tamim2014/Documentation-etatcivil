@@ -1,0 +1,8 @@
+ l'objectif est de charger cette table dans  ma template de base en 3 etapes:                                                                                                  1) jQuery capture un menu dans  inc/lecture/topMenu.html.twig                                                           
+2) transmettre la capture à la foncion ajax  captureSouMenu("prfctr){...}                                   
+3) Et cettre fonction va charger la table relative à prfct( celle qu'on vient de traiter)   dans le div#yivawo de la page   lectureBD.html.twig 
+
+ Tu vois c'est  tres embrouillé comme architecture. En procedure ça tourne mais avec symfony je galere un peu. Heureusement maintenat j'ai les principale brique                                  *  le menu  inc/lecture/topMenu.html.twig                                                                                               
+ *  la page principale lectureBD.html.twig                                                                                                   
+* la table à charger  lire/tableNaissance.html.twig                                                                                  
+ *Et bien sûr les fonction jQuery/Ajax pour la capture/chargement 
