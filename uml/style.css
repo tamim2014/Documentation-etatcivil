@@ -154,7 +154,8 @@
 		  padding: 4px 10px;
 		  color: #00004d;
 		  text-decoration: none;
-		  background: #D4D7C4; url(menu-item.png) left bottom no-repeat;
+		  background: #D4D7C4 url(menu-item.png) left bottom no-repeat;
+
 		}
         .toggleSubMenu .subMenu a{ color:white;}
 		

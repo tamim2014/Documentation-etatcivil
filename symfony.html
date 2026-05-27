@@ -116,16 +116,24 @@
 					<li><a href="#8.2" >Documents</a></li>
 				  </ul>
 			</li>
-			<li class="toggleSubMenu" style="border-top:1px solid gray;"><span>Structure/Installation </span>
+			<li class="toggleSubMenu"><span>9. Sécurité </span>
 				  <ul class="subMenu"  style="color:silver;" >						
-					<li><a href="#9.1" >Structure</a></li>
-					<li><a href="#9.2" >Installation</a></li>
+					<li><a href="#9.1" >url_access_guard</a></li>
+					<li><a href="#9.2" >logout</a></li>
+					<li><a href="#9.3" >Hash passwd</a></li>
+					<li><a href="#9.4" >Protection scripts AJAX</a></li>
 				  </ul>
 			</li>
-			<li class="toggleSubMenu"><span>Version procedurale</span>
+			<li class="toggleSubMenu"><span>10.Structure/Installation </span>
 				  <ul class="subMenu"  style="color:silver;" >						
-					<li><a href="index.html#9.1" >Structure</a></li>
-					<li><a href="index.html#9.2">Installation</a></li>
+					<li><a href="#10.1" >Structure</a></li>
+					<li><a href="#10.2" >Installation</a></li>
+				  </ul>
+			</li>
+			<li class="toggleSubMenu" style="border-top:1px solid gray;"><span>Version procedurale</span>
+				  <ul class="subMenu"  style="color:silver;" >						
+					<li><a href="index.html#10.1" >Structure</a></li>
+					<li><a href="index.html#10.2">Installation</a></li>
 				  </ul>
 			</li>
 			<li class="toggleSubMenu" style="border-top:1px solid gray;"><span>Fonctions dépreciées</span>
@@ -161,13 +169,32 @@
    </div>
    <img src="uml/login/loginShemas.png" class="img" style="height:auto; padding:0;">
    
-   <p id="validerlogin"><b><u>1.2 Gestion des droits d'accès</u></b></p>
+   <p id="validerlogin"><b><u>1.2 Gestion des droits</u>(Accès aux fonctionnalités/Accès aux données)</b></p>
+   <p>
+      Cet utilisateur peut-il faire CETTE action?<br>
+	  Qui peut accéder à CETTE donnée?<br>
+      Pour ce faire, symfony utilise 2 technologies:<br>
+	  ✔️ Les voters: Décision d'autorisation sur une action<br>
+	  ✔️ ACL(Access Control List): Contrôle d'accès aux objets/données<br><br>
+	  Mais un <b>Voter</b> peut aussi protéger des données. C'est pour ça qu'aujourdhui les "Voters" ont supplanté les ACL.<br>
+	  ROLE_ADMINI, security.yaml et Voters couvrent presque tous les cas métiers.
+   </p> 
+   <h4>A) Accès aux fonctionnalités(Supprimer/Rectifier)</h4>
    <p class="img" style="color:#aaa; width:90.25%; margin-bottom:0;">
        Seuls les utilisteurs connectés avec un compte "admin" ont les droits de <span style="color:#ececea;">rectifier</span>
 	   un document erroné ou de <span style="color:#ececea;">supprimer</span> un faux document. Dans la pratique, ces privillèges
 	   reviennent seulement aux préfets.
    </p> 
    <img src="uml/accueil/login/dialogBox.png" class="img" style="height:auto; padding:0;">
+   
+   <h4 style="clear:both;">B) Accès aux données( en fonction de la préfecture affectée à l'officier)</h4>
+   <p class="img" style="color:#aaa; width:90.25%; margin-bottom:0;">
+     Qui accède à quoi?<br>
+	 Seul le compte "admin" peut acceder à l'ensemble de l'espace de données.
+	 Un officier d'état civil ne peut travailler que sur les documents relatifs à sa préfecture.<br>
+	 
+   </p> 
+   <img src="uml/accueil/login/dialogBox2.png" class="img" style="height:auto; padding:0;">
    
    
    
@@ -616,9 +643,9 @@
   <img src="uml/base/listeDescribe.png" class="img"  style="height:auto; padding:0;">
   <p><i> On peut toujours trouver les tables dans le dossier /sql ⚠️ </i></p>
   
-  <p class="img" id="9.1" style="background: #f7f7f9; width:94%">9. Structure et installation 👉 (<i style="color:blue">framework</i>)</p>
+  <p class="img" id="10.1" style="background: #f7f7f9; width:94%">10. Structure et installation 👉 (<i style="color:blue">framework</i>)</p>
   <b>Paradigme</b>: "Adapter symfony à l'existant, plutôt que de tout casser pour rentrer dans un model théorique"
-  <p><b><u>9.1: Structure</u> </b> <i>(MVC)</i></p>
+  <p><b><u>10.1: Structure</u> </b> <i>(MVC)</i></p>
    <p class="img" style="color:#aaa; width:90%; margin-bottom:0;">
       Trois dossier fondamentaux( <span style="color:#ececea;">VC</span> sans <span style="color:#ececea;">M</span>):<br>
       &emsp;🎁<span style="color:#ececea;"> src/Controller</span>.........Pour les fonctions<br>
@@ -632,7 +659,7 @@
   <img src="uml/structure/structuresymfony.png" class="img"  style="height:auto; padding:0;">
   
   
-  <p id="9.2"><b><u>9.2: Installation</u></b></p>
+  <p id="10.2"><b><u>10.2: Installation</u></b></p>
   <!-- <img src="uml/structure/installationphp.png" class="img"  style="height:auto; padding:0;"> -->
    <div class="img" style="font-size:.8.5em; padding:0; border-radius:7px;">
 	  <pre style="margin:0; border-radius:50px;"><code class="language-bash">
