@@ -1,0 +1,73 @@
+1. Introduction
+   - Objectif du projet
+   - Contexte (état civil, gestion des actes)
+   - Technologies utilisées (PHP, jQuery, MySQL, SPA artisanale)
+
+2. Authentification & Sécurité
+   2.1 Authentification
+       - Page de login
+       - Vérification en base
+       - Gestion de session
+   2.2 Gestion des droits
+       - Rôle admin
+       - Rôle officier
+       - Restrictions d’accès aux fonctionnalités
+       - Restrictions d’accès aux données (préfecture)
+   2.3 Gestion des utilisateurs
+       - Ajouter un utilisateur
+       - Supprimer un utilisateur
+       - Promouvoir / retirer admin
+
+3. Page d’accueil (SPA artisanale)
+   3.1 Choix de la préfecture
+   3.2 Ouverture du panel
+   3.3 Chargement AJAX des tables
+   3.4 Boutons d’action
+       - Supprimer
+       - Rectifier
+       - Imprimer
+       - Trier
+   3.5 Alertes utilisateur (préfecture non sélectionnée)
+
+4. Recherche
+   4.1 Recherche par numéro
+   4.2 Recherche par nom
+   4.3 Redirection vers lectureBD2.php
+   4.4 Traitement du résultat
+
+5. Traitement du résultat
+   5.1 Afficher
+   5.2 Imprimer
+   5.3 Modifier
+   5.4 Popup d’affichage
+
+6. Nouveau document
+   6.1 Enregistrer
+   6.2 Afficher
+   6.3 Imprimer
+   6.4 Rectifier (cas particulier)
+
+7. Rectification
+   7.1 Enregistrer
+   7.2 Afficher
+   7.3 Imprimer
+   7.4 Recommencer
+
+8. Affichage global
+   8.1 Chargement AJAX
+   8.2 Afficher un document
+   8.3 Imprimer un document
+
+9. Base de données
+   9.1 Table listeofficiers
+   9.2 Table liste
+   9.3 Notes de refactoring (renommer user → roles)
+
+10. Structure & Installation
+    10.1 Structure MVC
+    10.2 Installation (PHP, Apache, MySQL, Laragon)
+
+11. Annexes
+    - TODO
+    - Notes diverses
+    - Améliorations futures
