@@ -32,6 +32,45 @@
 			font-size: 18px;
 		}
 		.custom-block li::before { content: "⛔"; }
+		
+		/* Flash: Démarrer laragon(etatcivil) pour symfony  */
+		
+		.alert {
+			background-color: #ffdddd;
+			color: #a10000;
+			padding: 15px 40px 15px 20px;
+			border-radius: 0; /* pas arrondi pour un style "bandeau" */
+			width: 100%;
+			box-sizing: border-box;
+			font-family: Arial, sans-serif;
+			text-align: left;
+			position: relative;
+			top: 0;
+			left: 0;
+			margin: 0; /* enlève les marges qui recentrent */
+			
+			position:absolute;
+			top:0;
+			left:250px !important;
+			width:84%;
+			
+		}
+
+
+		.closebtn {
+			position: absolute;
+			right: 15px;
+			top: 10px;
+			color: #a10000;
+			font-size: 22px;
+			font-weight: bold;
+			cursor: pointer;
+		}
+		.closebtn:hover { color: #700000; }
+		
+		.img{
+		   width:90.25%;
+		}
 	   
 	</style>
 	<script src="uml/moteurJquery.js"> </script><!-- un peu vieux mais il tourne --> 
@@ -150,16 +189,22 @@
 
 
 <div class="main" style="margin-right:0;">
+  <div class='alert'>
+		 Symfony utilise le seveur MySQL de Laragon<br>
+		 Donc il faut démarrer laragon en arrière-plan ⚠️
+		<span class='closebtn' onclick="this.parentElement.style.display='none';">&times;</span>
+  </div>
 
-  <h1 id="login">Documentation du Projet(symfony) </h2>
+
+  <h1 id="login" style="margin-bottom:0;">Documentation du Projet(symfony) </h1>
   <h2>Les principales fonctionnalités(guide visuel) </h2> 
   
    <p class="img" style="background: #f7f7f9; clear:both !important; ">1. Page d'authentification (index.php)</p>
    
    <p><b><u>1.1 Login: Authentification </u></b></p>
-   <img src="uml/login/login.png" class="img" style="height:auto; padding:0;">
+   <img src="uml/login/login.png" class="img interface2">
    
-   <div class="img" style="color:gray; width:90.25%; margin-bottom:0;">
+   <div class="img" style="color:gray; margin-bottom:0;">
 	   <ul type="cite">
 		   <li>Capture login/passwd saisis: <span style="color:#ececea">$_POST["pseudo_]</span> / <span style="color:#ececea">$_POST["motdepasse_]</span></li>
 		   <li>Comparaison aux valeurs table listeofficiers: $sql= select * from <span style="color:#ececea">listeofficiers</span> WHERE pseudo=<span style="color:#ececea">$_POST["pseudo_]</span> AND ...</li>
@@ -167,7 +212,7 @@
  	   
 	   </ul>
    </div>
-   <img src="uml/login/loginShemas.png" class="img" style="height:auto; padding:0;">
+   <img src="uml/login/loginShemas.png" class="img" style="height:auto; ">
    
    <p id="validerlogin"><b><u>1.2 Gestion des droits</u>(Accès aux fonctionnalités/Accès aux données)</b></p>
    <p>
@@ -185,7 +230,7 @@
 	   un document erroné ou de <span style="color:#ececea;">supprimer</span> un faux document. Dans la pratique, ces privillèges
 	   reviennent seulement aux préfets.
    </p> 
-   <img src="uml/accueil/login/dialogBox.png" class="img" style="height:auto; padding:0;">
+   <img src="uml/accueil/login/dialogBox.png" class="img" style="height:auto; ">
    
    <h4 style="clear:both;">B) Accès aux données( en fonction de la préfecture affectée à l'officier)</h4>
    <p class="img" style="color:#aaa; width:90.25%; margin-bottom:0;">
@@ -194,12 +239,12 @@
 	 Un officier d'état civil ne peut travailler que sur les documents relatifs à sa préfecture.<br>
 	 
    </p> 
-   <img src="uml/accueil/login/dialogBox2.png" class="img" style="height:auto; padding:0;">
+   <img src="uml/accueil/login/dialogBox2.png" class="img" style="height:auto; ">
    
    
    
    <p id="1.3"><b><u>1.3 Gestion des utilisateurs</u> (Ajouter <i style="color:gray">un utilisateur</i>, supprimer <i style="color:gray">un utilisateurs</i>, Afficher <i style="color:gray">tous les utilisateurs</i>)</b></p>
-   <img src="uml/accueil/login/userMngmnt.png" class="img" style="height:auto; padding:0;">
+   <img src="uml/accueil/login/userMngmnt.png" class="img interface2">
    <h4>Ajouter/Suprimer un officier d'état civil</h4>
    <div class="img" style="color:#aaa; width:90.25%; margin-bottom:0;">
         C'est un rôle à 4 privillèges:
@@ -217,16 +262,16 @@
 			<li>ni manipuler les données.</li>
 		</ul>
    </div> 
-   <img src="uml/accueil/login/userManagement.png" class="img" style="height:auto; padding:0;">
+   <img src="uml/accueil/login/userManagement.png" class="img" style="height:auto; ">
    <h4 style="clear:both">Afficher tous les officiers d'état civil</h4>
    <!-- ⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️STICKY(pour la capture) avant showAllUsers1.png ⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️    --> 
-   <img src="uml/accueil/login/showAllUsers1.png" class="img" style="height:auto; padding:0; ">
+   <img src="uml/accueil/login/showAllUsers1.png" class="img interface2">
    <div class="img" style="color:#aaa; width:90.25%; margin-bottom:0;">
       <span style="color:#ececea;">userManagement.php</span>: <br>
 	  On ajoute le traitement dans la même page( php au-dessus de html).<br>
 	  Pas conventionnel mais facil à gerer( la meilleurs c'tjrs la plus simple   !)
    </div>
-   <img src="uml/accueil/login/showAllUsers2.png" class="img" style="height:auto; padding:0; ">
+   <img src="uml/accueil/login/showAllUsers2.png" class="img" style="height:auto;  ">
 
 
 
@@ -236,7 +281,7 @@
       Vue.js (ou React) le ferait beaucoup mieux !
   </p>  
   <p><b><u>2.1 Ouverture de la table: "Afficher</u>"</b></p>
-  <img src="uml/accueil/Lien_Afficher/affichelien.png" class="img" style="height:auto; padding:0;">
+  <img src="uml/accueil/Lien_Afficher/affichelien.png" class="img interface2">
   
   <div class="img" style="width:90.25%; color:gray;">
       Cette table apparaît en 3 étapes: <br>
@@ -279,22 +324,22 @@
       C'est pourquoi un alert  est posé au dessus de ces 4 boutons.
     </div> 
   <p class="img" style="width:90.25%; color:gray; margin-bottom:0;"> Etape1: Capture de la prefecture cliquée:Quelle table ouvrir</p>
-  <img src="uml/accueil/Lien_Afficher/2.1.E1.png" class="img" style="height:auto; padding:0;">  
+  <img src="uml/accueil/Lien_Afficher/2.1.E1.png" class="img" style="height:auto; ">  
   <p class="img" style="width:90.25%; color:gray; margin-bottom:0;">Etape2: Ouverture du panel</p>
-  <img src="uml/accueil/Lien_Afficher/2.1.E2.png" class="img" style="height:auto; padding:0;">
+  <img src="uml/accueil/Lien_Afficher/2.1.E2.png" class="img" style="height:auto; ">
   <p class="img" style="width:90.25%; color:gray; margin-bottom:0;">Etape3: Chargement de la table</p>
-  <img src="uml/accueil/Lien_Afficher/chargement.png" class="img" style="height:auto; padding:0;">
+  <img src="uml/accueil/Lien_Afficher/chargement.png" class="img" style="height:auto; ">
   Brouillon
-  <img src="uml/accueil/Lien_Afficher/afficher.png" class="img" style="height:auto; padding:0;">
+  <img src="uml/accueil/Lien_Afficher/afficher.png" class="img" style="height:auto; ">
   
   <p id="affichedoc"><b><u>2.2 Afficher le document</u></b> &emsp;&RightArrow;&emsp;  lien "Afficher"</p>
-  <img src="uml/accueil/Lien_Afficher/affichedoc.png" class="img" style="height:auto; padding:0;">
+  <img src="uml/accueil/Lien_Afficher/affichedoc.png" class="img interface2">
   
    <ul type="cite">
        <li>Arborescence vers l'affichage du document( dans un popup ) </li>
        <li>...</li>
    </ul>
-  <img src="uml/accueil/Lien_Afficher/showDoc.png" class="img" style="height:auto; padding:0;">
+  <img src="uml/accueil/Lien_Afficher/showDoc.png" class="img" style="height:auto; ">
   
   <p id="imprimer">
         <i>
@@ -304,7 +349,7 @@
   </p>
    
   <p ><b><u>2.3 Fonction: "Imprimer</u></b>"</p>
-  <img src="uml/accueil/Bouton_Imprimer/accueilimprimer.png" class="img" style="height:auto; padding:0;">  
+  <img src="uml/accueil/Bouton_Imprimer/accueilimprimer.png" class="img interface2">  
   <p style="margin-bottom:0;">
       <u><i>L'affichage de la table</i></u> et <u><i>l'appel au fichier de traitement</i></u> sont assurés par un script jQuery( js/<b>accueil_commandes_panel.js</b> ).
 	   <br>C'est une solution jQuery qui fait du AJAX :
@@ -315,48 +360,48 @@
 	   <li>Elle charge une table dans ce panel</li>
    </ul>
   
-  <img src="uml/accueil/Bouton_Imprimer/accueilBtnImprimer.png" class="img" style="height:auto; padding:0;"> 
+  <img src="uml/accueil/Bouton_Imprimer/accueilBtnImprimer.png" class="img" style="height:auto; "> 
 
   <!-- Remarque -->
-  <img src="uml/accueil/Bouton_Imprimer/reparationimprimer.png" class="img" style="height:auto; padding:0;">
+  <img src="uml/accueil/Bouton_Imprimer/reparationimprimer.png" class="img" style="height:auto; ">
  
  <p id="modifier"><b><u>2.4 Fonction: "Rectifier</u></b>"</p>
- <img src="uml/accueil/Bouton_Rectifier/accueilrectifier.png" class="img" style="height:auto; padding:0;"> 
+ <img src="uml/accueil/Bouton_Rectifier/accueilrectifier.png" class="img interface2"> 
 
   <ul type="cite">
        <li>"<i style="color:blue;">js/accueil_commandes_panel.js</i>" renvoie à la table "<i style="color:blue;">SERVEUR/colonne_rectifier_acte.php</i>"</li>
        <li>Et cette <b><i>table</i></b> renvoie à la page "<i style="color:blue;">modifier_.php</i>"</span> en la transmettant les données par url</li>
   </ul>
-  <img src="uml/accueil/Bouton_Rectifier/accueilBtnRectifier.png" class="img" style="height:auto; padding:0;"> 
+  <img src="uml/accueil/Bouton_Rectifier/accueilBtnRectifier.png" class="img" style="height:auto; "> 
 
   
   <p id="supprimer"><b><u>2.5 Fonction: "Supprimer</u></b>"</p>
-  <img src="uml/accueil/Bouton_Supprimer/accueilsupprimer.png" class="img" style="height:auto; padding:0;">
+  <img src="uml/accueil/Bouton_Supprimer/accueilsupprimer.png" class="img interface2">
   
    <ul type="cite">
        <li><b>accueil_commandes_panel.js</b> capture le bouton "<b>Supprimer</b>" pour ouvrir le panel et charger la table "<b>colonne_supprimer_acte.php</b>"</li>
        <li>La table <b>colonne_supprimer_acte.php</b> appelle le fichier "<b>supprimer.php</b>"</li>
        <li>Le fichier "<b>supprimer.php</b>" traite la suppression.</li>
    </ul>
-  <img src="uml/accueil/Bouton_Supprimer/accueilBtnSupprimer.png" class="img" style="height:auto; padding:0;"> 
+  <img src="uml/accueil/Bouton_Supprimer/accueilBtnSupprimer.png" class="img" style="height:auto; "> 
 
   
   <p id="trier"><b><u>2.6 Fonction: "Trier</u></b>"</p>
-  <img src="uml/accueil/Bouton_Trier/accueiltrier.png" class="img" style="height:auto; padding:0;">
+  <img src="uml/accueil/Bouton_Trier/accueiltrier.png" class="img interface2">
   <p><b><i>accueil_commandes_panel.js</i></b> capture la commande "<b><i>Ordre alphabétique</i></b>" pour faire les 2 tâches suivantes:</p>
   <ul type="cite">
        <li>Ouverture d'un conteneur dans la page d'accueil: Un panel</li>
        <li>Chargement du fichier "<b>trier.php</b>" dans ce panel</li>
    </ul>
    <p>Ce fichier "trier.php" contient: Une table et son traitement( tri document par ordre alphabétique des noms )</p>   
-   <img src="uml/accueil/Bouton_Trier/accueilBtnTrier.png" class="img" style="height:auto; padding:0; margin-bottom:0;">
+   <img src="uml/accueil/Bouton_Trier/accueilBtnTrier.png" class="img" style="height:auto;  margin-bottom:0;">
    <p>
      Quant au fichier <b>afficher.php?n='.$ligne["ID"].'</b> :
 	 <br> Il récupere l'identifiant transmis, pour extraire les données relatives, et les mettre sur un document formaté (inclu dans un popup).
      <br> Le popup est défini dans "<b>trier.php</b>", suite à l'action sur le lien "<b>Afficher</b>".
    </p>
    <p id="alertbug"><b><u>Alert bug utilisateur</u>:</b> Usage des boutons(Supprimer,Rectifier,Imprimer,Trier)</p>
-  <img src="uml/accueil/alertbugbouton1.png" class="img" style="height:auto; padding:0;">
+  <img src="uml/accueil/alertbugbouton1.png" class="img interface2">
   <div class="img" style="color:#aaa; width:90.25%; margin-bottom:0;">
 		Dans la page d'accueil, on ne pas traiter les documents relatifs à une prefecture, 
 		sans choisir au préalable, dans quelle prefecture on veut intervenir. Sinon un bug de fonctionnement s'impose.<br>
@@ -370,10 +415,10 @@
 		Avant de choisir dans quelle prefecture on veut intervenir.<br> 
 		&Agrave; noter que ce problème reste spécifique au procédurale. Il ne se pose pas dans la logique applicative de symfony.
   </div> 
-  <img src="uml/accueil/alertbugbouton2.png" class="img" style="height:auto; padding:0; ">
+  <img src="uml/accueil/alertbugbouton2.png" class="img" style="height:auto;  ">
   
   <p id="cherchenum"><b><u>2.7 Fonctionnalité: "Recherche de document</u></b>"</p>
-  <img src="uml/accueil/cherchedocument.png" class="img"  style="height:auto; padding:0;">
+  <img src="uml/accueil/cherchedocument.png" class="img interface2">
   <p><b><u id="271">2.7.1 Recherche par: "Numéro de document</u></b>"</p>
   <img src="uml/accueil/cherchenum/cherchenum.png" class="img"  style="height:auto;">
   
@@ -385,7 +430,7 @@
   <p class="img" id="resultatnum" style="background: #f7f7f9; width:94%">3. Affichage du résultat de la recherche (lectureBD2.php)</p>
   
   <p><b><u>3.1 Résultat trouvé de la recherche par numéro</u></b></p>
-  <img src="uml/accueil/cherchenum/resultbynumber.png" class="img"  style="height:auto; padding:0;">
+  <img src="uml/accueil/cherchenum/resultbynumber.png" class="img interface2">
   <div class="img" style="clear:both; margin-bottom:0; width:90.25%;">
 	   <ul type="cite" >
 		   <li>"<b>accueil.php</b>" &emsp; &#8658; &emsp; <i style="color:#777;"> header("Location:lectureBD2.php?<b style="color:blue;">num</b>=".$numero );</i> 👉 <a href="#271">voir 2.7.1</a></li>
@@ -403,7 +448,7 @@
 	   </ul>
   </div>
   <p id="resultatnom"><b><u>3.2 Résultat trouvé de la recherche par nom</u></b></p>
-  <img src="uml/accueil/cherchenom/resultbyname.png" class="img"  style="height:auto; padding:0;">
+  <img src="uml/accueil/cherchenom/resultbyname.png" class="img interface2">
   <div class="img" style="clear:both; margin-bottom:0; width:90.25%;">
 	  <ul type="cite" style="clear:both">
 		   <li><b>accueil.php</b>" &#8658; <i style="color:#777;"> header("Location: lectureBD2.php?<b style="color:blue;">nom</b>=".$nomm );</i> 👉 <a href="#272">voir 2.7.2</a></li>
@@ -473,14 +518,14 @@
   <p class="img" id="5.1" style="background: #f7f7f9; width:94%">5. Nouveau document 👉 <span style="color:blue">ecritureBD.php</span></p>
   
   <p><b><u>5.1: Nouvel acte</u>(btn Enregistrer) </b></p>
-  <img src="uml/ecritureBD/ecritureBD.png" class="img"  style="height:auto; padding:0;">
+  <img src="uml/ecritureBD/ecritureBD.png" class="img interface2">
   <img src="uml/mediaQuery.png" class="img"  style="height:auto">
   
   <p id="5.2"><b><u>5.2: Nouvel acte</u>(btn Afficher)</b></p>
-  <img src="uml/ecritureBD/nouvelacteAfficher.png" class="img"  style="height:auto; padding:0;">
+  <img src="uml/ecritureBD/nouvelacteAfficher.png" class="img"  style="height:auto; ">
   
   <p id="5.3"><b><u>5.3: Nouvel acte</u>(btn Imprimer)</b></p>
-  <img src="uml/ecritureBD/nouvelacteImprimer.png" class="img"  style="height:auto; padding:0;">
+  <img src="uml/ecritureBD/nouvelacteImprimer.png" class="img"  style="height:auto; ">
   
   <p id="5.4"><b><u>5.4: Nouvel acte</u>(btn Rectifier)</b></p>
    <p class="img" style="color:#aaa; width:90%;">
@@ -495,20 +540,20 @@
 	   &bull; Si le bouton "<span style="color:#ececea;">Enregistrer</span>" est actionné: <br>
 	   &emsp;&emsp;&#8620; On redirige vers modifier.php avec transmission du numero de l'acte: <span style="color:#0099ff;">modifier_.php?<b style="color:#ff5050;">acte_=N°</b></span>  ✍️<br>
    </p>
-  <img src="uml/ecritureBD/nouvelacteRectifier.png" class="img"  style="height:auto; padding:0;">
+  <img src="uml/ecritureBD/nouvelacteRectifier.png" class="img"  style="height:auto; ">
   
   <p class="img" id="6.1" style="background: #f7f7f9; width:94%">6: Rectification de document  👉 <span style="color:blue">modifier_.php</span></p>
   
   
   <p><b><u>6.1: Rectification</u> (btn Enregistrer)</b></p>
-  <img src="uml/ecritureBD/edit.png" class="img"  style="height:auto; padding:0;">
+  <img src="uml/ecritureBD/edit.png" class="img interface2">
   <img src="uml/mediaQuery.png" class="img"  style="height:auto">
   
   <p id="6.2"><b><u>6.2: Rectification</u>(btn Afficher)</b></p>
-  <img src="uml/ecritureBD/editAfficher.png" class="img"  style="height:auto; padding:0;">
+  <img src="uml/ecritureBD/editAfficher.png" class="img"  style="height:auto; ">
   
   <p id="6.3"><b><u>6.3: Rectification</u>(btn Imprimer)</b></p>
-  <img src="uml/ecritureBD/editImprimer.png" class="img"  style="height:auto; padding:0;">
+  <img src="uml/ecritureBD/editImprimer.png" class="img"  style="height:auto; ">
   
    <p id="6.4"><b><u>6.4: Rectification</u>(btn Recommencer)</b></p>
    <p class="img" style="color:#aaa; width:90%;">
@@ -521,7 +566,7 @@
 	   &bull; Si le bouton "<span style="color:#ececea;">Enregistrer</span>" est actionné: <br>
 	   &emsp;&emsp;&#8620; On redirige vers modifier.php avec transmission du numero de l'acte: <span style="color:#0099ff;">modifier_.php?<b style="color:#ff5050;">acte_=N°</b></span>  ✍️<br>
    </p>
-  <img src="uml/ecritureBD/nouvelacteRectifier.png" class="img"  style="height:auto; padding:0;">
+  <img src="uml/ecritureBD/nouvelacteRectifier.png" class="img"  style="height:auto; ">
   
   
   
@@ -530,7 +575,7 @@
   <p class="img" id="afficheTable" style="background: #f7f7f9; width:94%">7. Affichage des documents 👉 <span style="color:blue">lectureBD.php</span></p> 
   
   <p><b><u>7.1 Afficher</u> (table)</b></p>
-  <img src="uml/LectureBD/lectureBD.png" class="img"  style="height:auto; padding:0;">
+  <img src="uml/LectureBD/lectureBD.png" class="img interface2">
   <p class="img" <i style="width:90.25%; margin-bottom:0;">
     Asynchronous loading: L'affichage de la table se fait par une combinaison <i style="color:#ececea">jQuery/</i><i style="color:#ececea">Ajax</i><br>
      ✔️ <i style="color:#ececea">jQuery</i> capture la péfecture : <i style="color:gray">inc/lecture/topMenu.php</i><br>
@@ -539,7 +584,7 @@
 	 C'est exactement la base sur laquelle repose des framworks modernes comme <b>React</b> ou <b>Vue.js</b><br>
 	 Il serait donc mieux de traduire ce jQuery en version <b>Vue.js</b>
   </p>   
-  <img src="uml/LectureBD/lectureBD_afficher.png" class="img"  style="height:auto; padding:0; margin-bottom:0;">   
+  <img src="uml/LectureBD/lectureBD_afficher.png" class="img"  style="height:auto;  margin-bottom:0;">   
   <p class="img" <i style="width:90.5%">
      ✔️ <i style="color:gray">window.open(...popup..)</i> est remplacé par la fonction <i style="color:gray">ouvrePop(\'afficher.php?n='.$ligne['ID'].'\')</i><br>
 	 ✔️ <i style="color:gray">function ouvrePop(url){...}</i> se trouve dans <i style="color:#ececea">lectureBD.js</i>
@@ -547,12 +592,12 @@
   
   
   <p id="afficheDocument"><b><u>7.2: Afficher</u> (document)</b></p>
-  <img src="uml/lectureBD/affichedocument.png" class="img"  style="height:auto; padding:0;">
-  <img src="uml/lectureBD/affichedocumentshemas.png" class="img"  style="height:auto; padding:0;">
+  <img src="uml/lectureBD/affichedocument.png" class="img interface2">
+  <img src="uml/lectureBD/affichedocumentshemas.png" class="img"  style="height:auto; ">
 
   
   <p id="imprimeDocument"><b><u>7.3: Imprimer</u> (document)</b></p>
-  <img src="uml/lectureBD/print.png" class="img"  style="height:auto; padding:0;">
+  <img src="uml/lectureBD/print.png" class="img interface2">
   <p class="img" style="color:#aaa;">
      C'est le même schémas que "<u>7.2 Afficher(document)</u>". La seule differrence:<br>
      &emsp;👉 Le lien "<u>Afficher</u>" renvoie vers href="<span style="color:#ececea;">afficher.php</span>?n='.$ligne["ID"].'" <br>
@@ -569,7 +614,7 @@
   <p><b><u>8.1 listeofficiers</u> (table utilisateurs - agents administratifs)</b></p>
   
      
-  <img src="uml/base/users.png" class="img"  style="height:auto; padding:0;">
+  <img src="uml/base/users.png" class="img interface2">
   <p style="margin-bottom:0;"><i>Version copier/coller :</i></p> 
   <div class="img" style="font-size:.8.5em; padding:0; border-radius:7px;">
 	  <pre style="margin:0; border-radius:50px;"><code class="language-sql">
@@ -586,13 +631,14 @@
 			;
 	   </code></pre>
    </div>
-  
-  Connection au serveur mysql: <b><i style="color:green; border: 7px solid #336600; padding:0 17px;">mysql -u root</i></b> 👇  
-  <img src="uml/base/usersDescribe.png" class="img"  style="height:auto; padding:0;">   
-  <img src="uml/base/usersSelect.png" class="img"  style="height:auto; padding:0;">   
+  <p style="clear:both;">
+    Connection au serveur mysql: <b><i style="color:green; border: 7px solid #336600; padding:0 17px;">mysql -u root</i></b> 👇  
+  </p>
+  <img src="uml/base/usersDescribe.png" class="img interface2">   
+  <img src="uml/base/usersSelect.png" class="img interface2">   
   
   <p id="8.2"><b><u>8.2: liste </u> (table  stockage des documents)</b></p>
-  <img src="uml/base/liste.png" class="img"  style="height:auto; padding:0;">
+  <img src="uml/base/liste.png" class="img interface2">
   <p style="margin-bottom:0;"><i>Version copier/coller :</i></p> 
   <div class="img" style="font-size:.8.5em; padding:0; border-radius:7px;">
 	    <pre style="margin:0; border-radius:50px;"><code class="language-sql">
@@ -640,7 +686,7 @@
 			;
 	    </code></pre>
   </div>
-  <img src="uml/base/listeDescribe.png" class="img"  style="height:auto; padding:0;">
+  <img src="uml/base/listeDescribe.png" class="img interface2">
   <p><i> On peut toujours trouver les tables dans le dossier /sql ⚠️ </i></p>
   
   <p class="img" id="10.1" style="background: #f7f7f9; width:94%">10. Structure et installation 👉 (<i style="color:blue">framework</i>)</p>
@@ -653,14 +699,14 @@
       &emsp;🎁<span style="color:#ececea;"> public</span>....................Pour les dépendances<br>
       Avec ça, on a déjà pu faire tourner un truc(loguer l'user management!)
   </p>
-  <img src="uml/structure/structurereduite2.png" class="img"  style="height:auto; padding:0; margin-bottom:0;">
-  <img src="uml/structure/structurereduite.png" class="img"  style="height:auto; padding:0;">
+  <img src="uml/structure/structurereduite2.png" class="img"  style="height:auto;  margin-bottom:0;">
+  <img src="uml/structure/structurereduite.png" class="img"  style="height:auto; ">
   <p style="margin-bottom:0;">Structure Complète(intégration du <b>M</b>odèle: VC+M &#8658; <b>MVC</b> )</p>  
-  <img src="uml/structure/structuresymfony.png" class="img"  style="height:auto; padding:0;">
+  <img src="uml/structure/structuresymfony.png" class="img"  style="height:auto; ">
   
   
   <p id="10.2"><b><u>10.2: Installation</u></b></p>
-  <!-- <img src="uml/structure/installationphp.png" class="img"  style="height:auto; padding:0;"> -->
+  <!-- <img src="uml/structure/installationphp.png" class="img"  style="height:auto; "> -->
    <div class="img" style="font-size:.8.5em; padding:0; border-radius:7px;">
 	  <pre style="margin:0; border-radius:50px;"><code class="language-bash">
 	    # 1. Installation du squelette Symfony
@@ -748,14 +794,11 @@
 			<li>👉 Un fichier header location (redirection ) a besoin de nouvelle connection</li>
 			<li>👉 Les solutions les plus simple sont tjrs les meilleurs</li>
 		</ul> 
-	</div>
-	
-	
-	
-	
-	
+	</div>	
 </div><!-- Task ->
   
 </div><!-- fin #main -->
+
+
 </body>
 </html> 

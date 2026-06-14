@@ -8,7 +8,27 @@
 		table {
 		  font-family: arial, sans-serif;
 		  border-collapse: collapse;
-		  width: 97.5%;			  
+		  width: 90%;	
+     
+          padding:0;		  
+		}
+		table tr{
+		   padding-inline:0 !important;
+		   max-width:auto;
+		}
+		table tr th,
+		table tr td{
+		   margin:0 !important;
+		   padding-inline:0 !important;
+		   max-width:auto;
+		}
+		table tr td{
+          
+		}
+		
+		
+		pre{
+		  max-width:  90%;
 		}
 
 		td, th {
@@ -55,6 +75,65 @@
 		  
 		  
 		}
+		
+	   /* #################################################  */	
+	    tr{
+		  width:auto !important;
+		  max-width:93%;
+		}
+	    tr th,
+		tr td{
+		  min-width:14% !important;
+	     max-width:14% !important;
+
+		 padding:.5em .3em;
+		}
+	   
+	   
+	    tr,
+		tr.antiprism{
+		  display:flex;
+		  align-items:center;
+		  width:auto;
+		  padding:0;
+		}
+
+		tr th,
+		tr td,
+		tr.antiprism  td{
+		  /* 1️⃣ Mettre le scroll sur les prisme 📌*/
+		  flex: 1 1 auto !important;
+
+		  /* 2️⃣ Virer le scroll sur les div contenairs*/
+		  overflow-x:hidden  ;
+		}
+		
+		
+		tr th:last-child,
+		tr td:last-child,
+		tr.antiprism  td:last-child{
+		   padding-inline:0;
+		   margin-inline:0;
+		   max-width:47vw !important;
+		   min-width:40vw !important; /* pour les autres lignes */
+		   
+		}
+		tr td:last-child,
+		tr.antiprism  td:last-child{
+		   padding:0;
+		   margin:0;
+		}
+		
+		
+		
+		tr td pre,
+		tr.antiprism  td pre{
+		   max-width:100% !important;
+		}
+
+		
+
+
 		
 	</style>
 	<script src="uml/moteurJquery.js"> </script>
@@ -145,7 +224,7 @@
 	INCHA ALLAH <br><br>
 
 	<table>
-	  <tr>
+	  <tr class="antiprism">
 		<th>Fonction</th>
 		<th>Description </th>
 		<th>Fichier source</th>
@@ -153,19 +232,19 @@
 	  </tr>
 	  
 	  <tbody>
-		  <tr>
+		  <tr class="antiprism">
 			<td>get_magic_quotes_gpc()</td>
 			<td>Virer l'espace en début de chaîne.<br>Enleve l'echappement.<br>N'existe plus depuis PHP 7.4</td>
 			<td>lectureBD_afficherNaissance.php</td>
 			<td>❌ Supprimer</td>
 		  </tr>
-		  <tr>
+		  <tr class="antiprism">
 			<td>...</td>
 			<td>...</td>
 			<td>...</td>
 			<td>...</td>
 		  </tr>
-		  <tr>
+		  <tr class="antiprism">
 			<td>...</td>
 			<td>...</td>
 			<td>...</td>
@@ -176,73 +255,7 @@
 
 	
 	<h4 id="ajax" class="img" style="background: #ddd; margin-top:5em; clear:both !important; ">2. AJAX</h4>
-	<table>
-	  <tr>
-		<th>Fonction</th>
-		<th>Description </th>
-		<th>Fichier source</th>
-		<th>Nouvelle fonction</th>
-	  </tr>
-		<tbody>
-		  <tr>
-			<td>ActiveXObject("Microsoft.XMLHTTP")</td>
-			<td>
-				  Propre à Internet Explorer, <br> abandonnée dépuis ????.
-				  <ul type="cite">
-					  <li>❌ Dépréciée !</li> 
-					  <li>Elle envoyait des requêtes HTTP(GET, POST, etc.) en arrière-plan, Sans recharger la page(le principe même d’AJAX)</li>
-					  <li>Elle récupérer la réponse du serveur(texte,HTML, XML (d’où le nom XMLHttpRequest))</li>
-					  <li><b>Permettre des applications web dynamiques :</b><br> Avant 2005(IE5-IE6), c’était la seule façon de faire de l’AJAX dans IE.</li>
-				  </ul>
-				  
-			</td>
-			<td>accueil_liens_colonne5.js</td>
-			<td> XMLHttpRequest()<br>  ou mieux <br> <b>fetch()</b>.</td>
-		  </tr>
-		  <tr>
-			<td>if (window.XMLHttpRequest)</td>
-			<td>
-				<b>Détection de navigateur IE</b>
-				<ul type="cite">
-					<li>❌ Obsolète!</li>
-					<li>Cette détection servait uniquement à gérer IE5/IE6.</li>
-					<li>Tous les navigateurs modernes supportent XMLHttpRequest.</li>		    
-				 </ul>
-				
-			</td>
-			<td>accueil_liens_colonne5.js</td>
-			<td>❌ Supprimer</td>
-		  </tr>
-		  <tr>
-			<td>onreadystatechange</td>
-			<td>
-				<ul type="cite">
-					<li>⚠️ Ancien API !</li>
-					<li>
-					 Elle permet de réagir aux différentes étapes d’une requête AJAX.<br>Les 5 états possibles (readyState):
-					 <ol start="0">
-						<li>Requête non initialisée</li>
-						<li>Connexion au serveur établie</li>
-						<li>Requête reçue par le serveur</li>
-						<li>Réponse en cours de traitement</li>
-						<li>Réponse terminée (prête)</li>
-					 </ol>   
-					</li>
-					<li>Toujours supportée, mais considérée comme ancienne.</li>		    
-					<li>Plus verbeuse et moins lisible que les événements modernes ou <b>fetch()</b>.</li>		    
-				</ul>
-			</td>
-			<td>accueil_liens_colonne5.js</td>
-			<td>xmlhttp.onload ou fetch()</td>
-		  </tr>
-			<tr>
-			<td>AJAX manuel</td>
-			<td>⚠️ Ancien</td>
-			<td>accueil_liens_colonne5.js</td>
-			<td><b>fetch()</b></td>
-		  </tr>
-		</tbody>
-	</table>
+
 	
 	
 	<h4>capture_items.js: XMLHttpRequest vs fetch</h4>
@@ -308,7 +321,13 @@
         Servait à envoyer des requêtes AJAX avant IE7.
       </td>
       <td>accueil_liens_colonne5.js</td>
-      <td><strong>XMLHttpRequest()</strong> ou <strong>fetch()</strong></td>
+      <td>
+	    <pre><code class="language-js">
+			XMLHttpRequest()
+         	  ou 
+			fetch()
+	    </code></pre>
+	 </td>
     </tr>
 
     <tr>
@@ -319,7 +338,11 @@
         Tous les navigateurs modernes supportent XMLHttpRequest.
       </td>
       <td>accueil_liens_colonne5.js</td>
-      <td>❌ Supprimer</td>
+      <td>
+		<pre><code class="language-js">
+               ❌ Supprimer
+	    </code></pre>
+	  </td>
     </tr>
 
     <tr>
@@ -330,7 +353,16 @@
         Utilise les états readyState (0 → 4).
       </td>
       <td>accueil_liens_colonne5.js</td>
-      <td><strong>xmlhttp.onload</strong> ou <strong>fetch()</strong></td>
+      <td>
+	    <pre><code class="language-js">
+		        xmlhttp.onload 
+				    ou 
+					
+			    fetch()
+		 </code></pre>
+		  
+
+	  </td>
     </tr>
 
     <tr>
@@ -340,10 +372,14 @@
         Fonctionne encore mais moins lisible.
       </td>
       <td>accueil_liens_colonne5.js</td>
-      <td><strong>fetch()</strong></td>
+      <td>
+			<pre><code class="language-js">
+			  fetch()
+			</code></pre>
+	  </td>
     </tr>
 
-    <tr>
+    <tr class="antiprism">
       <td>captureSousMenu() — version XHR</td>
       <td>Ancienne implémentation AJAX</td>
       <td>accueil_liens_colonne5.js</td>
@@ -369,7 +405,7 @@ function captureSousMenu(prfctr) {
       </td>
     </tr>
 
-    <tr>
+    <tr class="antiprism">
       <td>captureSousMenu() — version fetch</td>
       <td>Version moderne recommandée</td>
       <td>accueil_liens_colonne5.js</td>

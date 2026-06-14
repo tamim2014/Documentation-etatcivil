@@ -1,0 +1,158 @@
+<mxfile host="Electron" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/29.6.1 Chrome/142.0.7444.265 Electron/39.8.0 Safari/537.36" version="29.6.1">
+  <diagram name="Page-1" id="FGCMHuo3z6r3NBD4X5uP">
+    <mxGraphModel dx="1564" dy="695" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <UserObject label="&lt;span style=&quot;font-size: 15px;&quot;&gt;&lt;b&gt;backend/searchEngine.php&lt;/b&gt;&lt;/span&gt;" link="include(&quot;inc/accueil/accueil_prefecture.php&quot;);" id="gaj5bQq_hu4gvEV6XsxS-1">
+          <mxCell parent="1" style="ellipse;whiteSpace=wrap;html=1;" vertex="1">
+            <mxGeometry height="40" width="480" x="160" y="110" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <mxCell id="gaj5bQq_hu4gvEV6XsxS-7" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;rounded=0;" value="&lt;span style=&quot;font-size: 16px;&quot;&gt;&lt;b&gt;include(&quot;backend/searchEngine.php&quot;);&lt;/b&gt;&lt;/span&gt;" vertex="1">
+          <mxGeometry height="30" width="490" x="435" y="310" as="geometry" />
+        </mxCell>
+        <mxCell id="VNGuWq88uudYxdWz4l0U-4" parent="1" style="ellipse;whiteSpace=wrap;html=1;" value="&lt;span style=&quot;font-size: 15px;&quot;&gt;&lt;b&gt;accueil.php&amp;nbsp; &amp;nbsp;ou&amp;nbsp; lectureBD.php&amp;nbsp; &amp;nbsp;ou mm&amp;nbsp; &amp;nbsp;lectureBD2.php&lt;/b&gt;&lt;/span&gt;" vertex="1">
+          <mxGeometry height="30" width="660" x="70" y="20" as="geometry" />
+        </mxCell>
+        <mxCell id="VNGuWq88uudYxdWz4l0U-6" edge="1" parent="1" style="endArrow=classic;html=1;rounded=0;fontStyle=0;fontColor=#0000FF;" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <Array as="points" />
+            <mxPoint x="400.5" y="60" as="sourcePoint" />
+            <mxPoint x="400" y="100" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="VNGuWq88uudYxdWz4l0U-9" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;rounded=0;" value="&lt;span style=&quot;font-size: 15px;&quot;&gt;&lt;b&gt;if(isset($_POST[&#39;acte_&#39;]))&amp;nbsp; &amp;nbsp;$numero=$_POST[&#39;acte_&#39;];&lt;/b&gt;&lt;/span&gt;" vertex="1">
+          <mxGeometry height="30" width="555" x="435" y="160" as="geometry" />
+        </mxCell>
+        <mxCell id="VNGuWq88uudYxdWz4l0U-11" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;rounded=0;" value="&lt;span style=&quot;font-size: 15px;&quot;&gt;&lt;b&gt;&amp;lt;div class=&quot;mnayvawo&quot;&amp;gt; Acte extrait de la prefecture de:&amp;lt;?php&amp;nbsp; echo&amp;nbsp; $p; ?&amp;gt; &amp;lt;/div&amp;gt;&lt;/b&gt;&lt;/span&gt;" vertex="1">
+          <mxGeometry height="30" width="745" x="435" y="430" as="geometry" />
+        </mxCell>
+        <mxCell id="VNGuWq88uudYxdWz4l0U-14" parent="1" style="ellipse;whiteSpace=wrap;html=1;align=center;" value="&lt;font color=&quot;#f4f4f4&quot;&gt;&lt;span style=&quot;font-size: 15px;&quot;&gt;&lt;b&gt;backend/lectureBD2_searchPlayBackByName.php&lt;/b&gt;&lt;/span&gt;&lt;/font&gt;" vertex="1">
+          <mxGeometry height="30" width="460" x="170" y="500" as="geometry" />
+        </mxCell>
+        <mxCell id="uv__LsVLP3TBClFVte_H-6" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;rounded=0;" value="&lt;font color=&quot;#0000ff&quot; style=&quot;font-size: 19px;&quot;&gt;&lt;b style=&quot;&quot;&gt;✅ 1. Show messages et transmission du filtre saisi&lt;/b&gt;&lt;/font&gt;" vertex="1">
+          <mxGeometry height="30" width="550" x="675" y="115" as="geometry" />
+        </mxCell>
+        <mxCell id="uv__LsVLP3TBClFVte_H-7" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;rounded=0;" value="&lt;span style=&quot;color: rgba(0, 0, 0, 0); font-family: monospace; font-size: 0px; text-wrap-mode: nowrap;&quot;&gt;%3CmxGraphModel%3E%3Croot%3E%3CmxCell%20id%3D%220%22%2F%3E%3CmxCell%20id%3D%221%22%20parent%3D%220%22%2F%3E%3CmxCell%20id%3D%222%22%20parent%3D%221%22%20style%3D%22text%3Bhtml%3D1%3BwhiteSpace%3Dwrap%3BstrokeColor%3Dnone%3BfillColor%3Dnone%3Balign%3Dleft%3BverticalAlign%3Dmiddle%3Brounded%3D0%3B%22%20value%3D%22%26lt%3Bspan%20style%3D%26quot%3Bfont-size%3A%2015px%3B%26quot%3B%26gt%3B%26lt%3Bb%26gt%3B%24row%20%3D%20mysqli_fetch_assoc(%24req)%3B%26lt%3B%2Fb%26gt%3B%26lt%3B%2Fspan%26gt%3B%22%20vertex%3D%221%22%3E%3CmxGeometry%20height%3D%2230%22%20width%3D%22250%22%20x%3D%22440%22%20y%3D%22300%22%20as%3D%22geometry%22%2F%3E%3C%2FmxCell%3E%3C%2Froot%3E%3C%2FmxGraphModel%3E&lt;/span&gt;" vertex="1">
+          <mxGeometry height="30" width="440" x="425" y="410" as="geometry" />
+        </mxCell>
+        <mxCell id="uv__LsVLP3TBClFVte_H-8" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;rounded=0;" value="&lt;span style=&quot;font-size: 15px;&quot;&gt;&lt;b&gt;$num=$_GET[&#39;num&#39;];&lt;/b&gt;&lt;/span&gt;" vertex="1">
+          <mxGeometry height="30" width="420" x="435" y="340" as="geometry" />
+        </mxCell>
+        <mxCell id="HV85fPjY8OJgAK-4uR7--1" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;rounded=0;" value="&lt;span style=&quot;font-size: 15px;&quot;&gt;&lt;b&gt;include(&quot;backend/searchEngine.php&quot;);&lt;/b&gt;&lt;/span&gt;" vertex="1">
+          <mxGeometry height="30" width="350" x="435" y="60" as="geometry" />
+        </mxCell>
+        <mxCell id="HV85fPjY8OJgAK-4uR7--2" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;rounded=0;" value="&lt;span style=&quot;font-size: 15px;&quot;&gt;&lt;b&gt;$result = select from liste sur ce filtre&lt;/b&gt;&lt;/span&gt;" vertex="1">
+          <mxGeometry height="30" width="505" x="435" y="190" as="geometry" />
+        </mxCell>
+        <mxCell id="xFR_ngC66IhWafN4hpub-1" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;rounded=0;" value="&lt;span style=&quot;font-size: 15px;&quot;&gt;&lt;b&gt;header(&quot;Location: lectureBD2.php?num=&quot;.$numero );&lt;/b&gt;&lt;/span&gt;" vertex="1">
+          <mxGeometry height="30" width="505" x="440" y="220" as="geometry" />
+        </mxCell>
+        <mxCell id="xFR_ngC66IhWafN4hpub-3" edge="1" parent="1" style="endArrow=classic;html=1;rounded=0;" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="400" y="160" as="sourcePoint" />
+            <mxPoint x="400" y="250" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <UserObject label="&lt;span style=&quot;font-size: 15px;&quot;&gt;&lt;b&gt;lectureBD2.php?num=&quot;.$numero&lt;/b&gt;&lt;/span&gt;" link="include(&quot;inc/accueil/accueil_prefecture.php&quot;);" id="xFR_ngC66IhWafN4hpub-4">
+          <mxCell parent="1" style="ellipse;whiteSpace=wrap;html=1;" vertex="1">
+            <mxGeometry height="40" width="480" x="160" y="260" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <mxCell id="xFR_ngC66IhWafN4hpub-5" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;rounded=0;" value="&lt;font color=&quot;#0000ff&quot; style=&quot;font-size: 19px;&quot;&gt;&lt;b style=&quot;&quot;&gt;✅ 2. Show name prefecture (en haut de page)&lt;/b&gt;&lt;/font&gt;" vertex="1">
+          <mxGeometry height="30" width="550" x="670" y="265" as="geometry" />
+        </mxCell>
+        <mxCell id="OvXtpfQZOcrLDS3t88Pd-2" edge="1" parent="1" style="endArrow=classic;html=1;rounded=0;" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="399.5" y="310" as="sourcePoint" />
+            <mxPoint x="400" y="490" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="OvXtpfQZOcrLDS3t88Pd-3" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;rounded=0;" value="&lt;span style=&quot;font-size: 15px;&quot;&gt;&lt;b&gt;$requete = ...select...;&amp;nbsp; $requete-&amp;gt;execute([&#39;num&#39; =&amp;gt; $num]);&lt;/b&gt;&lt;/span&gt;" vertex="1">
+          <mxGeometry height="30" width="645" x="435" y="370" as="geometry" />
+        </mxCell>
+        <mxCell id="OvXtpfQZOcrLDS3t88Pd-4" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;rounded=0;" value="&lt;span style=&quot;font-size: 15px;&quot;&gt;&lt;b&gt;while ($donnees = $requete-&amp;gt;fetch(PDO::FETCH_ASSOC)) {&amp;nbsp; $p = $donnees[&quot;prefecture&quot;];&amp;nbsp; }&lt;/b&gt;&lt;/span&gt;" vertex="1">
+          <mxGeometry height="30" width="755" x="435" y="400" as="geometry" />
+        </mxCell>
+        <mxCell id="OvXtpfQZOcrLDS3t88Pd-7" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;rounded=0;" value="&lt;span style=&quot;font-size: 15px;&quot;&gt;&lt;b&gt;if(!empty($_GET[&#39;num&#39;])){include(&quot;backend/lectureBD2_searchPlayBack.php&quot;);}&lt;/b&gt;&lt;/span&gt;" vertex="1">
+          <mxGeometry height="30" width="725" x="435" y="460" as="geometry" />
+        </mxCell>
+        <mxCell id="OvXtpfQZOcrLDS3t88Pd-8" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;rounded=0;" value="&lt;font color=&quot;#0000ff&quot; style=&quot;font-size: 20px;&quot;&gt;&lt;b style=&quot;&quot;&gt;✅ 3. Show data&lt;/b&gt;&lt;/font&gt;" vertex="1">
+          <mxGeometry height="30" width="550" x="670" y="500" as="geometry" />
+        </mxCell>
+        <mxCell id="OvXtpfQZOcrLDS3t88Pd-9" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;rounded=0;" value="&lt;span style=&quot;font-size: 15px;&quot;&gt;&lt;b&gt;while ($donnees = $stmt-&amp;gt;fetch(PDO::FETCH_ASSOC)) {&amp;nbsp;&lt;/b&gt;&lt;/span&gt;" vertex="1">
+          <mxGeometry height="30" width="725" x="435" y="530" as="geometry" />
+        </mxCell>
+        <mxCell id="OvXtpfQZOcrLDS3t88Pd-10" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;rounded=0;" value="&lt;span style=&quot;font-size: 15px;&quot;&gt;&lt;b&gt;$table.=&#39;&amp;lt;tr&amp;gt; &amp;lt;td&amp;gt;&#39;.$donnees[&quot;nom&quot;].&#39;&amp;lt;/td&amp;gt; &amp;lt;td&amp;gt;&#39;.$donnees[&quot;prenom&quot;].&#39;&amp;lt;/td&amp;gt;&amp;lt;td&amp;gt;&#39;.$donnees[&quot;acte&quot;].&#39;&amp;lt;/td&amp;gt;&lt;/b&gt;&lt;/span&gt;" vertex="1">
+          <mxGeometry height="30" width="855" x="455" y="555" as="geometry" />
+        </mxCell>
+        <mxCell id="OvXtpfQZOcrLDS3t88Pd-11" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;rounded=0;" value="&lt;span style=&quot;font-size: 15px;&quot;&gt;&lt;b&gt;&amp;lt;td&amp;gt; &amp;lt;a href=&quot; modifier_.php? n=&#39;.$donnees[&quot;ID&quot;].&#39; &quot;&amp;gt;Modifier&amp;lt;/a&amp;gt; &amp;lt;/td&amp;gt;&lt;/b&gt;&lt;/span&gt;" vertex="1">
+          <mxGeometry height="30" width="725" x="480" y="580" as="geometry" />
+        </mxCell>
+        <mxCell id="OvXtpfQZOcrLDS3t88Pd-12" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;rounded=0;" value="&lt;span style=&quot;font-size: 15px;&quot;&gt;&lt;b&gt;&amp;lt;td&amp;gt; &amp;lt;a href=&quot;imprimer.php?n=&#39;.$donnees[&quot;ID&quot;].&#39;&quot;&amp;gt;Imprimer&amp;lt;/a&amp;gt; &amp;lt;/td&amp;gt;&lt;/b&gt;&lt;/span&gt;" vertex="1">
+          <mxGeometry height="30" width="725" x="480" y="610" as="geometry" />
+        </mxCell>
+        <mxCell id="OvXtpfQZOcrLDS3t88Pd-13" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;rounded=0;" value="&lt;span style=&quot;font-size: 15px;&quot;&gt;&lt;b&gt;&amp;lt;td&amp;gt; &amp;lt;a href=&quot;afficher.php?n=&#39;.$donnees[&quot;ID&quot;].&#39;&quot; onclick=&quot;return ouvrePop(this.href);&quot;&amp;gt; Afficher&amp;lt;/a&amp;gt; &amp;lt;/td&amp;gt; &amp;lt;/tr&amp;gt;&#39;&lt;/b&gt;&lt;/span&gt;" vertex="1">
+          <mxGeometry height="30" width="830" x="480" y="640" as="geometry" />
+        </mxCell>
+        <mxCell id="OvXtpfQZOcrLDS3t88Pd-14" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;rounded=0;" value="&lt;span style=&quot;font-size: 15px;&quot;&gt;&lt;b&gt;}&lt;/b&gt;&lt;/span&gt;" vertex="1">
+          <mxGeometry height="30" width="725" x="440" y="660" as="geometry" />
+        </mxCell>
+        <UserObject label="&lt;span style=&quot;font-size: 15px;&quot;&gt;&lt;b&gt;lectureBD2.php&lt;/b&gt;&lt;/span&gt;" link="include(&quot;inc/accueil/accueil_prefecture.php&quot;);" id="OvXtpfQZOcrLDS3t88Pd-15">
+          <mxCell parent="1" style="ellipse;whiteSpace=wrap;html=1;" vertex="1">
+            <mxGeometry height="30" width="270" x="515" y="680" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <mxCell id="OvXtpfQZOcrLDS3t88Pd-17" edge="1" parent="1" style="endArrow=classic;html=1;rounded=0;" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <Array as="points">
+              <mxPoint x="400" y="700" />
+            </Array>
+            <mxPoint x="400" y="540" as="sourcePoint" />
+            <mxPoint x="500" y="700" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="OvXtpfQZOcrLDS3t88Pd-20" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;rounded=0;" value="&lt;span style=&quot;font-size: 16px;&quot;&gt;&lt;b&gt;$num=$_GET[&#39;num&#39;];&lt;/b&gt;&lt;/span&gt;" vertex="1">
+          <mxGeometry height="30" width="490" x="60" y="530" as="geometry" />
+        </mxCell>
+        <mxCell id="OvXtpfQZOcrLDS3t88Pd-21" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;rounded=0;" value="&lt;span style=&quot;font-size: 16px;&quot;&gt;&lt;b&gt;$sql = ...select... ;&lt;/b&gt;&lt;/span&gt;" vertex="1">
+          <mxGeometry height="30" width="490" x="60" y="560" as="geometry" />
+        </mxCell>
+        <mxCell id="OvXtpfQZOcrLDS3t88Pd-22" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;rounded=0;" value="&lt;span style=&quot;font-size: 16px;&quot;&gt;&lt;b&gt;&amp;nbsp;$stmt-&amp;gt;execute([ &#39;num&#39; =&amp;gt; $num ]);&lt;/b&gt;&lt;/span&gt;" vertex="1">
+          <mxGeometry height="30" width="490" x="60" y="590" as="geometry" />
+        </mxCell>
+        <mxCell id="H60OP6wIv8hcpgi4PL4--2" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;rounded=0;" value="&lt;font style=&quot;font-size: 16px; color: rgb(0, 153, 0);&quot;&gt;// filtre&lt;/font&gt;" vertex="1">
+          <mxGeometry height="30" width="279" x="840" y="160" as="geometry" />
+        </mxCell>
+        <mxCell id="H60OP6wIv8hcpgi4PL4--3" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;rounded=0;" value="&lt;font&gt;✍️&lt;/font&gt;" vertex="1">
+          <mxGeometry height="30" width="60" x="900" y="160" as="geometry" />
+        </mxCell>
+        <mxCell id="H60OP6wIv8hcpgi4PL4--4" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;rounded=0;" value="&lt;font style=&quot;font-size: 16px; color: rgb(0, 153, 0);&quot;&gt;// juste pour les messages ✍️&lt;/font&gt;" vertex="1">
+          <mxGeometry height="30" width="279" x="840" y="190" as="geometry" />
+        </mxCell>
+        <mxCell id="H60OP6wIv8hcpgi4PL4--5" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;rounded=0;" value="&lt;font&gt;✍️&lt;/font&gt;" vertex="1">
+          <mxGeometry height="30" width="60" x="840" y="220" as="geometry" />
+        </mxCell>
+        <mxCell id="H60OP6wIv8hcpgi4PL4--6" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;rounded=0;" value="&lt;font&gt;✍️&lt;/font&gt;" vertex="1">
+          <mxGeometry height="30" width="60" x="1100" y="265" as="geometry" />
+        </mxCell>
+        <mxCell id="H60OP6wIv8hcpgi4PL4--7" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;rounded=0;" value="&lt;font&gt;✍️&lt;/font&gt;" vertex="1">
+          <mxGeometry height="30" width="60" x="600" y="340" as="geometry" />
+        </mxCell>
+        <mxCell id="H60OP6wIv8hcpgi4PL4--8" parent="1" style="text;whiteSpace=wrap;" value="✍️" vertex="1">
+          <mxGeometry height="40" width="50" x="1020" y="460" as="geometry" />
+        </mxCell>
+        <mxCell id="H60OP6wIv8hcpgi4PL4--9" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;rounded=0;" value="&lt;font style=&quot;font-size: 16px; color: rgb(0, 153, 0);&quot;&gt;// juste pour afficher le nom de la prefecture ✍️&lt;/font&gt;" vertex="1">
+          <mxGeometry height="30" width="369" x="881" y="370" as="geometry" />
+        </mxCell>
+        <mxCell id="H60OP6wIv8hcpgi4PL4--10" parent="1" style="text;whiteSpace=wrap;" value="✍️" vertex="1">
+          <mxGeometry height="40" width="50" x="230" y="530" as="geometry" />
+        </mxCell>
+        <mxCell id="H60OP6wIv8hcpgi4PL4--11" parent="1" style="text;whiteSpace=wrap;" value="✍️" vertex="1">
+          <mxGeometry height="40" width="50" x="340" y="590" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

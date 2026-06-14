@@ -1,11 +1,39 @@
-       body {  font-family: "Lato", sans-serif; }
-	  
+       body {  
+	      font-family: "Lato", sans-serif;	
+          background-image: url("../draw.png"); /* draw2 */
+		  /*
+		  background-repeat: no-repeat; 
+          background-size: cover;
+		  */
+          color:#ececea;		  
+	   }
+	   p{
+		 color:#ececea; !important;  
+	   }
+	   
 
        h1{
 		   text-align:center;
 		   padding-bottom:1em;
 		   padding-top:.5em;
 	   }
+	   h2{
+		 clear:both;  
+	   }
+	   .img{
+		   width:90.25%;
+		   color:#111;
+		}
+	  .interface,
+	  .interface2{
+		  /* capture d'interface: se trouvent en bas des sous-titres" */
+		  height:auto !important;
+		  width:97.7% !important; 
+		  padding:0 !important;
+	  }
+	  .interface2{
+		  width:94% !important;
+	  }
 
 	  .paragraphe{
 			border:1px solid #8c8b8b; 
@@ -18,7 +46,7 @@
 		  float: left;  
 
 		  /* width:87%;*/
-		  width:94%;/*?a m'a emmerd? car i fallait remplir ainsi remplir l'ecran .sinon le contenu remonte en display inline */
+		  width:94%;/*ça m'a emmerdé: car i fallait remplir ainsi remplir l'ecran .sinon le contenu remonte en display inline */
 		  height: auto ;
 		  padding:1.2em; 
 		  /* margin:1.5% 6.5%;  */
@@ -87,7 +115,12 @@
 		  height: 100%;
 		  width: 250px;
 		   
-		  background-color: #111;
+		  /* background-color: #111; */
+		  /*
+		  background-image: url("../draw.png");
+		  background-repeat: no-repeat; 
+          background-size: cover;
+          */
 		  padding-top: 20px;
 		  overflow-x: hidden;
 		  
