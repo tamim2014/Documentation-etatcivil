@@ -3,6 +3,7 @@
 <head>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="shortcut icon" href="produireETvendre.ico"/>
 	<link rel="stylesheet" href="uml/style.css" />
 	<link rel="stylesheet" href="uml/top.css" /><!-- Go to top -->
 	<link rel="stylesheet" href="uml/prism.css" media="screen" /> 
@@ -336,7 +337,7 @@
   <img src="uml/accueil/Lien_Afficher/2.1.E2.png" class="img lastPart" style="height:auto; ">
   <p class="img firstPart" style="color:gray; margin-bottom:0;">Etape3: Chargement de la table</p>
   <img src="uml/accueil/Lien_Afficher/chargement.png" class="img lastPart" style="height:auto; ">
- 
+   Brouillon
   <img src="uml/accueil/Lien_Afficher/afficher.png" class="img" style="height:auto; ">
  
 
@@ -372,11 +373,10 @@
 		   <li>Elle charge une table dans ce panel</li>
 	   </ul>
    </div>
-  
   <img src="uml/accueil/Bouton_Imprimer/accueilBtnImprimer.png" class="img lastPart"> 
 
   <!-- Remarque -->
-  <img src="uml/accueil/Bouton_Imprimer/reparationimprimer.png" class="img" style="height:auto; ">
+  <img src="uml/accueil/Bouton_Imprimer/reparationimprimer.png" class="img">
  
  <p id="modifier"><b><u>2.4 Fonction: "Rectifier</u></b>"</p>
  <img src="uml/accueil/Bouton_Rectifier/accueilrectifier.png" class="img interface"> 
@@ -386,7 +386,7 @@
 		   <li>Et cette <b><i>table</i></b> renvoie à la page "<i style="color:blue;">modifier_.php</i>"</span> en la transmettant les données par url</li>
 	  </ul>
   </div>
-  <img src="uml/accueil/Bouton_Rectifier/accueilBtnRectifier.png" class="img lastPart" style="height:auto; "> 
+  <img src="uml/accueil/Bouton_Rectifier/accueilBtnRectifier.png" class="img lastPart"> 
 
   
   <p id="supprimer"><b><u>2.5 Fonction: "Supprimer</u></b>"</p>
@@ -398,7 +398,7 @@
 		   <li>Le fichier "<b>supprimer.php</b>" traite la suppression.</li>
 	   </ul>
   </div>
-  <img src="uml/accueil/Bouton_Supprimer/accueilBtnSupprimer.png" class="img lastPart" style="height:auto; "> 
+  <img src="uml/accueil/Bouton_Supprimer/accueilBtnSupprimer.png" class="img lastPart"> 
 
   
   <p id="trier"><b><u>2.6 Fonction: "Trier</u></b>"</p>
@@ -411,7 +411,7 @@
 	   </ul>
 	   <p>Ce fichier "trier.php" contient: Une table et son traitement( tri document par ordre alphabétique des noms )</p>   
    </div>
-   <img src="uml/accueil/Bouton_Trier/accueilBtnTrier.png" class="img middlePart" style="height:auto;  margin-bottom:0;">
+   <img src="uml/accueil/Bouton_Trier/accueilBtnTrier.png" class="img middlePart">
    <p class="img lastPart">
      Quant au fichier <b>afficher.php?n='.$ligne["ID"].'</b> :
 	 <br> Il récupere l'identifiant transmis, pour extraire les données relatives, et les mettre sur un document formaté (inclu dans un popup).
@@ -509,8 +509,9 @@
   </div>
   <img src="uml/variables.png" class="img lastPart">
   
-  <div class="img firstPart">
-	  <p id="imprimeresultat"><b><u>4.2 Imprimer: Le document trouvé</u></b>(suite à la recherche éffectuée en page d'accueil)</p>
+  
+  <p id="imprimeresultat"><b><u>4.2 Imprimer: Le document trouvé</u></b>(suite à la recherche éffectuée en page d'accueil)</p>
+  <div class="img firstPart">  
 	  <ul type="cite">
 		 <li><b>lectureBD2_searchPlayBack.php</b>( si recherche par num). </li>     
 		 <li><b>lectureBD2_searchPlayBackByName.php</b>( si recherche par nom). </li>     
