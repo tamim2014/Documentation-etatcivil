@@ -20,21 +20,21 @@ INCHA ALLAH
                |   </td>
                |
                |   <a id="zima" href🎯="{{ path('table-supprimer') }}" >
-               |        <input type="button"  value="Supprimer"  class="boutonSupprimer" />
+               |        <input type="button"  value="Supprimer"  class="boutonSupprimer"/>
                |   </a>
                |
  accueil_commandes_panel.js
                |
-               |  // 1. Ouvreture du panel : 
-               |  $("#flip").click(function(){ $("#panel").adeToggle("200");}); // ou lideToggle("slow")
+               |  // 1️⃣  Ouvreture du panel : 
+               |  $("#flip").click(function(){ $("#panel").adeToggle("200");}); // ou slideToggle("slow")
                |
-               |  // 2. Chargement des tables dans le panel
+               |  // 2️⃣  Chargement des tables dans le panel(en fonction du btn cliqué)    
                |  $(' a#rectif, a#zima , a#print_ , a#trier ').click(function(e){ 
                |        $('#panel').load($(this).attr('href🎯'));
-               |  });
+               |  });    
                |
       ActeController.php  
-               |
+               |  // 1️⃣  Première table: 
                |  #[Route('/table/naissance', name: 'table_naissance')]
                |  public function tableAfficherNaissance(Request $request, Connection $conn): Response 
                |
@@ -46,17 +46,18 @@ INCHA ALLAH
                |        ...                            
                |  }
                |
-               | 
+               |   2️⃣  2em table - celui qui conserne ce shéma
                |   #[Route('/tablesupprimer', name: 'table-supprimer')]
-               |    public function tableSupprimer(ActeRepository $repo, Request $request): Response{
+               |    public function tableSupprimer(ActeRepository $repo, Request $request): Response
+               |    {
                |
-               |         // 1. On récupère la préfecture stockée dans la session
+               |         // 1. Récupère la préfecture stockée en session - dans la function tableAfficherNaissance(...)
                |         $session = $request->getSession();
                |         $prefecture = $session->get('v'); 📌
                |
                |         // 2. Si la préfecture existe, on filtre
                |         if ($prefecture) {
-               |             $actes = $repo->findBy(['prefecture' => $prefecture]);
+               |             $actes = $repo->findBy(['prefecture' => $prefecture]); // Boucle while
                |         }
                |
                |         return $this->render('acte/table_supprimer_acte.html.twig', [ ⚠️

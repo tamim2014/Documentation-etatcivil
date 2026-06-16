@@ -69,15 +69,19 @@
 		    background:#555;   /*  #555; white */
 			border-radius:4px !important;
 		}
+		
+		/* ALGORITHME */
 		.firstPart{
 			border-radius:4px 4px 0 0 !important;
 			margin-bottom:0;
 			color:#aaa;
 		}
+	   /* SHEMAS D'ALGO */
 	    .middlePart{
 			border-radius:0 !important;
 			margin-block:0;
 		}
+		/* COMPLEMENT D'ALGO */
 		.lastPart{
 			border-radius:0 0 4px 4px !important;
 			margin-top:0;
