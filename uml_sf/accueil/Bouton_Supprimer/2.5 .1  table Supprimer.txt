@@ -1,0 +1,69 @@
+Important et oublié en documentation procedurale(2.5) !
+
+* la variable $_SESSION["v"]= $p; // stocke la prefecture choisie
+  - Defini dans colonne_afficher_naissance.php( donc dans le controleur relatif à table_afficher_naissance.html.twig)
+  - Utilisée dans ce fichier et dans plusieurs autres fichiers
+
+* Cette variable est très importante, je dois l'integrer dans la documentation en PROCEDURALE aussi⚠️⚠️⚠️:
+  - draw.io php procedurale
+  - draw.io Symfony
+❌ C'est ce qui empêchait Symfony de charger de table "supprimer" en fonction de la prefecture choisie
+❌❌❌ Je pense que c'est aussi ce empêche lectureBD de CHARGER LA TABLE
+
+INCHA ALLAH
+
+
+ inc/accueil/accueil_prefecture.html.twig
+               |
+               |   <td class="listemenu" id="flip" >
+               |      <span>Acte de naissance</span> {% include 'inc/accueil/accueil_choisir_naissance.html.twig'  %}<br>   
+               |       <div id="panel" class="scrolbar"></div>  <!-- conteneur de la table --> 
+               |   </td>
+               |
+               |   <a id="zima" href🎯="{{ path('table-supprimer') }}" >
+               |        <input type="button"  value="Supprimer"  class="boutonSupprimer"/>
+               |   </a>
+               |
+ accueil_commandes_panel.js
+               |
+               |  // 1️⃣  Ouvreture du panel : 
+                       |  $("#flip").click(function(){ $("#panel").adeToggle("200");}); // ou slideToggle("slow")
+                       |
+                       |  // 2️⃣  Chargement des tables dans le panel(en fonction du btn cliqué)    
+               |  $(' a#rectif, a#zima , a#print_ , a#trier ').click(function(e){ 
+               |        $('#panel').load($(this).attr('href🎯'));
+               |  });    
+               |
+      ActeController.php  
+               |  // 1️⃣  Première table: 
+               |  #[Route('/table/naissance', name: 'table_naissance')]
+               |  public function tableAfficherNaissance(Request $request, Connection $conn): Response 
+               |
+               |        $pref = $request->query->get('p');  //1. on recupere la prfctr envoyée en GET ?p=...
+               |
+               |        $session = $request->getSession();
+               |        $session->set('v', $pref); 📌    // 2. On stocke cette préfecture dans la session      
+               |
+               |        ...                            
+               |  }
+               |
+               |   2️⃣  2em table - celui qui conserne ce shéma
+               |   #[Route('/tablesupprimer', name: 'table-supprimer')]
+               |    public function tableSupprimer(ActeRepository $repo, Request $request): Response
+               |    {
+               |
+               |         // 1. Récupère la préfecture stockée en session - dans la function tableAfficherNaissance(...)
+               |         $session = $request->getSession();
+               |         $prefecture = $session->get('v'); 📌
+               |
+               |         // 2. Si la préfecture existe, on filtre
+               |         if ($prefecture) {
+               |             $actes = $repo->findBy(['prefecture' => $prefecture]); // Boucle while
+               |         }
+               |
+               |         return $this->render('acte/table_supprimer_acte.html.twig', [ ⚠️
+               |             'actes' => $actes 
+               |         ]);
+               |   }
+               |             
+  acte/table_supprimer_acte.html.twig ⚠️

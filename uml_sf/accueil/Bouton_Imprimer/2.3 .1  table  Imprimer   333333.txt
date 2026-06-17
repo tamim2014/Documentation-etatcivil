@@ -7,7 +7,8 @@ Important et oublié en documentation procedurale(2.5) !
 * Cette variable est très importante, je dois l'integrer dans la documentation en PROCEDURALE aussi⚠️⚠️⚠️:
   - draw.io php procedurale
   - draw.io Symfony
-❌ C'est ce qui empêchait Symfony de changer de table "supprimer" en fonction de la prefecture choisie
+❌ C'est ce qui empêchait Symfony de charger de table "supprimer" en fonction de la prefecture choisie
+❌❌❌ Je pense que c'est aussi ce empêche lectureBD de CHARGER LA TABLE
 
 INCHA ALLAH
 
@@ -19,16 +20,16 @@ INCHA ALLAH
                |       <div id="panel" class="scrolbar"></div>  <!-- conteneur de la table --> 
                |   </td>
                |
-               |   <a id="zima" href🎯="{{ path('table-supprimer') }}" >
-               |        <input type="button"  value="Supprimer"  class="boutonSupprimer"/>
+               |   <a id="print_" href🎯="{{ path('table-imprimer') }}" >
+               |        <input type="button"  value="Imprimer"  class="boutonImprimer"/>
                |   </a>
                |
  accueil_commandes_panel.js
                |
                |  // 1️⃣  Ouvreture du panel : 
-               |  $("#flip").click(function(){ $("#panel").adeToggle("200");}); // ou slideToggle("slow")
-               |
-               |  // 2️⃣  Chargement des tables dans le panel(en fonction du btn cliqué)    
+                           |  $("#flip").click(function(){ $("#panel").adeToggle("200");}); // ou slideToggle("slow")
+                           |
+                           |  // 2️⃣  Chargement des tables dans le panel(en fonction du btn cliqué)    
                |  $(' a#rectif, a#zima , a#print_ , a#trier ').click(function(e){ 
                |        $('#panel').load($(this).attr('href🎯'));
                |  });    
@@ -47,8 +48,8 @@ INCHA ALLAH
                |  }
                |
                |   2️⃣  2em table - celui qui conserne ce shéma
-               |   #[Route('/tablesupprimer', name: 'table-supprimer')]
-               |    public function tableSupprimer(ActeRepository $repo, Request $request): Response
+               |   #[Route('/tableimprimer', name: 'table-imprimer')]
+               |    public function tableImprimer(ActeRepository $repo, Request $request): Response
                |    {
                |
                |         // 1. Récupère la préfecture stockée en session - dans la function tableAfficherNaissance(...)
@@ -60,9 +61,9 @@ INCHA ALLAH
                |             $actes = $repo->findBy(['prefecture' => $prefecture]); // Boucle while
                |         }
                |
-               |         return $this->render('acte/table_supprimer_acte.html.twig', [ ⚠️
+               |         return $this->render('acte/table_imprimer_acte.html.twig', [ ⚠️
                |             'actes' => $actes 
                |         ]);
                |   }
                |             
-  acte/table_supprimer_acte.html.twig ⚠️
+  acte/table_imprimer_acte.html.twig ⚠️

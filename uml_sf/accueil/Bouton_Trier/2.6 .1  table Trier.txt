@@ -1,0 +1,47 @@
+Important et oublié en documentation procedurale(2.5) !
+
+* la variable $_SESSION["v"]= $p; // stocke la prefecture choisie
+  - Defini dans colonne_afficher_naissance.php( donc dans le controleur relatif à table_afficher_naissance.html.twig)
+  - Utilisée dans ce fichier et dans plusieurs autres fichiers
+
+* Cette variable est très importante, je dois l'integrer dans la documentation en PROCEDURALE aussi⚠️⚠️⚠️:
+  - draw.io php procedurale
+  - draw.io Symfony
+❌ C'est ce qui empêchait Symfony de changer de table "supprimer" en fonction de la prefecture choisie
+
+❌❌❌ Je pense que c'est aussi ce empêche lectureBD de CHARGER LA TABLE
+
+INCHA ALLAH
+
+
+ inc/accueil/accueil_prefecture.html.twig
+               |
+               |   <a id="trier" href🎯="{{ path('table-trier') }}" >
+               |        <input type="button"  value="Trier"  class="boutonTrier"/>
+               |   </a>
+               |
+ accueil_commandes_panel.js
+               |
+               |  Voir 2.3 ou  2.5  
+               |
+      ActeController.php  
+               |   
+               |   #[Route('/tabletrier', name: 'table-trier')]
+               |    public function tableTrier(ActeRepository $repo, Request $request): Response
+               |    {
+               |
+               |         // 1. Récupère la préfecture stockée en session - dans la function tableAfficherNaissance(...)
+               |         $session = $request->getSession();
+               |         $prefecture = $session->get('v'); 📌
+               |
+               |         // 2. Si la préfecture existe, on filtre
+               |         if ($prefecture) {
+               |             $actes = $repo->findBy(['prefecture' => $prefecture]); // Boucle while
+               |         }
+               |
+               |         return $this->render('acte/table_trier_acte.html.twig', [ ⚠️
+               |             'actes' => $actes 
+               |         ]);
+               |   }
+               |             
+  acte/table_rectifier_acte.html.twig ⚠️

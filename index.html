@@ -288,13 +288,13 @@
       La page d'accueil fonctionne en mode <b>SPA</b>: <b>S</b>ingle <b>P</b>age <b>A</b>pplication ( mais c'est une version à la main - sans framwork)<br>
       Vue.js (ou React) le ferait beaucoup mieux !
   </p>  
-  <p><b><u>2.1 Ouverture de la table: "Afficher</u>"</b></p>
+  <p><b><u>2.1 Chargement de la table </u>: "backend/colonne_afficher_naissance.php"</b></p>
 
   <img src="uml/accueil/Lien_Afficher/affichelien.png" class="img interface">
-  <div class="img" style="color:gray;">
-      Cette table apparaît en 3 étapes: <br>
+  <div class="img firstPart" style="color:gray;">
+      Cette table est chargée en 3 étapes: <br>
 	  <ol>
-			 <li><b>Choisir la table(Capture de la prefecture):Quelle table ouvrir</b><br>
+			 <li><b>Choisir la table(Capture de la prefecture cliquée):Quelle table charger</b><br>
 				&emsp;&emsp;✔️ accueil_choisir_naissance.php &emsp;&RightArrow;&emsp; &lt;select onchange="captureCombo(this.value)"&gt; <br>
 				&emsp;&emsp;✔️ capture_item.js  &emsp;&RightArrow;&emsp; function captureCombo(prfctr) &emsp;&RightArrow;&emsp;  colonne_afficher_naissance.php?p="+prfct
 			 </li>
@@ -308,39 +308,42 @@
 				&emsp;&emsp;✔️ &emsp; document.getElementById("panel").innerHTML = xmlhttp.responseText;
 			 </li>
 	  </ol>
-	</div>
-	<div class="img" style=" color:#999;">
+   </div>
+   <img src="uml/accueil/Lien_Afficher/afficher.png" class="img middlePart">	
+   <div class="img lastPart" style=" color:#999;">
 	  Pour les autres tables relatives aux bouttons(Supprimer, Rectifier,Imprimer,Trier)<br>
 	  le chargement se fait differement:
 	  <ol start="3">
-			 <li><b>Chargement des la tables:</b><br>
-				&emsp;&emsp;✔️ accueil.commandes_panel.js &emsp;&RightArrow;&emsp; jQuery <br>
+			 <li>
+			    <b>Chargement des tables: Deux solutions possibles</b><br><br>
+				&emsp;&emsp;<b>1️⃣ Solution1(fonction native): load()</b> &emsp;&RightArrow;&emsp; accueil.commandes_panel.js <br><br>
 				&emsp;&emsp;✔️ &emsp;  $(' a#rectif, a#zima , a#print_ , a#trier ').click(function(e){<br>
-				&emsp;&emsp;✔️ &emsp;&emsp; $('#panel').load($(this).<b style="color:blue">attr('<span style="color:green">href</span>')</b>);<br>
+				&emsp;&emsp;✔️ &emsp;&emsp;&emsp; $('#panel').load($(this).<b style="color:blue">attr('<span style="color:green">href</span>')</b>);<br>
 				&emsp;&emsp;✔️ &emsp;  });
 			 </li>
 	  </ol>
-	  Dans in/accueil/accueil_prefecture.php on trouvera les href appelé par <b>attr(href)</b>:
-	  <ul type="none">
-	     <li>&lt;a id="zima"    &nbsp;<span style="color:green">href</span>="backend/colonne_supprimer_acte.php"&gt; &lt;input type="button"  value="Supprimer" /&gt;</li>
-	     <li>&lt;a id="rectif"  &nbsp;<span style="color:green">href</span>="backend/colonne_rectifier_acte.php"&gt; &lt;input type="button"  value="Rectifier" /&gt;</li>
-	     <li>&lt;a id="print_"  <span style="color:green">href</span>="backend/colonne_imprimer_acte.php"&gt;  input type="button"  value="Imprimer" /&gt;</li>
-	     <li>&lt;a id="trier"   &nbsp;&nbsp;&nbsp;<span style="color:green">href</span>="backend/trier.php"&gt;  &lt;input type="button"  value="Ordre alphabétique"/&gt;</li>
-	  </ul>
-	  Il faut choisir la table à ouvrir, avant de l'ouvrir(par un de ces 4 boutons)<br>
-	  Si au préalable on ne choisi pas la table, on ne peut pas l'ouvrir. <u>Un bug s'impose</u><br>
-      C'est pourquoi un alert  est posé au dessus de ces 4 boutons.	  
-    </div> 
-  <p class="img firstPart" style="color:gray; margin-bottom:0;"> Etape1: Capture de la prefecture cliquée:Quelle table ouvrir</p>
-  <img src="uml/accueil/Lien_Afficher/2.1.E1.png" class="img lastPart" style="height:auto; ">  
-  <p class="img firstPart" style="color:gray; margin-bottom:0;">Etape2: Ouverture du panel</p>
-  <img src="uml/accueil/Lien_Afficher/2.1.E2.png" class="img lastPart" style="height:auto; ">
-  <p class="img firstPart" style="color:gray; margin-bottom:0;">Etape3: Chargement de la table</p>
-  <img src="uml/accueil/Lien_Afficher/chargement.png" class="img lastPart" style="height:auto; ">
-   Brouillon
-  <img src="uml/accueil/Lien_Afficher/afficher.png" class="img" style="height:auto; ">
- 
-
+	  <span style="padding-left:4em;">Dans in/accueil/accueil_prefecture.php on trouvera les href appelé par <b>attr(href)</b>:</span>
+	  <div style="padding-left:4em;">
+			<ul type="none" style="margin-bottom:.3em;">
+				<li>&lt;a id="zima"    &nbsp;<span style="color:green">href</span>="backend/colonne_supprimer_acte.php"&gt; &lt;input type="button"  value="Supprimer" /&gt;</li>
+				<li>&lt;a id="rectif"  &nbsp;<span style="color:green">href</span>="backend/colonne_rectifier_acte.php"&gt; &lt;input type="button"  value="Rectifier" /&gt;</li>
+				<li>&lt;a id="print_"  <span style="color:green">href</span>="backend/colonne_imprimer_acte.php"&gt;  input type="button"  value="Imprimer" /&gt;</li>
+				<li>&lt;a id="trier"   &nbsp;&nbsp;&nbsp;<span style="color:green">href</span>="backend/trier.php"&gt;  &lt;input type="button"  value="Ordre alphabétique"/&gt;</li>
+			</ul>
+			Il faut choisir la table à ouvrir, avant de l'ouvrir(par un de ces 4 boutons)<br>
+			Si au préalable on ne choisi pas la table, on ne peut pas l'ouvrir. <u>Un bug s'impose</u><br>
+			C'est pourquoi un alert  est posé au dessus de ces 4 boutons.
+      </div>	  
+      <ol start="3">
+			 <li>
+				&emsp;&emsp;<b>2️⃣ Solution2(fonction maison): captureSousMenu()</b> &emsp;&RightArrow;&emsp; capture_items.js <br><br>
+				&emsp;&emsp;✔️ &emsp;  $("... ul.subMenu li a").click(function() { <span style="color:gree">// inc/lecture/topMenu.php</span> <br>
+				&emsp;&emsp;✔️ &emsp;&emsp;&emsp; captureSousMenu(this.textContent);<br>
+				&emsp;&emsp;✔️ &emsp;  });
+			 </li>
+	  </ol>
+	  <span style="padding-left:4em;">C'est la solution de chargement utilisée sur lectureBD.php (<b> <a class="btn" href="#chargement2"> voir 👉 7.1 </a></b>)</span>	  
+   </div> 
 
 
  
@@ -361,7 +364,7 @@
 		</i>
   </p>
    
-  <p ><b><u>2.3 Fonction: "Imprimer</u></b>"</p>
+  <p ><b><u>2.3 Chargement de la table "Imprimer</u></b>"</p>
   <img src="uml/accueil/Bouton_Imprimer/accueilimprimer.png" class="img interface">  
   <div class="img firstPart" style="color:#ececea;">
 	  <u><i>L'affichage de la table</i></u> et <u><i>l'appel au fichier de traitement</i></u> sont assurés par un script jQuery( js/<b>accueil_commandes_panel.js</b> ).
@@ -378,7 +381,7 @@
   <!-- Remarque -->
   <img src="uml/accueil/Bouton_Imprimer/reparationimprimer.png" class="img">
  
- <p id="modifier"><b><u>2.4 Fonction: "Rectifier</u></b>"</p>
+ <p id="modifier"><b><u>2.4 Chargement de la table "Rectifier</u></b>"</p>
  <img src="uml/accueil/Bouton_Rectifier/accueilrectifier.png" class="img interface"> 
  <div class="img firstPart">
 	  <ul type="cite"> 
@@ -389,7 +392,7 @@
   <img src="uml/accueil/Bouton_Rectifier/accueilBtnRectifier.png" class="img lastPart"> 
 
   
-  <p id="supprimer"><b><u>2.5 Fonction: "Supprimer</u></b>"</p>
+  <p id="supprimer"><b><u>2.5 Chargement de la table "Supprimer</u></b>"</p>
   <img src="uml/accueil/Bouton_Supprimer/accueilsupprimer.png" class="img interface">
   <div class="img firstPart">
 	   <ul type="cite">
@@ -401,7 +404,7 @@
   <img src="uml/accueil/Bouton_Supprimer/accueilBtnSupprimer.png" class="img lastPart"> 
 
   
-  <p id="trier"><b><u>2.6 Fonction: "Trier</u></b>"</p>
+  <p id="trier"><b><u>2.6 Chargement de la table "Trier</u></b>"</p>
   <img src="uml/accueil/Bouton_Trier/accueiltrier.png" class="img interface">
   <div class="img firstPart">
 	  <p><b><i>accueil_commandes_panel.js</i></b> capture la commande "<b><i>Ordre alphabétique</i></b>" pour faire les 2 tâches suivantes:</p>
@@ -610,7 +613,7 @@
 	 C'est exactement la base sur laquelle repose les framworks modernes comme <b>React</b> ou <b>Vue.js</b><br>
 	 Il serait donc mieux de traduire ce jQuery en version <b>Vue.js</b>
   </p> 
-  <img src="uml/LectureBD/lectureBD_afficher.png" class="img middlePart">   
+  <img id="chargement2" src="uml/LectureBD/lectureBD_afficher.png" class="img middlePart">   
   <p class="img lastPart">
     <i style="color:#ececea">lectureBD_afficherNaissance.php</i> a 3 missions:<br>
      ✔️ Récuperer la <u>prefecture</u> transmise en GET ( par la fonction ajax) <br>
