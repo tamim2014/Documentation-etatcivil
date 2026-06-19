@@ -81,12 +81,6 @@
         <mxCell id="sFFa0le8hfxBSIMefcPA-23" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;rounded=0;fontSize=16;" value="&lt;b&gt;public function tableNaissance(..){...}&amp;nbsp;&lt;/b&gt;" vertex="1">
           <mxGeometry height="30" width="560" x="440" y="490" as="geometry" />
         </mxCell>
-        <mxCell id="sFFa0le8hfxBSIMefcPA-24" edge="1" parent="1" style="endArrow=classic;html=1;rounded=0;" value="">
-          <mxGeometry height="50" relative="1" width="50" as="geometry">
-            <mxPoint x="400" y="480" as="sourcePoint" />
-            <mxPoint x="400" y="520" as="targetPoint" />
-          </mxGeometry>
-        </mxCell>
         <mxCell id="sFFa0le8hfxBSIMefcPA-25" parent="1" style="shape=hexagon;perimeter=hexagonPerimeter2;whiteSpace=wrap;html=1;fixedSize=1;" value="&lt;font style=&quot;font-size: 17px;&quot;&gt;&lt;b&gt;capture_items.js&lt;/b&gt;&lt;/font&gt;" vertex="1">
           <mxGeometry height="40" width="190" x="305" y="530" as="geometry" />
         </mxCell>
@@ -101,15 +95,47 @@
         </mxCell>
         <mxCell id="sFFa0le8hfxBSIMefcPA-30" edge="1" parent="1" style="endArrow=classic;html=1;rounded=0;" value="">
           <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <Array as="points">
+              <mxPoint x="125" y="450" />
+            </Array>
+            <mxPoint x="255" y="450" as="sourcePoint" />
+            <mxPoint x="125" y="470" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <UserObject label="&lt;span style=&quot;font-size: 20px;&quot;&gt;&lt;b&gt;lecturBD.html.twig&lt;/b&gt;&lt;/span&gt;" link="include(&quot;inc/accueil/accueil_prefecture.php&quot;);" id="sFFa0le8hfxBSIMefcPA-31">
+          <mxCell parent="1" style="ellipse;whiteSpace=wrap;html=1;" vertex="1">
+            <mxGeometry height="50" width="200" x="300" y="660" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <UserObject label="&lt;span style=&quot;font-size: 20px;&quot;&gt;&lt;b&gt;lire/tableNaissance.html.twig&lt;/b&gt;&lt;/span&gt;" link="include(&quot;inc/accueil/accueil_prefecture.php&quot;);" id="53LGatZEC0IP8SuNZLTx-1">
+          <mxCell parent="1" style="ellipse;whiteSpace=wrap;html=1;" vertex="1">
+            <mxGeometry height="50" width="320" x="10" y="480" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <mxCell id="53LGatZEC0IP8SuNZLTx-2" edge="1" parent="1" style="endArrow=classic;html=1;rounded=0;" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <Array as="points">
+              <mxPoint x="120" y="560" />
+            </Array>
+            <mxPoint x="120" y="535" as="sourcePoint" />
+            <mxPoint x="280" y="560" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="53LGatZEC0IP8SuNZLTx-3" edge="1" parent="1" style="endArrow=classic;html=1;rounded=0;" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
             <mxPoint x="400" y="580" as="sourcePoint" />
             <mxPoint x="400" y="650" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <UserObject label="&lt;span style=&quot;font-size: 20px;&quot;&gt;&lt;b&gt;lire/tableNaissance.html.twig&lt;/b&gt;&lt;/span&gt;" link="include(&quot;inc/accueil/accueil_prefecture.php&quot;);" id="sFFa0le8hfxBSIMefcPA-31">
-          <mxCell parent="1" style="ellipse;whiteSpace=wrap;html=1;" vertex="1">
-            <mxGeometry height="50" width="510" x="145" y="660" as="geometry" />
-          </mxCell>
-        </UserObject>
+        <mxCell id="53LGatZEC0IP8SuNZLTx-5" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=#005700;fillColor=#008a00;align=center;verticalAlign=middle;rounded=0;fontColor=#ffffff;" value="&lt;div style=&quot;&quot;&gt;&lt;b style=&quot;background-color: transparent;&quot;&gt;&lt;font style=&quot;color: rgb(255, 255, 255);&quot;&gt;js requête : &quot;open( )&quot;&lt;/font&gt;&lt;/b&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="40" width="130" x="250" y="360" as="geometry" />
+        </mxCell>
+        <mxCell id="53LGatZEC0IP8SuNZLTx-6" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=#005700;fillColor=#008a00;align=center;verticalAlign=middle;rounded=0;fontColor=#ffffff;" value="&lt;div style=&quot;&quot;&gt;&lt;font color=&quot;#ffffff&quot;&gt;&lt;b&gt;js reponse : &quot;opened&quot;&lt;/b&gt;&lt;/font&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="40" width="145" x="125" y="570" as="geometry" />
+        </mxCell>
+        <mxCell id="53LGatZEC0IP8SuNZLTx-8" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=#001DBC;fillColor=#0050ef;align=center;verticalAlign=middle;rounded=0;fontColor=#ffffff;" value="&lt;div style=&quot;&quot;&gt;&lt;b style=&quot;background-color: transparent;&quot;&gt;&lt;font style=&quot;color: rgb(255, 255, 255);&quot;&gt;js capture : &quot;filtre&quot;&lt;/font&gt;&lt;/b&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="40" width="130" x="250" y="300" as="geometry" />
+        </mxCell>
       </root>
     </mxGraphModel>
   </diagram>
