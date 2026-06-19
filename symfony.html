@@ -281,15 +281,14 @@
       La page d'accueil fonctionne en mode <b>SPA</b>: <b>S</b>ingle <b>P</b>age <b>A</b>pplication ( mais c'est une version à la main - sans framwork)<br>
       Vue.js (ou React) le ferait beaucoup mieux !
   </p>  
-  <p><b><u>2.1 Chargement de la table:</u> "table_afficher_naissance.html.twig"</b></p>
+  <p><b><u>2.1 Ajax: Chargement "table_afficher_naissance.html.twig</u>"</b></p>
   <img src="uml/accueil/Lien_Afficher/affichelien.png" class="img interface2">
-  
-  <div class="img" style="width:90.25%; color:gray;">
-      Cette table apparaît en 3 étapes: <br>
+    <div class="img firstPart" style="color:gray;">
+      Cette table est chargée en 3 étapes: <br>
 	  <ol>
-			 <li><b>Choisir la table(Capture de la prefecture):Quelle table ouvrir</b><br>
+			 <li><b>Choisir la table(Capture de la prefecture cliquée):Quelle table charger</b><br>
 				&emsp;&emsp;✔️ accueil_choisir_naissance.php &emsp;&RightArrow;&emsp; &lt;select onchange="captureCombo(this.value)"&gt; <br>
-				&emsp;&emsp;✔️ capture_item.js  &emsp;&RightArrow;&emsp; function captureCombo(prfctr) &emsp;&RightArrow;&emsp;  xmlhttp.open("GET", "/table/naissance?p="+prfctr,true);
+				&emsp;&emsp;✔️ capture_item.js  &emsp;&RightArrow;&emsp; function captureCombo(prfctr) &emsp;&RightArrow;&emsp;  colonne_afficher_naissance.php?p="+prfct
 			 </li>
 			 <li><b>Ouverture du panel:</b><br>
 				&emsp;&emsp;✔️ accueil_prefecture.php &emsp;&RightArrow;&emsp; &lt;td class="listemenu" id="flip"&gt &lt;div id="panel" class="scrolbar"&gt <br>
@@ -297,59 +296,59 @@
 			 </li>
 			 <li><b>Chargement de la table:</b><br>
 				&emsp;&emsp;✔️ capture_item.js &emsp;&RightArrow;&emsp; function captureCombo(prfctr) { <br>
-				&emsp;&emsp;✔️ &emsp; xmlhttp.open("GET","SERVEUR/colonne_afficher_naissance.php?p="+prfctr,true )<br>
+				&emsp;&emsp;✔️ &emsp; xmlhttp.open("GET","backend/colonne_afficher_naissance.php?p="+prfctr,true )<br>
 				&emsp;&emsp;✔️ &emsp; document.getElementById("panel").innerHTML = xmlhttp.responseText;
 			 </li>
 	  </ol>
-	</div>
-	<div class="img" style="width:90.25%; color:#999;">
+   </div>
+   <img src="uml/accueil/Lien_Afficher/entreesortie2.1sf.png" class="img middlePart">	
+   <img src="uml/accueil/Lien_Afficher/afficher_sf.png" class="img middlePart">	
+   <div class="img lastPart" style=" color:#999;">
 	  Pour les autres tables relatives aux bouttons(Supprimer, Rectifier,Imprimer,Trier)<br>
 	  le chargement se fait differement:
 	  <ol start="3">
-			 <li><b>Chargement des la tables:</b><br>
-				&emsp;&emsp;✔️ accueil.commandes_panel.js &emsp;&RightArrow;&emsp; jQuery <br>
+			 <li>
+			    <b>Chargement des tables: Deux solutions possibles</b><br><br>
+				&emsp;&emsp;<b>1️⃣ Solution1(fonction native): load()</b> &emsp;&RightArrow;&emsp; accueil.commandes_panel.js <br><br>
 				&emsp;&emsp;✔️ &emsp;  $(' a#rectif, a#zima , a#print_ , a#trier ').click(function(e){<br>
-				&emsp;&emsp;✔️ &emsp;&emsp; $('#panel').load($(this).<b style="color:blue">attr('<span style="color:green">href</span>')</b>);<br>
+				&emsp;&emsp;✔️ &emsp;&emsp;&emsp; $('#panel').load($(this).<b style="color:blue">attr('<span style="color:green">href</span>')</b>);<br>
 				&emsp;&emsp;✔️ &emsp;  });
 			 </li>
 	  </ol>
-	  Dans in/accueil/accueil_prefecture.php on trouvera les href appelé par <b>attr(href)</b>:
-	  <ul type="non">
-	     <li>&lt;a id="zima"    &nbsp;<span style="color:green">href</span>="SERVEUR/colonne_supprimer_acte.php"&gt; &lt;input type="button"  value="Supprimer" /&gt;</li>
-	     <li>&lt;a id="rectif"  &nbsp;<span style="color:green">href</span>="SERVEUR/colonne_rectifier_acte.php"&gt; &lt;input type="button"  value="Rectifier" /&gt;</li>
-	     <li>&lt;a id="print_"  <span style="color:green">href</span>="SERVEUR/colonne_imprimer_acte.php"&gt;  input type="button"  value="Imprimer" /&gt;</li>
-	     <li>&lt;a id="trier"   &nbsp;&nbsp;&nbsp;<span style="color:green">href</span>="SERVEUR/trier.php"&gt;  &lt;input type="button"  value="Ordre alphabétique"/&gt;</li>
-	  </ul>
-	  Il faut choisir la table à ouvrir, avant de l'ouvrir(par un de ces 4 boutons)<br>
-	  Si au préalable on ne choisi pas la table, on ne peut pas l'ouvir. <u>Un bug s'impose</u><br>
-      C'est pourquoi un alert  est posé au dessus de ces 4 boutons.
-    </div> 
-  <p class="img firstPart" style="color:gray; margin-bottom:0;"> Etape1: Capture de la prefecture cliquée:Quelle table ouvrir</p>
-  <img src="uml/accueil/Lien_Afficher/2.1.E1.png" class="img lastPart" style="height:auto; ">  
-  <p class="img firstPart" style="color:gray; margin-bottom:0;">Etape2: Ouverture du panel</p>
-  <img src="uml/accueil/Lien_Afficher/2.1.E2.png" class="img lastPart" style="height:auto; ">
-  <p class="img firstPart" style="color:gray; margin-bottom:0;">Etape3: Chargement de la table</p>
-  <img src="uml/accueil/Lien_Afficher/chargement.png" class="img lastPart" style="height:auto; ">
-  Brouillon
-  <img src="uml/accueil/Lien_Afficher/afficher.png" class="img" style="height:auto; ">
+	  <span style="padding-left:4em;">Dans in/accueil/accueil_prefecture.php on trouvera les href appelé par <b>attr(href)</b>:</span>
+	  <div style="padding-left:4em;">
+			<ul type="none" style="margin-bottom:.3em;">
+				<li>&lt;a id="zima"    &nbsp;<span style="color:green">href</span>="backend/colonne_supprimer_acte.php"&gt; &lt;input type="button"  value="Supprimer" /&gt;</li>
+				<li>&lt;a id="rectif"  &nbsp;<span style="color:green">href</span>="backend/colonne_rectifier_acte.php"&gt; &lt;input type="button"  value="Rectifier" /&gt;</li>
+				<li>&lt;a id="print_"  <span style="color:green">href</span>="backend/colonne_imprimer_acte.php"&gt;  input type="button"  value="Imprimer" /&gt;</li>
+				<li>&lt;a id="trier"   &nbsp;&nbsp;&nbsp;<span style="color:green">href</span>="backend/trier.php"&gt;  &lt;input type="button"  value="Ordre alphabétique"/&gt;</li>
+			</ul>
+			Il faut choisir la table à ouvrir, avant de l'ouvrir(par un de ces 4 boutons)<br>
+			Si au préalable on ne choisi pas la table, on ne peut pas l'ouvrir. <u>Un bug s'impose</u><br>
+			C'est pourquoi un alert  est posé au dessus de ces 4 boutons.
+      </div>	  
+      <ol start="3">
+			 <li>
+				&emsp;&emsp;<b>2️⃣ Solution2(fonction maison): captureSousMenu()</b> &emsp;&RightArrow;&emsp; capture_items.js <br><br>
+				&emsp;&emsp;✔️ &emsp;  $("... ul.subMenu li a").click(function() { <span style="color:gree">// inc/lecture/topMenu.php</span> <br>
+				&emsp;&emsp;✔️ &emsp;&emsp;&emsp; captureSousMenu(this.textContent);<br>
+				&emsp;&emsp;✔️ &emsp;  });
+			 </li>
+	  </ol>
+	  <span style="padding-left:4em;">C'est la solution de chargement utilisée sur lectureBD.php (<b> <a class="btn" href="#chargement2"> voir 👉 7.1 </a></b>)</span>	  
+   </div> 
   
   <p id="affichedoc"><b><u>2.2 Afficher le document</u></b> &emsp;&RightArrow;&emsp;  lien "Afficher"</p>
-  <img src="uml/accueil/Lien_Afficher/affichedoc.png" class="img interface2">
+  <img src="uml/accueil/Lien_Afficher/affichedoc_sf.png" class="img interface2">
   
   <div class="img firstPart"> 
    <ul type="cite" style="clear:both;">
-       <li>Arborescence vers l'affichage du document( dans un popup ) </li>
-       <li>...</li>
+       <li>Aucune variable session utilisée en guise de filte. </li>
+       <li>Juste l'<b>id</b>, transmis par URL.</li>
    </ul> 
   </div>
-  <img src="uml/accueil/Lien_Afficher/showDoc.png" class="img middlePart" style="height:auto; ">
-  
-  <p id="imprimer" class="img lastPart">
-        <i>
-		    Chaque bouton affiche un lien à la dernière colonne de la table(à la place du lien "Afficher").<br>
-			Et le lien traite la fonction.
-		</i>
-  </p>
+  <img src="uml/accueil/Lien_Afficher/showDoc_sf.png" class="img lastPart">
+
    
   <p ><b><u>2.3 Chargement de la table "Imprimer</u></b>"</p>
   <img src="uml/accueil/Bouton_Imprimer/accueilimprimer.png" class="img interface2">  

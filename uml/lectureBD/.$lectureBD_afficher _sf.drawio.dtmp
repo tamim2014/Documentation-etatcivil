@@ -139,14 +139,14 @@
         <mxCell id="5NpQK9iGHmibKHjyV_u2-1" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=#005700;fillColor=#008a00;align=center;verticalAlign=middle;rounded=0;fontColor=#ffffff;" value="&lt;div style=&quot;&quot;&gt;&lt;font color=&quot;#ffffff&quot; style=&quot;font-size: 17px;&quot;&gt;&lt;b style=&quot;&quot;&gt;xmlhttp.responseText&lt;/b&gt;&lt;/font&gt;&lt;/div&gt;" vertex="1">
           <mxGeometry height="40" width="190" x="870" y="585" as="geometry" />
         </mxCell>
-        <mxCell id="_eOiA0wN_pLqDF-uzv1Q-3" edge="1" parent="1" source="5NpQK9iGHmibKHjyV_u2-1" style="endArrow=classic;html=1;rounded=0;exitX=0.589;exitY=0.1;exitDx=0;exitDy=0;entryX=0.38;entryY=0.067;entryDx=0;entryDy=0;entryPerimeter=0;fillColor=#008a00;strokeColor=#005700;strokeWidth=3;exitPerimeter=0;" target="sFFa0le8hfxBSIMefcPA-28" value="">
+        <mxCell id="5NpQK9iGHmibKHjyV_u2-2" edge="1" parent="1" style="curved=1;endArrow=classic;html=1;rounded=0;" value="">
           <mxGeometry height="50" relative="1" width="50" as="geometry">
             <Array as="points">
-              <mxPoint x="982" y="560" />
-              <mxPoint x="723" y="560" />
+              <mxPoint x="590" y="490" />
+              <mxPoint x="540" y="440" />
             </Array>
-            <mxPoint x="540" y="370" as="sourcePoint" />
-            <mxPoint x="590" y="320" as="targetPoint" />
+            <mxPoint x="540" y="490" as="sourcePoint" />
+            <mxPoint x="590" y="440" as="targetPoint" />
           </mxGeometry>
         </mxCell>
       </root>
