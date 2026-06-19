@@ -1,4 +1,5 @@
- l'objectif est de charger cette table dans  ma template de base en 3 etapes:                                                                                                  1) jQuery capture un menu dans  inc/lecture/topMenu.html.twig                                                           
+ l'objectif est de charger cette table dans  ma template de base en 3 etapes:                                                                                                  
+1) jQuery capture un menu dans  inc/lecture/topMenu.html.twig                                                           
 2) transmettre la capture à la foncion ajax  captureSouMenu("prfctr){...}                                   
 3) Et cettre fonction va charger la table relative à prfct( celle qu'on vient de traiter)   dans le div#yivawo de la page   lectureBD.html.twig 
 
@@ -6,3 +7,35 @@
  *  la page principale lectureBD.html.twig                                                                                                   
 * la table à charger  lire/tableNaissance.html.twig                                                                                  
  *Et bien sûr les fonction jQuery/Ajax pour la capture/chargement 
+
+--------------------------------------------------------------------------------
+
+19.06.20260 à 01H:01
+
+
+Rappel: 
+Tout systeme technique se modelise aisement sur le  shéma  "entrée/traitement/sortie"
+(aussi compliqué soit-il, ça devient limpide et simple)  MASHA ALLAH
+
+C'est peut être le paradigme à la base de toute technologie !!!
+
+
+
+
+
+                                                                      lireController.php
+                                                                 #[Route('/tablenaissance/{pr}', name: 'tablenaissance')]
+                                                                  public function tableNaissance(..){...}                                                
+
+inc/lecture/topMenu.html.twig                                                                                                                                        lire/tableNaissance.html.twig
+____________________________________________________________________________________________________________________________________________________________________________________________
+
+                                         capture_items.js                                                               capture_items.js                                   lectureBD.html.twig
+
+                        $("... ul.subMenu li a").click(function() { 
+				captureSousMenu(this.textContent); 
+			});	
+                        captureSouMenu("prfctr){                                                       captureSouMenu("prfctr){
+                           xmlhttp.open("GET", baseUrl + "/tablenaissance/"+ prfctr, true);                 document.getElementById("yivawo").innerHTML = xmlhttp.responseText; 
+                        }                                                                              } 
+                        

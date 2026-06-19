@@ -590,7 +590,7 @@
   
   <p class="img" id="afficheTable" style="background: #f7f7f9; width:94%">7. Affichage des documents 👉 <span style="color:blue">lectureBD.php</span></p> 
   
-  <p><b><u>7.1 Afficher</u> (table)</b></p>
+  <p><b><u>7.1 Afficher la table</u>: lire/tableNaissance.html.twig</b></p>
   <img src="uml/LectureBD/lectureBD.png" class="img interface2">
   <p class="img firstPart">
     Asynchronous loading: L'affichage de la table se fait par une combinaison <i style="color:#ececea">jQuery/</i><i style="color:#ececea">Ajax</i><br>
@@ -599,11 +599,13 @@
 	Donc le pattern se résume ainsi: jQuery capture l'événement(le menu) et Ajax charge les données. Ils son complémentaires !<br>
 	 C'est exactement la base sur laquelle repose des framworks modernes comme <b>React</b> ou <b>Vue.js</b><br>
 	 Il serait donc mieux de traduire ce jQuery en version <b>Vue.js</b>
-  </p>   
-  <img src="uml/LectureBD/lectureBD_afficher.png" class="img middlePart">   
+  </p> 
+  <img src="uml/LectureBD/entreesortie.png" class="img middlePart">   
+  <img src="uml/LectureBD/lectureBD_afficher_sf.png" class="img middlePart">   
   <p class="img lastPart">
      ✔️ <i style="color:gray">window.open(...popup..)</i> est remplacé par la fonction <i style="color:gray">ouvrePop(\'afficher.php?n='.$ligne['ID'].'\')</i><br>
-	 ✔️ <i style="color:gray">function ouvrePop(url){...}</i> se trouve dans <i style="color:#ececea">lectureBD.js</i>
+	 ✔️ <i style="color:gray">function ouvrePop(url){...}</i> se trouve dans <i style="color:#ececea">lectureBD.js</i><br>
+	 ✔️ <i style="color:gray">Symfony éxige ici de préciser les host/port</i>: D'où la définition d'une url dynamique 👉 <i style="color:#ececea">baseUrl</i>
   </p> 
   
   
