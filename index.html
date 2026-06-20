@@ -368,7 +368,7 @@
       Le clic sur le btn Imprimer déclenche 2 actions:<br>
 	  &emsp; ✅ Redirection vers la table "Imprimer"<br>
 	  &emsp; ✅ Chargement(jQuery) de cette table dans div#panel
-   </div>
+  </div>
   <img src="uml/accueil/Bouton_Imprimer/accueilBtnImprimer.png" class="img lastPart"> 
 
   <div class="img firstPart" style="color:#ececea;">
@@ -376,45 +376,29 @@
   </div>
   <img src="uml/accueil/Bouton_Imprimer/reparationimprimer.png" class="img lastPart">
  
- <p id="modifier"><b><u>2.4 Chargement de la table "Rectifier</u></b>"</p>
+ <p id="modifier"><b><u>2.4 jQuery: Chargement de la table "Rectifier</u></b>"</p>
  <img src="uml/accueil/Bouton_Rectifier/accueilrectifier.png" class="img interface"> 
- <div class="img firstPart">
-	  <ul type="cite"> 
-		   <li>"<i style="color:blue;">js/accueil_commandes_panel.js</i>" renvoie à la table "<i style="color:blue;">backend/colonne_rectifier_acte.php</i>"</li>
-		   <li>Et cette <b><i>table</i></b> renvoie à la page "<i style="color:blue;">modifier_.php</i>"</span> en la transmettant les données par url</li>
-	  </ul>
+ <div class="img" style="color:#aaa">
+     Même principe  2.3<br>
+     Lien: &lt;a id="rectif"  href="backend/colonne_rectifier_acte.php"&gt;	 
   </div>
-  <img src="uml/accueil/Bouton_Rectifier/accueilBtnRectifier.png" class="img lastPart"> 
 
   
-  <p id="supprimer"><b><u>2.5 Chargement de la table "Supprimer</u></b>"</p>
+  <p id="supprimer"><b><u>2.5 jQuery: Chargement de la table "Supprimer</u></b>"</p>
   <img src="uml/accueil/Bouton_Supprimer/accueilsupprimer.png" class="img interface">
-  <div class="img firstPart">
-	   <ul type="cite">
-		   <li><b>accueil_commandes_panel.js</b> capture le bouton "<b>Supprimer</b>" pour ouvrir le panel et charger la table "<b>colonne_supprimer_acte.php</b>"</li>
-		   <li>La table <b>colonne_supprimer_acte.php</b> appelle le fichier "<b>supprimer.php</b>"</li>
-		   <li>Le fichier "<b>supprimer.php</b>" traite la suppression.</li>
-	   </ul>
+ <div class="img" style="color:#aaa">
+     Même principe  2.3<br>
+     Lien: &lt;id="zima"    href="backend/colonne_supprimer_acte.php"&gt;	 
   </div>
-  <img src="uml/accueil/Bouton_Supprimer/accueilBtnSupprimer.png" class="img lastPart"> 
-
   
-  <p id="trier"><b><u>2.6 Chargement de la table "Trier</u></b>"</p>
+  <p id="trier"><b><u>2.6 jQuery: Chargement de la table "Trier</u></b>"</p>
   <img src="uml/accueil/Bouton_Trier/accueiltrier.png" class="img interface">
-  <div class="img firstPart">
-	  <p><b><i>accueil_commandes_panel.js</i></b> capture la commande "<b><i>Ordre alphabétique</i></b>" pour faire les 2 tâches suivantes:</p>
-	  <ul type="cite">
-		   <li>Ouverture d'un conteneur dans la page d'accueil: Un panel</li>
-		   <li>Chargement du fichier "<b>trier.php</b>" dans ce panel</li>
-	   </ul>
-	   <p>Ce fichier "trier.php" contient: Une table et son traitement( tri document par ordre alphabétique des noms )</p>   
+  <div class="img" style="color:#aaa">
+     Même principe  2.3, sauf que le tri se fait directement dans la requête. Sans fichier séparé: <br>
+	 <code>$R=mysqli_query($conn , "SELECT * FROM  liste WHERE prefecture='".$_SESSION["v"]."'  ORDER BY nom  ")</code><br><br>
+     Lien: &lt;id="trier"   href="backend/trier.php"&gt;	 
    </div>
-   <img src="uml/accueil/Bouton_Trier/accueilBtnTrier.png" class="img middlePart">
-   <p class="img lastPart">
-     Quant au fichier <b>afficher.php?n='.$ligne["ID"].'</b> :
-	 <br> Il récupere l'identifiant transmis, pour extraire les données relatives, et les mettre sur un document formaté (inclu dans un popup).
-     <br> Le popup est défini dans "<b>trier.php</b>", suite à l'action sur le lien "<b>Afficher</b>".
-   </p>
+   
      
   <p id="alertbug"><b><u>Alert bug utilisateur</u>:</b> Usage des boutons(Supprimer,Rectifier,Imprimer,Trier)</p>
   <img src="uml/accueil/alertbugbouton1.png" class="img interface">
