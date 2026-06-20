@@ -288,7 +288,7 @@
       La page d'accueil fonctionne en mode <b>SPA</b>: <b>S</b>ingle <b>P</b>age <b>A</b>pplication ( mais c'est une version à la main - sans framwork)<br>
       Vue.js (ou React) le ferait beaucoup mieux !
   </p>  
-  <p><b><u>2.1 Chargement de la table </u>: "backend/colonne_afficher_naissance.php"</b></p>
+  <p><b><u>2.1 Ajax: Chargement "table_afficher_naissance.html.twig</u>"</b></p>
 
   <img src="uml/accueil/Lien_Afficher/affichelien.png" class="img interface">
   <div class="img firstPart" style="color:gray;">
@@ -353,28 +353,28 @@
    <ul type="cite" style="clear:both;">
        <li>Aucune variable session utilisée en guise de filte. </li>
        <li>Juste l'<b>id</b>, transmis par URL.</li>
+       <li>Par contre la prefecture selectionnée est mise en session, pour les tables relatives aux 4 btns du panel de commandes</li>
    </ul> 
   </div>
-  <img src="uml/accueil/Lien_Afficher/showDoc.png" class="img lastPart" style="height:auto; ">
-  
+  <img src="uml/accueil/Lien_Afficher/showDoc.png" class="img middlePart">
+  <div class="img lastPart"> 
+     ouvrePop(){...} se trouve sur dialogueBox.js
+  </div>  
 
    
-  <p ><b><u>2.3 Chargement de la table "Imprimer</u></b>"</p>
+  <p id="imprimer" ><b><u>2.3 jQuery: Chargement de la table "Imprimer</u></b>"</p>
   <img src="uml/accueil/Bouton_Imprimer/accueilimprimer.png" class="img interface">  
   <div class="img firstPart" style="color:#ececea;">
-	  <u><i>L'affichage de la table</i></u> et <u><i>l'appel au fichier de traitement</i></u> sont assurés par un script jQuery( js/<b>accueil_commandes_panel.js</b> ).
-	 <br>C'est une solution jQuery qui fait du AJAX :
-	 
-	  <ul type="cite" style="margin-top:.3em;">
-		   <li>Intercepter un clic, empêcher la navigation, charger du contenu dans un panel de la page d'accueil.</li>
-		   <li>Elle ouvre le panel</li>
-		   <li>Elle charge une table dans ce panel</li>
-	   </ul>
+      Le clic sur le btn Imprimer déclenche 2 actions:<br>
+	  &emsp; ✅ Redirection vers la table "Imprimer"<br>
+	  &emsp; ✅ Chargement(jQuery) de cette table dans div#panel
    </div>
   <img src="uml/accueil/Bouton_Imprimer/accueilBtnImprimer.png" class="img lastPart"> 
 
-  <!-- Remarque -->
-  <img src="uml/accueil/Bouton_Imprimer/reparationimprimer.png" class="img">
+  <div class="img firstPart" style="color:#ececea;">
+      Version Ajax: Obsolète
+  </div>
+  <img src="uml/accueil/Bouton_Imprimer/reparationimprimer.png" class="img lastPart">
  
  <p id="modifier"><b><u>2.4 Chargement de la table "Rectifier</u></b>"</p>
  <img src="uml/accueil/Bouton_Rectifier/accueilrectifier.png" class="img interface"> 
