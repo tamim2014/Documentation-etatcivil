@@ -101,6 +101,7 @@
 			<li class="toggleSubMenu" style="border-top:1px solid gray;"><span>Bugs list</span>
 				  <ul class="subMenu" id="seulement_les_caisses" style="color:silver;" >						
 					<li><a href="#">Bug list</a></li>
+					<li><a href="#sessionList">Sessions list</a></li>
 					<li><a href="#php">PHP</a></li>
 					<li><a href="#ajax">AJAX</a></li>
 
@@ -112,10 +113,9 @@
 
 
 <div class="main" style="margin-right:0;">
-
-	<h4 id="bl" class="img" style="background: #ddd; clear:both !important; ">1. Bug list</h4>
-
-
+    
+	<!-- SECTION 1 -->
+	<h4 id="bl" class="img" style="background: #ddd; clear:both !important; ">1. Bugs list</h4>
 	<table style="display:table !important">
 	  <tr>
 		<th>Category</th>
@@ -172,11 +172,117 @@
 	
 	
 	
-	
-	
-	
-	
-  <h4 id="php" class="img" style="background: #ddd; clear:both !important; ">2. PHP: Fonction obsolètes/Fontions dépreciées</h4>
+	<!-- SECTION 2 -->
+	<h4 id="sessionList" class="img" style="background: #ddd; clear:both !important; ">2. Sessions list</h4>
+	<table style="display:table !important">
+	  <tr>
+		<th>Variables</th>
+		<th>Set in</th>
+		<th>Get in</th>
+	  </tr>
+	  
+	  <tbody>
+		  <tr>
+			<td>$_SESSION['user_id']    = $row['ID'];</td>
+			<td>✔️ backend/authentification.php</td>
+			<td>
+               <ul>
+			      <li>backend/url_access_guard.php</li>
+			      <li>reinitialisation/reinitialisation.php</li>
+			      <li>reinitialisation/envoyer_code</li>
+			      <li>reinitialisation/verifier_code.php</li>
+			      <li>reinitialisation/saisir_code.php</li>
+			   </ul>				 
+			</td>
+		  </tr>
+		  <tr>
+			<td>$_SESSION['pseudo'] = $row['pseudo'];</td>
+			<td>✔️ backend/authentification.php</td>
+			<td>
+               <ul>
+			      <li>backend/lectureBD2_searchPlayBack.php</li>
+			      <li>backend/lectureBD2_searchPlayBackByName.php</li>
+			   </ul>
+			</td>
+		  </tr>
+		  <tr>
+			<td>$_SESSION['user_role']  = $row['roles'];</td>
+			<td>✔️ backend/authentification.php</td>
+			<td>
+			   <ul>
+			      <li>modifier_.php, backend/supprimer.php</li>
+			      <li>backend/colonne_rectifier_acte.php</li>
+			      <li>backend/colonne_supprimer_acte.php</li>
+			   </ul>
+			</td>
+		  </tr>
+		  <tr>
+			<td>$_SESSION["email"] = $row["email"]; ← crucial</td>
+			<td>✔️ backend/authentification.php</td>
+			<td>
+			   <ul>
+			      <li>envoyer_code.php</li>
+			   </ul>
+			</td>
+		  </tr>
+		  <tr>
+			<td>$_SESSION["v"]= $p; ← crucial</td>
+			<td>✔️ backend/colonne_afficher_naissance.php</td>
+			<td>
+			   <ul>
+			      <li>backend/colonne_suppprimer_acte.php</li>
+			      <li>colonne_rectifier_acte.php</li>
+			      <li>colonne_imprimer_acte.php</li>
+			      <li>trier.php</li>
+			   </ul>
+			</td>
+		  </tr>
+		  <tr>
+			<td>$_SESSION['messageDelete'] = "Suppression effectuée avec succès⚠️"; </td>
+			<td>✔️ backend/supprimer.php</td>
+			<td>
+			   <ul>
+			      <li>accueil.php</li>
+			   </ul>
+			</td>
+		  </tr>
+		  <tr>
+			<td>$_SESSION["showInLive"]=$acte;</td>
+			<td>✔️ backend/ecritureBD_insertionSQL.php</td>
+			<td>
+			   <ul>
+			      <li>ecritureBD.php</li>
+			   </ul>
+			</td>
+		  </tr>
+		  <!--
+		  <tr>
+			<td>V8</td>
+			<td>✔️ F8</td>
+			<td>
+			   <ul>
+			      <li>F88</li>
+			      <li>F88</li>
+			   </ul>
+			</td>
+		  </tr>
+		  <tr>
+			<td>V9</td>
+			<td>✔️ F9</td>
+			<td>
+			   <ul>
+			      <li>F99</li>
+			      <li>F99</li>
+			   </ul>
+			</td>
+		  </tr>
+		  -->
+	  </tbody>
+	</table>
+	<div style="clear:both; margin-bottom:3em;"></div>
+		
+	<!-- SECTION 3 -->
+  <h4 id="php" class="img" style="background: #ddd; clear:both !important; ">3. PHP: Fonction obsolètes/Fontions dépreciées</h4>
 
 	Task1:<br> Soumettre accueil.php(juste le code php) à copilote et le demander de  sortir
 	 <br> - les fonctions dépreciées
@@ -216,11 +322,8 @@
 	  </tbody>
 	</table>
 	
-	
-	<h4 id="ajax" class="img" style="background: #ddd; margin-top:5em; clear:both !important; ">3. AJAX: Fonction Obsolètes/Fonctions dépreciées</h4>
-
-	
-	
+	<!-- SECTION 4 -->
+	<h4 id="ajax" class="img" style="background: #ddd; margin-top:5em; clear:both !important; ">4. AJAX: Fonction Obsolètes/Fonctions dépreciées</h4>
 	<h4>capture_items.js: XMLHttpRequest vs fetch</h4>
 	
 	<!-- Aliger les 2 prisme -->
