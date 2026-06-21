@@ -258,3 +258,8 @@
 			margin-top:1em;
 			margin-left:0;
 		}
+		
+		#table2-1, #table2-3 {
+			color:blue;
+			font-size:.82rem;
+		}

@@ -5,137 +5,35 @@
 	<link rel="stylesheet" href="uml/style.css" />
 	<link rel="stylesheet" href="uml/prism.css" media="screen" /> 
 	<style>
-		/* ------------------------------------ */
+
 		table {
+		  width:98%;
+		  padding:1em;
 		  font-family: arial, sans-serif;
 		  border-collapse: collapse;
-		  width: 90%;	
-     
-          padding:0;		  
+          background:#555;
+          border-radius:4px !imortant;
+          		  
+    	}
+        tr th, tr td{
+		  padding:.5em;
+		  border:1px solid #333;
+		  		  
 		}
-		table tr{
-		   padding-inline:0 !important;
-		   max-width:auto;
+		th {
+		   color:white ;
+		   background:#5fcf80; /* #558C89; #74AFAD;   */
+		   border-radius:4px 4px 0px 0px;
+		   box-shadow: 7px 6px 15px #333;
 		}
-		table tr th,
-		table tr td{
-		   margin:0 !important;
-		   padding-inline:0 !important;
-		   max-width:auto;
+        table tr:nth-child(2n+1) td  { 
+		  background:#fff;
+		  color:#aaa;
+		  box-shadow: 7px 6px 15px #333;
 		}
-		table tr td{
-          
-		}
-		
-		
-		pre{
-		  max-width:  90%;
-		}
-
-		td, th {
-		  border: 1px solid #dddddd;
-		  text-align: center;
-		  padding: 8px;		  
-		}
-		td { text-align: left;}
-
-		 tr:nth-child(n+2):nth-child(even) { 
-		/* tbody tr:nth-child(n+2):nth-child(even */
-		  background-color: #f7f7f9;
-		}
-
-		/* ------------------------------------ */
-		
-		
-		th
-		{
-		 color:white ;
-		 
-		 /* background:#558C89; */
-		 /* background:#74AFAD; */
-		 background:#5fcf80;
-		 
-		 box-shadow: 7px 6px 15px #333;
-		   border-radius:8px 8px 0px 0px;
-		  -webkit-border-radius:8px 8px 0px 0px;
-
-		}
-		tr
-		{
-			-moz-border-radius:4px;
-			-webkit-border-radius:4px;
+		tr{
 			border-radius:4px;
-			margin:0px;
-		}
-		
-		table pre {
-		  white-space: pre;
-		  overflow-x: auto !important;
-		  display: block !important;
-		  max-width: 100%;
-		  
-		  
-		}
-		
-	   /* #################################################  */	
-	    tr{
-		  width:auto !important;
-		  max-width:93%;
-		}
-	    tr th,
-		tr td{
-		  min-width:14% !important;
-	     max-width:14% !important;
-
-		 padding:.5em .3em;
-		}
-	   
-	   
-	    tr,
-		tr.antiprism{
-		  display:flex;
-		  align-items:center;
-		  width:auto;
-		  padding:0;
-		}
-
-		tr th,
-		tr td,
-		tr.antiprism  td{
-		  /* 1️⃣ Mettre le scroll sur les prisme 📌*/
-		  flex: 1 1 auto !important;
-
-		  /* 2️⃣ Virer le scroll sur les div contenairs*/
-		  overflow-x:hidden  ;
-		}
-		
-		
-		tr th:last-child,
-		tr td:last-child,
-		tr.antiprism  td:last-child{
-		   padding-inline:0;
-		   margin-inline:0;
-		   max-width:47vw !important;
-		   min-width:40vw !important; /* pour les autres lignes */
-		   
-		}
-		tr td:last-child,
-		tr.antiprism  td:last-child{
-		   padding:0;
-		   margin:0;
-		}
-		
-		
-		
-		tr td pre,
-		tr.antiprism  td pre{
-		   max-width:100% !important;
-		}
-
-		
-
-
-		
+		}		
 	</style>
 	<script src="uml/moteurJquery.js"> </script>
 	<script src="uml/prism.js" type="text/javascript" ></script>
@@ -200,8 +98,9 @@
 					<li><a href="index.html#" >fonction4</a></li>
 				  </ul>
 			</li>
-			<li class="toggleSubMenu" style="border-top:1px solid gray;"><span>Les fonctions dépreciées</span>
+			<li class="toggleSubMenu" style="border-top:1px solid gray;"><span>Bugs list</span>
 				  <ul class="subMenu" id="seulement_les_caisses" style="color:silver;" >						
+					<li><a href="#">Bug list</a></li>
 					<li><a href="#php">PHP</a></li>
 					<li><a href="#ajax">AJAX</a></li>
 
@@ -214,38 +113,54 @@
 
 <div class="main" style="margin-right:0;">
 
-	<h4 id="php" class="img" style="background: #ddd; clear:both !important; ">1. PHP</h4>
-
-	Task1:<br> Soumettre accueil.php(juste le code php) à capilot et le demander de te sortir
-	 <br> - les fonctions dépreciées
-	 <br> - les fonctions obsoletes<br>
-	Faire de même chose pour les autres pages( ecritureBD.php, lectureBD.php, lectureBD2.php, modifier_.php, ...etc )<u> pour remplir cette table</u> <br><br>
+	<h4 id="bl" class="img" style="background: #ddd; clear:both !important; ">1. Bug list</h4>
 
 
-	INCHA ALLAH <br><br>
-
-	<table>
-	  <tr class="antiprism">
-		<th>Fonction</th>
-		<th>Description </th>
-		<th>Fichier source</th>
-		<th>Nouvelle fonction</th>
+	<table style="display:table !important">
+	  <tr>
+		<th>Category</th>
+		<th>Fichers</th>
+		<th>Problème</th>
+		<th>Solution</th>
 	  </tr>
 	  
 	  <tbody>
-		  <tr class="antiprism">
-			<td>get_magic_quotes_gpc()</td>
-			<td>Virer l'espace en début de chaîne.<br>Enleve l'echappement.<br>N'existe plus depuis PHP 7.4</td>
-			<td>lectureBD_afficherNaissance.php</td>
-			<td>❌ Supprimer</td>
+		  <tr>
+			<td>Symfony</td>
+			<td>
+			   ✔️ lectureBD.html.twig<br><br>
+			   ✔️ capture-item.js/captureSousMenu("prfctr")
+			</td>
+			<td>
+			     ❌ Ajax - Non chargement table "lire/tableNaissance.html.twig"<br><br>
+                 Symfony veut préciser l'url.<br> Host/port:Domaine/route				 
+			</td>
+			<td>
+			   ✅ Dans lectureBD.html.twig, avant la dépendance capture-item.js<br><br>
+			   <u>Host/port dynamique</u>:<br>
+			   window.baseUrl = "{{ app.request.getSchemeAndHttpHost() }}";<br><br>
+			   ✅ Dans capture-item.js/captureSousMenu("prfctr")<br><br>
+			   xmlhttp.open("GET", baseUrl + "/tablenaissance/"+ prfctr, true);
+			</td>
 		  </tr>
-		  <tr class="antiprism">
-			<td>...</td>
-			<td>...</td>
-			<td>...</td>
-			<td>...</td>
+		  <tr>
+			<td>Procédurale</td>
+			<td>
+			    ✔️ saisir_code.php( symptôme apparent): code invalide<br><br>
+			    ✔️ verifier_code.php( symptôme caché): expiration &lt; NOW()<br><br>
+			    ✔️ envoyer_code.php(cause)
+			</td>
+			<td>
+			   ❌ Code de rinitialisation du password invalide<br><br>
+			   Heure serveur MySql en retard de 2H  <br><br>
+			   => Le code expire dès reception
+			</td>
+			<td>
+			   ✅ envoyer_code.php(cause): Augmenter le delais d'expiration (24h)<br><br>
+			   $expiration = date("Y-m-d H:i:s", time() + 86400); // +24h
+			</td>
 		  </tr>
-		  <tr class="antiprism">
+		  <tr>
 			<td>...</td>
 			<td>...</td>
 			<td>...</td>
@@ -253,189 +168,246 @@
 		  </tr>
 	  </tbody>
 	</table>
-
+	<div style="clear:both; margin-bottom:3em;"></div>
 	
-	<h4 id="ajax" class="img" style="background: #ddd; margin-top:5em; clear:both !important; ">2. AJAX</h4>
+	
+	
+	
+	
+	
+	
+  <h4 id="php" class="img" style="background: #ddd; clear:both !important; ">2. PHP: Fonction obsolètes/Fontions dépreciées</h4>
+
+	Task1:<br> Soumettre accueil.php(juste le code php) à copilote et le demander de  sortir
+	 <br> - les fonctions dépreciées
+	 <br> - les fonctions obsoletes<br>
+	Même chose pour les autres pages( ecritureBD.php, lectureBD.php, lectureBD2.php, modifier_.php, ...etc )<u> pour remplir cette table</u> <br><br>
+
+
+	INCHA ALLAH <br><br>
+
+	<table>
+	  <tr>
+		<th>Fonction</th>
+		<th>Description </th>
+		<th>Fichier source</th>
+		<th>Nouvelle fonction</th>
+	  </tr>
+	  
+	  <tbody>
+		  <tr>
+			<td>get_magic_quotes_gpc()</td>
+			<td>Virer l'espace en début de chaîne.<br>Enleve l'echappement.<br>N'existe plus depuis PHP 7.4</td>
+			<td>lectureBD_afficherNaissance.php</td>
+			<td>❌ Supprimer</td>
+		  </tr>
+		  <tr>
+			<td>...</td>
+			<td>...</td>
+			<td>...</td>
+			<td>...</td>
+		  </tr>
+		  <tr>
+			<td>...</td>
+			<td>...</td>
+			<td>...</td>
+			<td>...</td>
+		  </tr>
+	  </tbody>
+	</table>
+	
+	
+	<h4 id="ajax" class="img" style="background: #ddd; margin-top:5em; clear:both !important; ">3. AJAX: Fonction Obsolètes/Fonctions dépreciées</h4>
 
 	
 	
 	<h4>capture_items.js: XMLHttpRequest vs fetch</h4>
 	
-	
-	<pre style="z-index:0 !important;"><code class="language-js"  >
-	function captureSousMenu(prfctr){ // prfctr=préfecture selectionnée dans le sous-menu
-		if (prfctr == "") { 
-			 document.getElementById("yivawo").innerHTML = ""; return; 
-		}else{ 
-			instanceXMLHttpRequest();// instance XMLHttpRequest for IE7+
-		   
-			//1.Connection[au serveur php] et Paramèttrage[prfctr est la prefecture choisie]  
-			xmlhttp.open("GET","SERVEUR/lectureBD_afficherNaissance.php?pr="+prfctr,true); 
-			//2.Envoi
-			xmlhttp.send(); 
-			//3.Réception réponse du serveur [xmlhttp.responseText] et affichage dans div yivawo
-			xmlhttp.onreadystatechange = function() { if (xmlhttp.readyState == 4 && xmlhttp.status == 200) { 
-				document.getElementById("yivawo").innerHTML = xmlhttp.responseText;}
-				//activerPopup();
-			};
+	<!-- Aliger les 2 prisme -->
+	<div style="display:flex; width:97%; margin-bottom:2em; ">
+		<div style="width:48.5%; margin-right:.5%;">
+		<pre style="width:94%; min-height:77.77vh;"><code class="language-js"  >
+		function captureSousMenu(prfctr){ // prfctr=préfecture selectionnée dans le sous-menu
+			if (prfctr == "") { 
+				 document.getElementById("yivawo").innerHTML = ""; return; 
+			}else{ 
+				instanceXMLHttpRequest();// instance XMLHttpRequest for IE7+
+			   
+				//1.Connection[au serveur php] et Paramèttrage[prfctr est la prefecture choisie]  
+				xmlhttp.open("GET","SERVEUR/lectureBD_afficherNaissance.php?pr="+prfctr,true); 
+				//2.Envoi
+				xmlhttp.send(); 
+				//3.Réception réponse du serveur [xmlhttp.responseText] et affichage dans div yivawo
+				xmlhttp.onreadystatechange = function() { if (xmlhttp.readyState == 4 && xmlhttp.status == 200) { 
+					document.getElementById("yivawo").innerHTML = xmlhttp.responseText;}
+					//activerPopup();
+				};
+			}
 		}
-	}
-	</code></pre>
-	<pre><code class="language-js">
+		</code></pre>
+		</div>
+		<div style="width:48%; margin-left:.5%;">
+		<pre style="width:98%; min-height:77.77vh; "><code class="language-js">
 
-	function captureSousMenu(prfctr) { // la mm fonction avec fetch
+		function captureSousMenu(prfctr) { // la mm fonction avec fetch
+			const cible = document.getElementById("yivawo");
+			if(prfctr === ""){ cible.innerHTML=""; return; }
+			fetch(`SERVEUR/lectureBD_afficherNaissance.php?pr=${encodeURIComponent(prfctr)}`)
+				.then(response => {
+					if (!response.ok) { throw new Error("Erreur réseau : " + response.status }
+					return response.text();
+				})
+				.then(data => {
+					cible.innerHTML = data;
+					// activerPopup(); // si tu veux le remettre
+				})
+				.catch(error => {
+					console.error("Erreur AJAX :", error); cible.innerHTML = "<p>Une erreur est survenue.</p>";
+				});
+		}
+		</code></pre>
+	    </div>	
+	</div>
+	
+	
+	
+	
+   <div style="width:97% !important; overflow-x:scroll;">	
+	   <table>
+		  <thead>
+			<tr>
+			  <th>Fonction</th>
+			  <th>Description</th>
+			  <th>Fichier source</th>
+			  <th>Nouvelle fonction</th>
+			</tr>
+		  </thead>
+
+	  <tbody>
+
+		<tr>
+		  <td>ActiveXObject("Microsoft.XMLHTTP")</td>
+		  <td>
+			Propre à Internet Explorer.  
+			Dépréciée et inutilisable aujourd’hui.  
+			Servait à envoyer des requêtes AJAX avant IE7.
+		  </td>
+		  <td>accueil_liens_colonne5.js</td>
+		  <td>
+			<pre><code class="language-js">
+				XMLHttpRequest()
+				  ou 
+				fetch()
+			</code></pre>
+		 </td>
+		</tr>
+
+		<tr>
+		  <td>if (window.XMLHttpRequest)</td>
+		  <td>
+			Détection de navigateur IE5/IE6.  
+			Totalement obsolète.  
+			Tous les navigateurs modernes supportent XMLHttpRequest.
+		  </td>
+		  <td>accueil_liens_colonne5.js</td>
+		  <td>
+			<pre><code class="language-js">
+				   ❌ Supprimer
+			</code></pre>
+		  </td>
+		</tr>
+
+		<tr>
+		  <td>onreadystatechange</td>
+		  <td>
+			API AJAX ancienne.  
+			Toujours supportée mais verbeuse.  
+			Utilise les états readyState (0 → 4).
+		  </td>
+		  <td>accueil_liens_colonne5.js</td>
+		  <td>
+			<pre><code class="language-js">
+					xmlhttp.onload 
+						ou 
+						
+					fetch()
+			 </code></pre>
+			  
+
+		  </td>
+		</tr>
+
+		<tr>
+		  <td>XMLHttpRequest()</td>
+		  <td>
+			Ancienne manière de faire de l’AJAX.  
+			Fonctionne encore mais moins lisible.
+		  </td>
+		  <td>accueil_liens_colonne5.js</td>
+		  <td>
+				<pre><code class="language-js">
+				  fetch()
+				</code></pre>
+		  </td>
+		</tr>
+
+		<tr>
+		  <td>captureSousMenu() — version XHR</td>
+		  <td>Ancienne implémentation AJAX</td>
+		  <td>accueil_liens_colonne5.js</td>
+		  <td>
+			<pre><code class="language-js">
+	function captureSousMenu(prfctr) {
+		if (prfctr === "") {
+			document.getElementById("yivawo").innerHTML = "";
+			return;
+		}
+
+		const xmlhttp = new XMLHttpRequest();
+		xmlhttp.open("GET", "SERVEUR/lectureBD_afficherNaissance.php?pr=" + prfctr, true);
+		xmlhttp.send();
+
+		xmlhttp.onreadystatechange = function () {
+			if (xmlhttp.readyState === 4 && xmlhttp.status === 200) {
+				document.getElementById("yivawo").innerHTML = xmlhttp.responseText;
+			}
+		};
+	}
+			</code></pre>
+		  </td>
+		</tr>
+
+		<tr>
+		  <td>captureSousMenu() — version fetch</td>
+		  <td>Version moderne recommandée</td>
+		  <td>accueil_liens_colonne5.js</td>
+		  <td>
+			<pre><code class="language-js">
+	function captureSousMenu(prfctr) {
 		const cible = document.getElementById("yivawo");
-		if(prfctr === ""){ cible.innerHTML=""; return; }
+
+		if (prfctr === "") {
+			cible.innerHTML = "";
+			return;
+		}
+
 		fetch(`SERVEUR/lectureBD_afficherNaissance.php?pr=${encodeURIComponent(prfctr)}`)
-			.then(response => {
-				if (!response.ok) { throw new Error("Erreur réseau : " + response.status }
-				return response.text();
-			})
+			.then(response => response.text())
 			.then(data => {
 				cible.innerHTML = data;
-				// activerPopup(); // si tu veux le remettre
 			})
 			.catch(error => {
-				console.error("Erreur AJAX :", error); cible.innerHTML = "<p>Une erreur est survenue.</p>";
+				console.error("Erreur AJAX :", error);
+				cible.innerHTML = "Une erreur est survenue.";
 			});
 	}
-	</code></pre>
-	
-		
-	<table>
-  <thead>
-    <tr>
-      <th>Fonction</th>
-      <th>Description</th>
-      <th>Fichier source</th>
-      <th>Nouvelle fonction</th>
-    </tr>
-  </thead>
-
-  <tbody>
-
-    <tr>
-      <td>ActiveXObject("Microsoft.XMLHTTP")</td>
-      <td>
-        Propre à Internet Explorer.  
-        Dépréciée et inutilisable aujourd’hui.  
-        Servait à envoyer des requêtes AJAX avant IE7.
-      </td>
-      <td>accueil_liens_colonne5.js</td>
-      <td>
-	    <pre><code class="language-js">
-			XMLHttpRequest()
-         	  ou 
-			fetch()
-	    </code></pre>
-	 </td>
-    </tr>
-
-    <tr>
-      <td>if (window.XMLHttpRequest)</td>
-      <td>
-        Détection de navigateur IE5/IE6.  
-        Totalement obsolète.  
-        Tous les navigateurs modernes supportent XMLHttpRequest.
-      </td>
-      <td>accueil_liens_colonne5.js</td>
-      <td>
-		<pre><code class="language-js">
-               ❌ Supprimer
-	    </code></pre>
-	  </td>
-    </tr>
-
-    <tr>
-      <td>onreadystatechange</td>
-      <td>
-        API AJAX ancienne.  
-        Toujours supportée mais verbeuse.  
-        Utilise les états readyState (0 → 4).
-      </td>
-      <td>accueil_liens_colonne5.js</td>
-      <td>
-	    <pre><code class="language-js">
-		        xmlhttp.onload 
-				    ou 
-					
-			    fetch()
-		 </code></pre>
-		  
-
-	  </td>
-    </tr>
-
-    <tr>
-      <td>XMLHttpRequest()</td>
-      <td>
-        Ancienne manière de faire de l’AJAX.  
-        Fonctionne encore mais moins lisible.
-      </td>
-      <td>accueil_liens_colonne5.js</td>
-      <td>
-			<pre><code class="language-js">
-			  fetch()
 			</code></pre>
-	  </td>
-    </tr>
+		  </td>
+		</tr>
 
-    <tr class="antiprism">
-      <td>captureSousMenu() — version XHR</td>
-      <td>Ancienne implémentation AJAX</td>
-      <td>accueil_liens_colonne5.js</td>
-      <td>
-        <pre><code class="language-js">
-function captureSousMenu(prfctr) {
-    if (prfctr === "") {
-        document.getElementById("yivawo").innerHTML = "";
-        return;
-    }
-
-    const xmlhttp = new XMLHttpRequest();
-    xmlhttp.open("GET", "SERVEUR/lectureBD_afficherNaissance.php?pr=" + prfctr, true);
-    xmlhttp.send();
-
-    xmlhttp.onreadystatechange = function () {
-        if (xmlhttp.readyState === 4 && xmlhttp.status === 200) {
-            document.getElementById("yivawo").innerHTML = xmlhttp.responseText;
-        }
-    };
-}
-        </code></pre>
-      </td>
-    </tr>
-
-    <tr class="antiprism">
-      <td>captureSousMenu() — version fetch</td>
-      <td>Version moderne recommandée</td>
-      <td>accueil_liens_colonne5.js</td>
-      <td>
-        <pre><code class="language-js">
-function captureSousMenu(prfctr) {
-    const cible = document.getElementById("yivawo");
-
-    if (prfctr === "") {
-        cible.innerHTML = "";
-        return;
-    }
-
-    fetch(`SERVEUR/lectureBD_afficherNaissance.php?pr=${encodeURIComponent(prfctr)}`)
-        .then(response => response.text())
-        .then(data => {
-            cible.innerHTML = data;
-        })
-        .catch(error => {
-            console.error("Erreur AJAX :", error);
-            cible.innerHTML = "Une erreur est survenue.";
-        });
-}
-        </code></pre>
-      </td>
-    </tr>
-
-  </tbody>
-</table>
+	  </tbody>
+	</table>
+</div>
 
 
 

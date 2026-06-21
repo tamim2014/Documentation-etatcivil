@@ -145,8 +145,9 @@
 				 
 			</li>
 			
-			<li class="toggleSubMenu" style="border-top:1px solid gray; "><span >Fonctions dépreciées</span>
+			<li class="toggleSubMenu" style="border-top:1px solid gray; "><span >Bugs list</span>
 				  <ul class="subMenu"  style="color:silver;" >						
+					<li><a href="fonctionsObsoletes.html" >Bug list</a></li>
 					<li><a href="fonctionsObsoletes.html#php" >PHP</a></li>
 					<li><a href="fonctionsObsoletes.html#ajax">AJAX</a></li>
 
@@ -284,14 +285,14 @@
   
   
   <p class="img" id="affichelien"  style="background: #f7f7f9; width:94%;"><span >2. Page d'accueil 👉 <span style="color:blue"> accueil.php</span></span></p>
-  <p> 
+  <div class="img" style="color:gray;">  
       La page d'accueil fonctionne en mode <b>SPA</b>: <b>S</b>ingle <b>P</b>age <b>A</b>pplication ( mais c'est une version à la main - sans framwork)<br>
       Vue.js (ou React) le ferait beaucoup mieux !
-  </p>  
-  <p><b><u>2.1 Ajax: Chargement "table_afficher_naissance.html.twig</u>"</b></p>
+  </div>  
+  <p><b><u>2.1 Ajax: Chargement "backend/colonne_afficher_naissance.php</u>"</b></p>
 
   <img src="uml/accueil/Lien_Afficher/affichelien.png" class="img interface">
-  <div class="img firstPart" style="color:gray;">
+  <div class="img" style="color:gray;">
       Cette table est chargée en 3 étapes: <br>
 	  <ol>
 			 <li><b>Choisir la table(Capture de la prefecture cliquée):Quelle table charger</b><br>
@@ -309,10 +310,12 @@
 			 </li>
 	  </ol>
    </div>
-   <img src="uml/accueil/Lien_Afficher/afficher.png" class="img middlePart">	
+   <img id="table2-1" src="uml/accueil/Lien_Afficher/afficher.png" class="img firstPart">	
    <div class="img lastPart" style=" color:#999;">
 	  Pour les autres tables relatives aux bouttons(Supprimer, Rectifier,Imprimer,Trier)<br>
 	  le chargement se fait differement:
+   </div>
+   <div class="img firstPart" style=" color:#999;">
 	  <ol start="3">
 			 <li>
 			    <b>Chargement des tables: Deux solutions possibles</b><br><br>
@@ -333,7 +336,9 @@
 			Il faut choisir la table à ouvrir, avant de l'ouvrir(par un de ces 4 boutons)<br>
 			Si au préalable on ne choisi pas la table, on ne peut pas l'ouvrir. <u>Un bug s'impose</u><br>
 			C'est pourquoi un alert  est posé au dessus de ces 4 boutons.
-      </div>	  
+      </div>
+    </div>
+    <div class="img lastPart" style=" color:#999;">	
       <ol start="3">
 			 <li>
 				&emsp;&emsp;<b>2️⃣ Solution2(fonction maison): captureSousMenu()</b> &emsp;&RightArrow;&emsp; capture_items.js <br><br>
@@ -369,8 +374,14 @@
 	  &emsp; ✅ Redirection vers la table "Imprimer"<br>
 	  &emsp; ✅ Chargement(jQuery) de cette table dans div#panel
   </div>
-  <img src="uml/accueil/Bouton_Imprimer/accueilBtnImprimer.png" class="img lastPart"> 
-
+  <img class="img middlePart" src="uml/accueil/Bouton_Imprimer/accueilBtnImprimer.png" id="table2-3" > 
+  <div class="img lastPart" style="color:#ececea;">
+      On ne transmet rien dans href:<br>
+	  &emsp; ✅ $_SESSION["v"] servira de filtre<br>
+	  &emsp; ✅ Elle contient la prefecture choisie dans inc/accueil/accueil_choisir_naissance.php <br>
+	  &emsp; ✅ Set in:  backend/colonne_afficher_naissance.php 👉 Voir 2.1 <a href="#table2-1">chargement ajax 1ère table "afficher naissance "</a>
+  </div>
+  
   <div class="img firstPart" style="color:#ececea;">
       Version Ajax: Obsolète
   </div>
@@ -379,24 +390,24 @@
  <p id="modifier"><b><u>2.4 jQuery: Chargement de la table "Rectifier</u></b>"</p>
  <img src="uml/accueil/Bouton_Rectifier/accueilrectifier.png" class="img interface"> 
  <div class="img" style="color:#aaa">
-     Même principe  2.3<br>
-     Lien: &lt;a id="rectif"  href="backend/colonne_rectifier_acte.php"&gt;	 
+     Même principe  2.3 👉  Voir <a href="#table2-3">chargement "table Imprimer"</a><br>
+     Variables: &lt;a id="rectif"  href="backend/colonne_rectifier_acte.php"&gt;	 
   </div>
 
   
   <p id="supprimer"><b><u>2.5 jQuery: Chargement de la table "Supprimer</u></b>"</p>
   <img src="uml/accueil/Bouton_Supprimer/accueilsupprimer.png" class="img interface">
  <div class="img" style="color:#aaa">
-     Même principe  2.3<br>
-     Lien: &lt;id="zima"    href="backend/colonne_supprimer_acte.php"&gt;	 
+     Même principe  2.3 👉 Voir <a href="#table2-3">chargement "Table Imprimer"</a><br>
+     Variables: &lt;a id="zima"    href="backend/colonne_supprimer_acte.php"&gt;	 
   </div>
   
   <p id="trier"><b><u>2.6 jQuery: Chargement de la table "Trier</u></b>"</p>
   <img src="uml/accueil/Bouton_Trier/accueiltrier.png" class="img interface">
   <div class="img" style="color:#aaa">
-     Même principe  2.3, sauf que le tri se fait directement dans la requête. Sans fichier séparé: <br>
+     Même principe  2.3 Voir 👉 <a href="#table2-3">table "Imprimer"</a>. Sauf que le tri se fait directement dans la requête. Sans fichier séparé: <br>
 	 <code>$R=mysqli_query($conn , "SELECT * FROM  liste WHERE prefecture='".$_SESSION["v"]."'  ORDER BY nom  ")</code><br><br>
-     Lien: &lt;id="trier"   href="backend/trier.php"&gt;	 
+     Variables: &lt;a id="trier"   href="backend/trier.php"&gt;	 
    </div>
    
      
