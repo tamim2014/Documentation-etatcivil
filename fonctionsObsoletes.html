@@ -33,7 +33,15 @@
 		}
 		tr{
 			border-radius:4px;
-		}		
+		}
+		.shadowB, .shadowG {
+		    color:Blue;
+			border:1px solid #8c8b8b; 
+			padding:1px 4px; 
+			border-radius:3px;
+			box-shadow:2px 2px 0.5px 0.5px #8c8b8b; 
+		}
+        .shadowG { color:#ececea; }		
 	</style>
 	<script src="uml/moteurJquery.js"> </script>
 	<script src="uml/prism.js" type="text/javascript" ></script>
@@ -375,150 +383,315 @@
 	
 	
 	
-   <div style="width:97% !important; overflow-x:scroll;">	
-	   <table>
-		  <thead>
+		<div style="width:97% !important; overflow-x:scroll;">	
+		   <table>
+			  <thead>
+				<tr>
+				  <th>Fonction</th>
+				  <th>Description</th>
+				  <th>Fichier source</th>
+				  <th>Nouvelle fonction</th>
+				</tr>
+			  </thead>
+
+		  <tbody>
+
 			<tr>
-			  <th>Fonction</th>
-			  <th>Description</th>
-			  <th>Fichier source</th>
-			  <th>Nouvelle fonction</th>
-			</tr>
-		  </thead>
-
-	  <tbody>
-
-		<tr>
-		  <td>ActiveXObject("Microsoft.XMLHTTP")</td>
-		  <td>
-			Propre à Internet Explorer.  
-			Dépréciée et inutilisable aujourd’hui.  
-			Servait à envoyer des requêtes AJAX avant IE7.
-		  </td>
-		  <td>accueil_liens_colonne5.js</td>
-		  <td>
-			<pre><code class="language-js">
-				XMLHttpRequest()
-				  ou 
-				fetch()
-			</code></pre>
-		 </td>
-		</tr>
-
-		<tr>
-		  <td>if (window.XMLHttpRequest)</td>
-		  <td>
-			Détection de navigateur IE5/IE6.  
-			Totalement obsolète.  
-			Tous les navigateurs modernes supportent XMLHttpRequest.
-		  </td>
-		  <td>accueil_liens_colonne5.js</td>
-		  <td>
-			<pre><code class="language-js">
-				   ❌ Supprimer
-			</code></pre>
-		  </td>
-		</tr>
-
-		<tr>
-		  <td>onreadystatechange</td>
-		  <td>
-			API AJAX ancienne.  
-			Toujours supportée mais verbeuse.  
-			Utilise les états readyState (0 → 4).
-		  </td>
-		  <td>accueil_liens_colonne5.js</td>
-		  <td>
-			<pre><code class="language-js">
-					xmlhttp.onload 
-						ou 
-						
-					fetch()
-			 </code></pre>
-			  
-
-		  </td>
-		</tr>
-
-		<tr>
-		  <td>XMLHttpRequest()</td>
-		  <td>
-			Ancienne manière de faire de l’AJAX.  
-			Fonctionne encore mais moins lisible.
-		  </td>
-		  <td>accueil_liens_colonne5.js</td>
-		  <td>
+			  <td>ActiveXObject("Microsoft.XMLHTTP")</td>
+			  <td>
+				Propre à Internet Explorer.  
+				Dépréciée et inutilisable aujourd’hui.  
+				Servait à envoyer des requêtes AJAX avant IE7.
+			  </td>
+			  <td>accueil_liens_colonne5.js</td>
+			  <td>
 				<pre><code class="language-js">
-				  fetch()
+					XMLHttpRequest()
+					  ou 
+					fetch()
 				</code></pre>
-		  </td>
-		</tr>
+			 </td>
+			</tr>
 
-		<tr>
-		  <td>captureSousMenu() — version XHR</td>
-		  <td>Ancienne implémentation AJAX</td>
-		  <td>accueil_liens_colonne5.js</td>
-		  <td>
-			<pre><code class="language-js">
-	function captureSousMenu(prfctr) {
-		if (prfctr === "") {
-			document.getElementById("yivawo").innerHTML = "";
-			return;
-		}
+			<tr>
+			  <td>if (window.XMLHttpRequest)</td>
+			  <td>
+				Détection de navigateur IE5/IE6.  
+				Totalement obsolète.  
+				Tous les navigateurs modernes supportent XMLHttpRequest.
+			  </td>
+			  <td>accueil_liens_colonne5.js</td>
+			  <td>
+				<pre><code class="language-js">
+					   ❌ Supprimer
+				</code></pre>
+			  </td>
+			</tr>
 
-		const xmlhttp = new XMLHttpRequest();
-		xmlhttp.open("GET", "SERVEUR/lectureBD_afficherNaissance.php?pr=" + prfctr, true);
-		xmlhttp.send();
+			<tr>
+			  <td>onreadystatechange</td>
+			  <td>
+				API AJAX ancienne.  
+				Toujours supportée mais verbeuse.  
+				Utilise les états readyState (0 → 4).
+			  </td>
+			  <td>accueil_liens_colonne5.js</td>
+			  <td>
+				<pre><code class="language-js">
+						xmlhttp.onload 
+							ou 
+							
+						fetch()
+				 </code></pre>
+				  
 
-		xmlhttp.onreadystatechange = function () {
-			if (xmlhttp.readyState === 4 && xmlhttp.status === 200) {
-				document.getElementById("yivawo").innerHTML = xmlhttp.responseText;
+			  </td>
+			</tr>
+
+			<tr>
+			  <td>XMLHttpRequest()</td>
+			  <td>
+				Ancienne manière de faire de l’AJAX.  
+				Fonctionne encore mais moins lisible.
+			  </td>
+			  <td>accueil_liens_colonne5.js</td>
+			  <td>
+					<pre><code class="language-js">
+					  fetch()
+					</code></pre>
+			  </td>
+			</tr>
+
+			<tr>
+			  <td>captureSousMenu() — version XHR</td>
+			  <td>Ancienne implémentation AJAX</td>
+			  <td>accueil_liens_colonne5.js</td>
+			  <td>
+				<pre><code class="language-js">
+		function captureSousMenu(prfctr) {
+			if (prfctr === "") {
+				document.getElementById("yivawo").innerHTML = "";
+				return;
 			}
-		};
-	}
-			</code></pre>
-		  </td>
-		</tr>
 
-		<tr>
-		  <td>captureSousMenu() — version fetch</td>
-		  <td>Version moderne recommandée</td>
-		  <td>accueil_liens_colonne5.js</td>
-		  <td>
-			<pre><code class="language-js">
-	function captureSousMenu(prfctr) {
-		const cible = document.getElementById("yivawo");
+			const xmlhttp = new XMLHttpRequest();
+			xmlhttp.open("GET", "SERVEUR/lectureBD_afficherNaissance.php?pr=" + prfctr, true);
+			xmlhttp.send();
 
-		if (prfctr === "") {
-			cible.innerHTML = "";
-			return;
+			xmlhttp.onreadystatechange = function () {
+				if (xmlhttp.readyState === 4 && xmlhttp.status === 200) {
+					document.getElementById("yivawo").innerHTML = xmlhttp.responseText;
+				}
+			};
 		}
+				</code></pre>
+			  </td>
+			</tr>
 
-		fetch(`SERVEUR/lectureBD_afficherNaissance.php?pr=${encodeURIComponent(prfctr)}`)
-			.then(response => response.text())
-			.then(data => {
-				cible.innerHTML = data;
-			})
-			.catch(error => {
-				console.error("Erreur AJAX :", error);
-				cible.innerHTML = "Une erreur est survenue.";
-			});
-	}
-			</code></pre>
-		  </td>
-		</tr>
+			<tr>
+			  <td>captureSousMenu() — version fetch</td>
+			  <td>Version moderne recommandée</td>
+			  <td>accueil_liens_colonne5.js</td>
+			  <td>
+				<pre><code class="language-js">
+		function captureSousMenu(prfctr) {
+			const cible = document.getElementById("yivawo");
 
-	  </tbody>
-	</table>
-</div>
+			if (prfctr === "") {
+				cible.innerHTML = "";
+				return;
+			}
+
+			fetch(`SERVEUR/lectureBD_afficherNaissance.php?pr=${encodeURIComponent(prfctr)}`)
+				.then(response => response.text())
+				.then(data => {
+					cible.innerHTML = data;
+				})
+				.catch(error => {
+					console.error("Erreur AJAX :", error);
+					cible.innerHTML = "Une erreur est survenue.";
+				});
+		}
+				</code></pre>
+			  </td>
+			</tr>
+
+		  </tbody>
+		</table>
+	</div>
+
+
+<!-- SECTION 5 -->
+<h4 id="ajax" class="img" style="background: #ddd; margin-top:5em; clear:both !important; ">5. Rapport: Responsive <span class="shadowB"> grand écran </span>&emsp;  → <span class="shadowB">zoom(-)</span></h4>
+<p class="img" style="color:#aaa; clear:both;">	
+Compression verticale:<br>
+&#8658 🟥🟩 min-height: en <span class="shadowG"> % sur 80% - </span> &emsp; [ ou en <span class="shadowG"> vh sur 125% + </span> &nbsp; ]<br><br> 
+Eclatement horizontal:<br>
+&#8658 🟥🟩 max-width: en <span class="shadowG"> % sur 80% -</span> &emsp; [ ou en <span class="shadowG">vh sur 125% + </span> &nbsp; ]
+
+</p>
+
+	<div style="width:97% !important; overflow-x:scroll;">	
+		   <table>
+			  <thead>
+				<tr>
+				  <th>Fichiers</th>
+				  <th>Problème</th>
+				  <th>Solution</th>
+				</tr>
+			  </thead>
+
+		  <tbody>
+
+			<tr>
+			  <td> accueil.php,<br> lectureBD.php,<br> modifier_.php</td>
+			  <td>
+                  colonne_laterale: Décollage relief sur colonne_laterale
+			  </td>
+			  <td>
+				<pre><code class="language-css">
+					/* template.css */
+					/*🟥🟩 1.1 Décollage relief colonne_latterale -80%  => vh  */
+					aside.aside1{
+					  height:100vh !important; /* forcer sur accueil.php et ecritureBD.php/modifier_.php */ 
+					  min-height:100vh !important; /* ⚠️ */ 
+					}
+				</code></pre>
+				<pre><code class="language-css">
+					/* template.css */
+					/*🟥🟩 1.2 Décollage relief colonne_latterale +125% => % */
+					aside.aside1{
+					  height:100% !important;
+					  min-height:100% !important; /* 100vh ⚠️ */ 
+					}
+				</code></pre>
+			 </td>
+			</tr>
+
+			<tr>
+			  <td> ecritureBD.php,<br> modifier_.php</td>
+			  <td>
+                   Compression verticale de la table<br>  
+				   → sur colonne centrale et <br>
+				   → sur colonne de droite
+			  </td>
+			  <td>
+				<pre><code class="language-html">
+					&lt;!-- PANNEAU DE GAUCHE/ligne69: min-height:63.15% !important; -->
+					&lt;table class="tablegauche"  name="listes" style="min-height:63.15%;  padding:1em inherit;">
+					&lt;!-- PANNEAU CENTRAL/ligne217: min-height:100vh !important; -->
+					&lt;table class="tabledroite showacte" style="min-height:100vh !important;" >
+					&lt;!-- PANNEAU DE DROITE/ligne373: min-height:88.75%; -->
+					&lt;;table  class="tablemenu" style="min-height:88.75%;"> 
+				</code></pre>
+			  </td>
+			</tr>
+
+			<tr>
+			  <td>accueil.php</td>
+			  <td>
+                 Compression verticlale:<br> Panel de commande
+			  </td>
+			  <td>
+				<pre><code class="language-js">
+						???? 
+							???
+						???
+				 </code></pre>
+			  </td>
+			</tr>
+
+			<tr>
+			  <td>accueil.php</td>
+			  <td>
+                 Eclatement horizontale:<br> tablegauche
+			  </td>
+			  <td>
+					<pre><code class="language-js">
+					  ????
+					  ????
+					  ????
+					</code></pre>
+			  </td>
+			</tr>
+			
+		  </tbody>
+		</table>
+	</div>
 
 
 
-    <p class="img" style="color:#aaa; clear:both; margin-top:2em;">	
-	AJAX consiste à: <br> 
-		👉 Charger des donnéees dans la page(depuis le serveur) sans recharger la page.<br>
-		👉 Et surtout, sans naviguer vers d'autres pages(on reste sur la même page!).
-	</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- SECTION 6 -->
+<h4 id="ajax" class="img" style="background: #ddd; margin-top:5em; clear:both !important; ">6. Rapport: Responsive <span class="shadowB"> petit écran </span>&emsp;  → <span class="shadowB">zoom(+)</span></h4>
+
+
+<p class="img" style="color:#aaa; clear:both;">	
+Un layout doit rester stable dans la "zoom-plage"[80%-125%]<br> 
+	&emsp;👉  "Tout élément placé manuellement en pixel‑perfect finit par casser".<br>
+	&emsp;👉 &nbsp;surtout dans la plage [125–150%].
+</p>
+	<div style="width:97% !important; overflow-x:scroll;">	
+		   <table>
+			  <thead>
+				<tr>
+				  <th>Fichiers</th>
+				  <th>Problème</th>
+				  <th>Solution</th>
+				</tr>
+			  </thead>
+
+		  <tbody>
+			<tr>
+			  <td>ecritureBD.php</td>
+			  <td>
+                 Décollage du footer:<br> à 150%
+			  </td>
+			  <td>
+				<pre><code class="language-css">
+						/*  Faire comme 🟩modifier_.php ( ne décolle pas - peut être à cause du $rappel )  */
+
+						?
+						??
+						???
+				 </code></pre>
+			  </td>
+			</tr>
+			<tr>
+			  <td>accueil.php</td>
+			  <td>
+                 TopNav cassé:<br> à 150%
+			  </td>
+			  <td>
+				<pre><code class="language-css">
+						/*  Faire comme  🟩ecritureBD.php (zoom+ non cassé)  */
+
+						?
+						??
+						???
+				 </code></pre>
+			  </td>
+			</tr>
+		  </tbody>
+		</table>
+	</div>
 
 	
 </div><!-- fin #main -->
