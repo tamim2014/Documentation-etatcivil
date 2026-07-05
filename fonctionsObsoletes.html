@@ -91,20 +91,37 @@
 				  </ul>
 			</li>				
 			<li class="toggleSubMenu"><span>5. Nouveau document</span>
-				  <ul class="subMenu" id="seulement_les_caisses" style="color:silver;" >						
-					<li><a href="index.html#" >fonction1</a></li>
-					<li><a href="index.html#" >fonction2</a></li>
-					<li><a href="index.html#" >fonction3</a></li>
-					<li><a href="index.html#" >fonction4</a></li>
+				  <ul class="subMenu"  style="color:silver;" >						
+					<li><a href="index.html#5.1" >Nouvel acte (Enregistrer)</a></li>
+					<li><a href="index.html#5.2" >Nouvel acte (Afficher)</a></li>
+					<li><a href="index.html#5.3" >Nouvel acte (Imprimer)</a></li>
+					<li><a href="index.html#5.4" >Nouvel acte (Rectifier)</a></li>
+					<!-- <li><a href="#5.5" >Rectification(Enregistrer)</a></li> -->
 				  </ul>
 			</li>
-			<li class="toggleSubMenu"><span>6. Affichage documents</span>
-				  <ul class="subMenu" id="seulement_les_caisses" style="color:silver;" >						
-					<li><a href="index.html#" >fonction1</a></li>
-					<li><a href="index.html#" >fonction2</a></li>
-					<li><a href="index.html#" >fonction3</a></li>
-					<li><a href="index.html#" >fonction4</a></li>
+			<li class="toggleSubMenu"><span>6. Rectification </span>
+				  <ul class="subMenu"  style="color:silver;" >						
+					<li><a href="index.html#6.1" >Edit (Enregistrer)</a></li>
+					<li><a href="index.html#6.2" >Edit (Afficher)</a></li>
+					<li><a href="index.html#6.3" >Edit (Imprimer)</a></li>
+					<li><a href="index.html#6.4" >Edit (Recommencer)</a></li>
 				  </ul>
+			</li>
+			<li class="toggleSubMenu"><span>7. Affichage </span>
+				  <ul class="subMenu"  style="color:silver;" >						
+					
+					<li><a href="index.html#afficheTable" >Charger la table</a></li>
+					<li><a href="index.html#afficheDocument" >Afficher(document)</a></li>
+					<li><a href="index.html#imprimeDocument" >Imprimer(document)</a></li>
+
+				  </ul>
+			</li>
+			<li class="toggleSubMenu" style="border-top:1px solid gray;" > 
+			    <span> <a href="symfony.html">Version SYMFONY</a> </span>
+				<ul class="subMenu"  style="color:silver;" >						
+					<li><a href="symfony.html#10.1" >Structure</a></li>
+					<li><a href="symfony.html#10.2">Installation</a></li>
+				</ul>
 			</li>
 			<li class="toggleSubMenu" style="border-top:1px solid gray;"><span>Bugs list</span>
 				  <ul class="subMenu" id="seulement_les_caisses" style="color:silver;" >						
@@ -112,7 +129,8 @@
 					<li><a href="#sessionList">Sessions list</a></li>
 					<li><a href="#php">PHP</a></li>
 					<li><a href="#ajax">AJAX</a></li>
-
+					<li><a href="#zoom-">Responsive ≤ 80%</a></li>
+					<li><a href="#zoom+">Responsive ≥ 125%</a></li>
 				  </ul>
 			</li>
 		</ul>  		   
@@ -522,44 +540,45 @@
 
 
 <!-- SECTION 5 -->
-<h4 id="ajax" class="img" style="background: #ddd; margin-top:5em; clear:both !important; ">5. Rapport: Responsive <span class="shadowB"> grand écran </span>&emsp;  → <span class="shadowB">zoom(-)</span></h4>
-<p class="img" style="color:#aaa; clear:both;">	
+<h4 id="zoom-" class="img" style="background: #ddd; margin-top:5em; clear:both !important; ">5. Rapport: Responsive <span class="shadowB"> grand écran </span>&emsp;  → <span class="shadowB">zoom(-)</span></h4>
+<p class="img" style="width:91%; color:#aaa; clear:both;">	
 Compression verticale:<br>
-&#8658 🟥🟩 min-height: en <span class="shadowG"> % sur 80% - </span> &emsp; [ ou en <span class="shadowG"> vh sur 125% + </span> &nbsp; ]<br><br> 
+&#8658 🟥🟩 min-height: en <span class="shadowG"> vh sur 	&le; 80%  </span> &emsp; [ ou en <span class="shadowG"> % sur &ge; 125%  </span> &nbsp; ]<br><br> 
 Eclatement horizontal:<br>
-&#8658 🟥🟩 max-width: en <span class="shadowG"> % sur 80% -</span> &emsp; [ ou en <span class="shadowG">vh sur 125% + </span> &nbsp; ]
+&#8658 🟥🟩 max-width: en <span class="shadowG"> vh sur 	&le; 80% </span> &emsp; [ ou en <span class="shadowG">% sur &ge; 125%  </span> &nbsp; ]
 
 </p>
 
-	<div style="width:97% !important; overflow-x:scroll;">	
+	<!-- <div style="width:97% !important; overflow-x:scroll;">	-->
+	<div style="width:97% !important; overflow-x:auto;">	
 		   <table>
 			  <thead>
 				<tr>
-				  <th>Fichiers</th>
-				  <th>Problème</th>
+				  <th>Fichiers<small>( Où ? )</small></th>
+				  <th>Problème<small>( Quoi ? )</small></th>
 				  <th>Solution</th>
 				</tr>
 			  </thead>
 
-		  <tbody>
+		    <tbody>
 
 			<tr>
-			  <td> accueil.php,<br> lectureBD.php,<br> modifier_.php</td>
+			  <td> accueil.php,<br> ecritureBD.php,<br> modifier_.php</td>
 			  <td>
-                  colonne_laterale: Décollage relief sur colonne_laterale
+                  colonne_laterale:<br><br> Décollage relief 
 			  </td>
 			  <td>
 				<pre><code class="language-css">
 					/* template.css */
-					/*🟥🟩 1.1 Décollage relief colonne_latterale -80%  => vh  */
+					/*🟥🟩 1.1 Décollage relief colonne_latterale ≤ 80%  => vh  */
 					aside.aside1{
-					  height:100vh !important; /* forcer sur accueil.php et ecritureBD.php/modifier_.php */ 
+					  height:100vh !important; 
 					  min-height:100vh !important; /* ⚠️ */ 
 					}
 				</code></pre>
 				<pre><code class="language-css">
 					/* template.css */
-					/*🟥🟩 1.2 Décollage relief colonne_latterale +125% => % */
+					/*🟥🟩 1.2 Décollage relief colonne_latterale ≥ 125% => % */
 					aside.aside1{
 					  height:100% !important;
 					  min-height:100% !important; /* 100vh ⚠️ */ 
@@ -570,17 +589,20 @@ Eclatement horizontal:<br>
 
 			<tr>
 			  <td> ecritureBD.php,<br> modifier_.php</td>
-			  <td>
+			  <td> 
+			       colonne centrale<br>
+			       colonne droite<br><br>
+				   →<br>
                    Compression verticale de la table<br>  
-				   → sur colonne centrale et <br>
-				   → sur colonne de droite
+				   
+				
 			  </td>
 			  <td>
 				<pre><code class="language-html">
 					&lt;!-- PANNEAU DE GAUCHE/ligne69: min-height:63.15% !important; -->
-					&lt;table class="tablegauche"  name="listes" style="min-height:63.15%;  padding:1em inherit;">
+					&lt;table class="tablegauche" style="min-height:63.15%;">
 					&lt;!-- PANNEAU CENTRAL/ligne217: min-height:100vh !important; -->
-					&lt;table class="tabledroite showacte" style="min-height:100vh !important;" >
+					&lt;table class="tabledroite showacte" style="min-height:100vh;">
 					&lt;!-- PANNEAU DE DROITE/ligne373: min-height:88.75%; -->
 					&lt;;table  class="tablemenu" style="min-height:88.75%;"> 
 				</code></pre>
@@ -590,7 +612,7 @@ Eclatement horizontal:<br>
 			<tr>
 			  <td>accueil.php</td>
 			  <td>
-                 Compression verticlale:<br> Panel de commande
+                Panel de commande :<br><br>  Compression verticlale
 			  </td>
 			  <td>
 				<pre><code class="language-js">
@@ -600,11 +622,10 @@ Eclatement horizontal:<br>
 				 </code></pre>
 			  </td>
 			</tr>
-
 			<tr>
 			  <td>accueil.php</td>
 			  <td>
-                 Eclatement horizontale:<br> tablegauche
+                 .tablegauche:<br><br>  Eclatement horizontale
 			  </td>
 			  <td>
 					<pre><code class="language-js">
@@ -614,7 +635,23 @@ Eclatement horizontal:<br>
 					</code></pre>
 			  </td>
 			</tr>
-			
+			<tr>
+			  <td>accueil.php</td>
+			  <td>
+                 .text_header:<br><br> 
+				 Sort de son cadre(.hollowTop)<br>
+				 à partir de &le;75%
+			  </td>
+			  <td>
+					<pre><code class="language-css">
+					  Virer les pixels-perfect (padding-top:2%; padding-left:45%;)
+					  Centrer avec text-align:center
+					  Si mal centré : Solution du topnav(un élément transparent à gauche)
+					  	👉 Desktop: transparent élément
+					  	👉 Mobil: display none élément
+					</code></pre>
+			  </td>
+			</tr>
 		  </tbody>
 		</table>
 	</div>
@@ -622,38 +659,22 @@ Eclatement horizontal:<br>
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <!-- SECTION 6 -->
-<h4 id="ajax" class="img" style="background: #ddd; margin-top:5em; clear:both !important; ">6. Rapport: Responsive <span class="shadowB"> petit écran </span>&emsp;  → <span class="shadowB">zoom(+)</span></h4>
+<h4 id="zoom+" class="img" style="background: #ddd; margin-top:5em; clear:both !important; ">6. Rapport: Responsive <span class="shadowB"> petit écran </span>&emsp;  → <span class="shadowB">zoom(+)</span></h4>
 
 
-<p class="img" style="color:#aaa; clear:both;">	
+<p class="img" style="width:91%; color:#aaa; clear:both;">	
 Un layout doit rester stable dans la "zoom-plage"[80%-125%]<br> 
 	&emsp;👉  "Tout élément placé manuellement en pixel‑perfect finit par casser".<br>
 	&emsp;👉 &nbsp;surtout dans la plage [125–150%].
 </p>
-	<div style="width:97% !important; overflow-x:scroll;">	
+	<!-- <div style="width:97% !important; overflow-x:scroll;">	-->
+	<div style="width:97% !important; overflow-x:auto;">	
 		   <table>
 			  <thead>
 				<tr>
-				  <th>Fichiers</th>
-				  <th>Problème</th>
+				  <th>Fichiers<small>( Où ? )</small></th>
+				  <th>Problème<small>( Quoi ? )</small></th>
 				  <th>Solution</th>
 				</tr>
 			  </thead>
@@ -666,7 +687,8 @@ Un layout doit rester stable dans la "zoom-plage"[80%-125%]<br>
 			  </td>
 			  <td>
 				<pre><code class="language-css">
-						/*  Faire comme 🟩modifier_.php ( ne décolle pas - peut être à cause du $rappel )  */
+						/*  Faire comme 🟩modifier_.php 
+						( ne décolle pas - peut être à cause du $rappel )  */
 
 						?
 						??
@@ -675,17 +697,25 @@ Un layout doit rester stable dans la "zoom-plage"[80%-125%]<br>
 			  </td>
 			</tr>
 			<tr>
-			  <td>accueil.php</td>
+			  <td>
+			      accueil.php<br><br>
+				  <small style="color:#ececea; font-size:.82rem;">
+				   inc/accueil/accueil_menucentrale
+				  </small>
+			  </td>
 			  <td>
                  TopNav cassé:<br> à 150%
 			  </td>
 			  <td>
 				<pre><code class="language-css">
-						/*  Faire comme  🟩ecritureBD.php (zoom+ non cassé)  */
-
-						?
-						??
-						???
+						🟩 Virer les pixel-perfect(margin-left ul) 
+						🟩 Laisser .menu{text-align:center} agir 👉 template.css:24
+						
+						Menu trop à droite❗
+						🟥 Comment le centrer sur .colonne_contenu?
+						🟩 Ajouter un item transprent à gauche - avant l'item "accueil":
+						   👉 Desktop: transparent
+						   👉 Mobil: display none
 				 </code></pre>
 			  </td>
 			</tr>
