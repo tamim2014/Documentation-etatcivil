@@ -11,8 +11,9 @@
 		  padding:1em;
 		  font-family: arial, sans-serif;
 		  border-collapse: collapse;
-          background:#555;
+          background: #555; /* #557=magenta chic */
           border-radius:4px !imortant;
+		  
           		  
     	}
         tr th, tr td{
@@ -27,7 +28,7 @@
 		   box-shadow: 7px 6px 15px #333;
 		}
         table tr:nth-child(2n+1) td  { 
-		  background:#fff;
+		  background:#fff; 
 		  color:#aaa;
 		  box-shadow: 7px 6px 15px #333;
 		}
@@ -362,8 +363,8 @@
 			}else{ 
 				instanceXMLHttpRequest();// instance XMLHttpRequest for IE7+
 			   
-				//1.Connection[au serveur php] et Paramèttrage[prfctr est la prefecture choisie]  
-				xmlhttp.open("GET","SERVEUR/lectureBD_afficherNaissance.php?pr="+prfctr,true); 
+				//1.Connection[au serveur php]- transmission filtre prefecture  
+				xmlhttp.open("GET","backend/lectureBD_afficherNaissance.php?pr="+prfctr,true); 
 				//2.Envoi
 				xmlhttp.send(); 
 				//3.Réception réponse du serveur [xmlhttp.responseText] et affichage dans div yivawo
@@ -381,7 +382,7 @@
 		function captureSousMenu(prfctr) { // la mm fonction avec fetch
 			const cible = document.getElementById("yivawo");
 			if(prfctr === ""){ cible.innerHTML=""; return; }
-			fetch(`SERVEUR/lectureBD_afficherNaissance.php?pr=${encodeURIComponent(prfctr)}`)
+			fetch(`backend/lectureBD_afficherNaissance.php?pr=${encodeURIComponent(prfctr)}`)
 				.then(response => {
 					if (!response.ok) { throw new Error("Erreur réseau : " + response.status }
 					return response.text();
@@ -401,7 +402,7 @@
 	
 	
 	
-		<div style="width:97% !important; overflow-x:scroll;">	
+		<div style="width:97% !important; overflow-x:auto;">	
 		   <table>
 			  <thead>
 				<tr>
@@ -415,13 +416,17 @@
 		  <tbody>
 
 			<tr>
-			  <td>ActiveXObject("Microsoft.XMLHTTP")</td>
+			  <td>ActiveXObject(<br>"Microsoft.XMLHTTP"</br>)</td>
 			  <td>
 				Propre à Internet Explorer.  
 				Dépréciée et inutilisable aujourd’hui.  
 				Servait à envoyer des requêtes AJAX avant IE7.
 			  </td>
-			  <td>accueil_liens_colonne5.js</td>
+			  <td>
+			      accueil_liens_colonne5<br><br>
+				  Remplacé par:<br>
+				  capture_items.js
+			   </td>
 			  <td>
 				<pre><code class="language-js">
 					XMLHttpRequest()
@@ -432,13 +437,17 @@
 			</tr>
 
 			<tr>
-			  <td>if (window.XMLHttpRequest)</td>
+			  <td>if (<br>window.XMLHttpRequest<br>)</td>
 			  <td>
 				Détection de navigateur IE5/IE6.  
 				Totalement obsolète.  
 				Tous les navigateurs modernes supportent XMLHttpRequest.
 			  </td>
-			  <td>accueil_liens_colonne5.js</td>
+			  <td>
+			      accueil_liens_colonne5<br><br>
+				  Remplacé par:<br>
+				  capture_items.js
+			  </td>
 			  <td>
 				<pre><code class="language-js">
 					   ❌ Supprimer
@@ -453,7 +462,11 @@
 				Toujours supportée mais verbeuse.  
 				Utilise les états readyState (0 → 4).
 			  </td>
-			  <td>accueil_liens_colonne5.js</td>
+			  <td>
+			      accueil_liens_colonne5<br><br>
+				  Remplacé par:<br>
+				  capture_items.js
+			  </td>
 			  <td>
 				<pre><code class="language-js">
 						xmlhttp.onload 
@@ -472,7 +485,11 @@
 				Ancienne manière de faire de l’AJAX.  
 				Fonctionne encore mais moins lisible.
 			  </td>
-			  <td>accueil_liens_colonne5.js</td>
+			  <td>
+			      accueil_liens_colonne5<br><br>
+				  Remplacé par:<br>
+				  capture_items.js
+			  </td>
 			  <td>
 					<pre><code class="language-js">
 					  fetch()
@@ -481,25 +498,30 @@
 			</tr>
 
 			<tr>
-			  <td>captureSousMenu() — version XHR</td>
+			  <td>captureSousMenu()<br> version XHR</td>
 			  <td>Ancienne implémentation AJAX</td>
-			  <td>accueil_liens_colonne5.js</td>
 			  <td>
-				<pre><code class="language-js">
+			      accueil_liens_colonne5<br><br>
+				  Remplacé par:<br>
+				  capture_items.js
+			   </td>
+			  <td>
+				<pre><code class="language-js" style="font-size:.9rem;">
 		function captureSousMenu(prfctr) {
 			if (prfctr === "") {
-				document.getElementById("yivawo").innerHTML = "";
-				return;
+			  document.getElementById("yivawo").innerHTML = "";
+			  return;
 			}
-
 			const xmlhttp = new XMLHttpRequest();
-			xmlhttp.open("GET", "SERVEUR/lectureBD_afficherNaissance.php?pr=" + prfctr, true);
+			var url = "SERVEUR/lectureBD_afficherNaissance.php";
+			xmlhttp.open("GET", url+"?pr=" + prfctr, true);
 			xmlhttp.send();
 
 			xmlhttp.onreadystatechange = function () {
-				if (xmlhttp.readyState === 4 && xmlhttp.status === 200) {
-					document.getElementById("yivawo").innerHTML = xmlhttp.responseText;
-				}
+			  if(xmlhttp.readyState===4 && xmlhttp.status===200){
+				var yivawo = document.getElementById("yivawo");
+				yivawo.innerHTML = xmlhttp.responseText;
+			  }
 			};
 		}
 				</code></pre>
@@ -507,27 +529,30 @@
 			</tr>
 
 			<tr>
-			  <td>captureSousMenu() — version fetch</td>
+			  <td>captureSousMenu() <br>version fetch</td>
 			  <td>Version moderne recommandée</td>
-			  <td>accueil_liens_colonne5.js</td>
 			  <td>
-				<pre><code class="language-js">
+			      accueil_liens_colonne5<br><br>
+				  Remplacé par:<br>
+				  capture_items.js
+			   </td>
+			  <td>
+				<pre><code class="language-js" style="font-size:.9rem;">
 		function captureSousMenu(prfctr) {
 			const cible = document.getElementById("yivawo");
-
 			if (prfctr === "") {
 				cible.innerHTML = "";
 				return;
 			}
-
-			fetch(`SERVEUR/lectureBD_afficherNaissance.php?pr=${encodeURIComponent(prfctr)}`)
+			var url='backenf/lectureBD_afficherNaissance.php';
+			fetch(url + `?pr=${encodeURIComponent(prfctr)}`)
 				.then(response => response.text())
 				.then(data => {
 					cible.innerHTML = data;
 				})
 				.catch(error => {
 					console.error("Erreur AJAX :", error);
-					cible.innerHTML = "Une erreur est survenue.";
+					cible.innerHTML="Une erreur est survenue";
 				});
 		}
 				</code></pre>
