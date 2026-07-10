@@ -635,15 +635,27 @@ Eclatement horizontal:<br>
 			</tr>
 
 			<tr>
-			  <td>accueil.php</td>
+			  <td>
+			     accueil.php<br>
+				 <small>accueil_prefecture.php</small><br>
+				 <small>responsiveAccueil.css</small>
+			  </td>
 			  <td>
                 Panel de commande :<br><br>  Compression verticlale
 			  </td>
 			  <td>
-				<pre><code class="language-js">
-						???? 
-							???
-						???
+				<pre><code class="language-css">
+						/* Limitation sur grand écrand */ 
+						.flip{ 
+							min-height:38vh;
+						}
+						
+						/* Conservation sur mobile */
+						@media (max-width: 768px) { 
+							.flip{
+							   min-height:auto;
+							}
+						}
 				 </code></pre>
 			  </td>
 			</tr>
