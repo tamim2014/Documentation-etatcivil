@@ -629,7 +629,7 @@ Eclatement horizontal:<br>
 					&lt;!-- PANNEAU CENTRAL/ligne217: min-height:100vh !important; -->
 					&lt;table class="tabledroite showacte" style="min-height:100vh;">
 					&lt;!-- PANNEAU DE DROITE/ligne373: min-height:88.75%; -->
-					&lt;;table  class="tablemenu" style="min-height:88.75%;"> 
+					&lt;table  class="tablemenu" style="min-height:88.75%;"> 
 				</code></pre>
 			  </td>
 			</tr>
@@ -637,15 +637,17 @@ Eclatement horizontal:<br>
 			<tr>
 			  <td>
 			     accueil.php<br>
-				 <small>accueil_prefecture.php</small><br>
-				 <small>responsiveAccueil.css</small>
+				 &emsp;&emsp;&darr;<br>
+				 <span style="font-size:.82rem;">accueil_prefecture.php</span><br>
+				 &emsp;&emsp;&darr;<br>
+				 <span style="font-size:.82rem;">responsiveAccueil.css</span>
 			  </td>
 			  <td>
-                Panel de commande :<br><br>  Compression verticlale
+                Panel Ajax :<br><br>  Compression verticlale
 			  </td>
 			  <td>
 				<pre><code class="language-css">
-						/* Limitation sur grand écrand */ 
+						/* Limitation sur grand écran */ 
 						.flip{ 
 							min-height:38vh;
 						}
@@ -660,20 +662,26 @@ Eclatement horizontal:<br>
 			  </td>
 			</tr>
 			<tr>
-			  <td>accueil.php</td>
+			  <td>
+			     accueil.php
 			  <td>
                  .tablegauche:<br><br>  Eclatement horizontale
 			  </td>
 			  <td>
-					<pre><code class="language-js">
+					<pre><code class="language-css">
 					  ????
-					  ????
+					    ????
 					  ????
 					</code></pre>
 			  </td>
 			</tr>
 			<tr>
-			  <td>accueil.php</td>
+			  <td>
+			     accueil.php<br>
+			     index.php<br>
+			     userManagement.php<br>
+			  </td>
+			  </td>
 			  <td>
                  .text_header:<br><br> 
 				 Sort de son cadre(.hollowTop)<br>
@@ -681,12 +689,27 @@ Eclatement horizontal:<br>
 			  </td>
 			  <td>
 					<pre><code class="language-css">
+					  /*  
+					   * lectureBD.php : texte OK,    Drapeau  OK 
+					   * lectureBD2.php : texte OK,   Drapeau OK 
+					   *
+					   * ecritureBD.php : texte OK,   ❗Drapeau K.O❗ 
+					   * modifier_.php: texte OK,     ❗Drapeau K.O❗
+					   *   
+					   */   
+					  1️⃣ Pour le texte(accueil,index,userManagement)
+					  Faire comme: lecturBD.php, ecritureBD.php
 					  Virer les pixels-perfect (padding-top:2%; padding-left:45%;)
 					  Centrer avec text-align:center
 					  Si mal centré : Solution du topnav(un élément transparent à gauche)
 					  	👉 Desktop: transparent élément
 					  	👉 Mobil: display none élément
-					</code></pre>
+					  2️⃣ Pour le flag(ecritureBD,modifier_)
+					  Faire comme: index.php
+					  	👉 Desktop: ??????????????????
+					  	👉 Mobil: ????????????????????????
+					</code></pre> 
+
 			  </td>
 			</tr>
 		  </tbody>
