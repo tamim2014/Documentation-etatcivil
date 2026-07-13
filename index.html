@@ -224,7 +224,7 @@
   </div>
    
    
-   <p id="validerlogin"><b><u>1.3 Gestion des droits</u>(Accès aux fonctionnalités/Accès aux données)</b></p>
+   <p id="validerlogin"><b><u>1.3 Gestion des droits</u></b></p>
    <div class="img" style="color:gray;">
       Cet utilisateur peut-il faire CETTE action?<br>
 	  Qui peut accéder à CETTE donnée?<br>
@@ -243,13 +243,50 @@
    <img src="uml/accueil/login/dialogBox.png" class="img lastPart" style="height:auto; ">
    
    <h4 style="clear:both;">B) Accès aux données( en fonction de la préfecture affectée à l'officier)</h4>
-   <p class="img firstPart" style="color:#aaa;  margin-bottom:0;">
+   <p class="img" style="color:#aaa;">
      Qui accède à quoi?<br>
 	 Seul le compte "admin" peut acceder à l'ensemble de l'espace de données.
 	 Un officier d'état civil ne peut travailler que sur les documents relatifs à sa préfecture.<br>
+	 Pour ce faire, on stocke le rôle de l'utilisateur et sa préfecture d'affectation en session lors de l'auhtentification:<br>
+	 $_SESSION['user_role']  = $row['roles'];<br> 
+     $_SESSION['prefecture'] = $row['prefecture'];
 	 
    </p> 
-   <img src="uml/accueil/login/dialogBox2.png" class="img lastPart" style="height:auto;">
+   <p class="img firstPart" style="color:#aaa;  margin-bottom:0;">
+     Accès en lecture: lectureBD.php et search Engine
+   </p> 
+   <!--  <img src="uml/accueil/login/dialogBox2.png" class="img lastPart">   -->
+   <div class="img lastPart">
+		<pre><code class="language-php">
+			// $R=mysqli_query($conn, "SELECT * FROM  liste WHERE prefecture='".$p."' ");
+			
+			if ($_SESSION['user_role'] !== 'admin') {
+				$prefUnique = $_SESSION['prefecture'];
+				$R = mysqli_query($conn, "SELECT * FROM  liste WHERE prefecture='".$prefUnique."' ");
+			} else {
+				$R=mysqli_query($conn, "SELECT * FROM  liste WHERE prefecture='".$p."' ");
+			}
+		</code></pre>
+   </div>
+   
+   
+   <p class="img firstPart" style="color:#aaa;  margin-bottom:0;">
+     Accès en écriture: ecritureBD.php ( champs "préfecture")
+   </p> 
+    <div class="img lastPart">
+		<pre><code class="language-php">
+			/** ecritureBD.php */
+			&lt;select
+				name="prefecture"
+				data-role="&lt;?php echo $_SESSION['user_role']; ?>"
+				data-pref="&lt;?php echo $_SESSION['prefecture']; ?>"
+				onChange="control(this); changement(this);" required>
+			/** controleSaisie.js */
+			function control(select) {...}
+			/** ecritureBD.js */
+			function changement(prefecture){...}
+		</code></pre>
+   </div>
    
    
    <p id="1.3"><b><u>1.4 Gestion des utilisateurs</u> (Ajouter <i style="color:gray">un utilisateur</i>, supprimer <i style="color:gray">un utilisateurs</i>, Afficher <i style="color:gray">tous les utilisateurs</i>)</b></p>
