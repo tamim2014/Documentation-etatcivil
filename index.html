@@ -634,14 +634,33 @@
     </div>
   
   <p id="5.2"><b><u>5.2: Nouvel acte</u>(btn Afficher)</b></p>
-  <img src="uml/ecritureBD/nouvelacteAfficher.png" class="img interface">
+
+  <div class="img">
+		<pre><code class="language-php">
+			/** ecritureBD.php :  inc/ecriture/ecritureBD_menudroite.php  */
+			
+			&lt;a href="output/afficher.php?n=' . $id_document . '" onclick="return ouvrirEtVerifier(this, ' . $id_js . ');">   
+				&lt;input  type="button" value="Afficher" />
+			&lt;/a>
+		</code></pre>
+    </div>
 
   
   <p id="5.3"><b><u>5.3: Nouvel acte</u>(btn Imprimer)</b></p>
-  <img src="uml/ecritureBD/nouvelacteImprimer.png" class="img interface">
+  
+    <div class="img">
+		<pre><code class="language-php">
+			/** ecritureBD.js : function verifierAvantImpression(id)
+			 *  window.location.href = "output/imprimer.php?n=" + id; ❗
+			 */
+			&lt;a href="#" onclick="return verifierAvantImpression(<?php echo $id_js; ?>);"> 
+			    &lt;input type="button" value="Imprimer l'acte" /> 
+			&lt;/a> 
+		</code></pre>
+    </div>
   
   <p id="5.4"><b><u>5.4: Nouvel acte</u>(btn Rectifier)</b></p>
-   <p class="img" style="color:#aaa; width:90%;">
+   <p class="img" style="color:#aaa; >
        Seuls les utilisteurs connectés avec un compte "admin" ont les droits de <span style="color:#ececea;">rectifier</span>
 	   un document erroné ou de <span style="color:#ececea;">supprimer</span> un faux document. Dans les pratique, ces privillèges
 	   reviennent seulement aux préfets.👇<br><br>
@@ -653,7 +672,6 @@
 	   &bull; Si le bouton "<span style="color:#ececea;">Enregistrer</span>" est actionné: <br>
 	   &emsp;&emsp;&#8620; On redirige vers modifier.php avec transmission du numero de l'acte: <span style="color:#0099ff;">modifier_.php?<b style="color:#ff5050;">acte_=N°</b></span>  ✍️<br>
    </p>
-  <img src="uml/ecritureBD/nouvelacteRectifier.png" class="img"  style="height:auto; ">
   
   <p class="img" id="6.1" style="background: #f7f7f9; width:94%">6: Rectification de document  👉 <span style="color:blue">modifier_.php</span></p>
   
@@ -685,13 +703,29 @@
     </div>
   
   <p id="6.2"><b><u>6.2: Rectification</u>(btn Afficher)</b></p>
-  <img src="uml/ecritureBD/editAfficher.png" class="img"  style="height:auto; ">
+    <div class="img">
+		<pre><code class="language-php">
+			/** modifier_.php :  inc/ecriture/ecritureBD_edit_menudroite1.php  */
+			
+			&lt;a  href="output/afficher.php?n=' . $donnees["ID"] . '" onclick="return ouvrirPopupEcritureBD(this);">  
+				&lt;input type="button"  value="Afficher"/>
+			&lt;/a>
+		</code></pre>
+    </div>
   
   <p id="6.3"><b><u>6.3: Rectification</u>(btn Imprimer)</b></p>
-  <img src="uml/ecritureBD/editImprimer.png" class="img"  style="height:auto; ">
+    <div class="img">
+		<pre><code class="language-php">
+			/** modifier_.php :  inc/ecriture/ecritureBD_edit_menudroite1.php */
+
+			&lt;a href="output/imprimer.php?n=<?php echo $donnees["ID"];?> "> 
+			    &lt;input type="button"  value="Imprimer l'acte" />
+			&lt;/a> 
+		</code></pre>
+    </div>
   
    <p id="6.4"><b><u>6.4: Rectification</u>(btn Recommencer)</b></p>
-   <p class="img" style="color:#aaa; width:90%;">
+   <p class="img" style="color:#aaa;">
        Seuls les utilisteurs connectés avec un compte "admin" ont les droits de <span style="color:#ececea;">rectifier</span>
 	   un document erroné ou de <span style="color:#ececea;">supprimer</span> un faux document. Dans les pratique, ces privillèges
 	   reviennent seulement aux préfets.👇<br><br>
@@ -701,7 +735,6 @@
 	   &bull; Si le bouton "<span style="color:#ececea;">Enregistrer</span>" est actionné: <br>
 	   &emsp;&emsp;&#8620; On redirige vers modifier.php avec transmission du numero de l'acte: <span style="color:#0099ff;">modifier_.php?<b style="color:#ff5050;">acte_=N°</b></span>  ✍️<br>
    </p>
-  <img src="uml/ecritureBD/nouvelacteRectifier.png" class="img"  style="height:auto; ">
   
   
   
