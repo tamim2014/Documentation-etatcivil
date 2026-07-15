@@ -653,7 +653,7 @@
 			/** ecritureBD.js : function verifierAvantImpression(id)
 			 *  window.location.href = "output/imprimer.php?n=" + id; ❗
 			 */
-			&lt;a href="#" onclick="return verifierAvantImpression(<?php echo $id_js; ?>);"> 
+			&lt;a href="#" onclick="return verifierAvantImpression(&lt;?php echo $id_js; ?>);"> 
 			    &lt;input type="button" value="Imprimer l'acte" /> 
 			&lt;/a> 
 		</code></pre>
@@ -718,7 +718,7 @@
 		<pre><code class="language-php">
 			/** modifier_.php :  inc/ecriture/ecritureBD_edit_menudroite1.php */
 
-			&lt;a href="output/imprimer.php?n=<?php echo $donnees["ID"];?> "> 
+			&lt;a href="output/imprimer.php?n=&lt;?php echo $donnees["ID"];?> "> 
 			    &lt;input type="button"  value="Imprimer l'acte" />
 			&lt;/a> 
 		</code></pre>

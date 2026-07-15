@@ -698,14 +698,6 @@ Eclatement horizontal:<br>
 			  </td>
 			  <td>
 					<pre><code class="language-css">
-					  /*  
-					   * lectureBD.php : texte OK,    Drapeau  OK 
-					   * lectureBD2.php : texte OK,   Drapeau OK 
-					   *
-					   * ecritureBD.php : texte OK,   ❗Drapeau K.O❗ 
-					   * modifier_.php: texte OK,     ❗Drapeau K.O❗
-					   *   
-					   */   
 					  1️⃣ Pour le text header(accueil,index,userManagement)
 					  Faire comme: lecturBD.php, ecritureBD.php
 					  Virer les pixels-perfect (padding-top:2%; padding-left:45%;)
@@ -717,9 +709,10 @@ Eclatement horizontal:<br>
 					</code></pre>
 					<pre><code class="language-css">
 					  2️⃣ Pour le flag header(ecritureBD,modifier_)
-					  Faire comme: index.php
-					  	👉 Desktop: ??????????????????
-					  	👉 Mobil: ????????????????????????
+					     accueil22.css:49
+					  	👉 .flag {height:100%;} 
+					     ecritureBD.css:133 → exclure le coupable
+					  	👉 input:not(.flag) { padding: .2em .5em; }
 					</code></pre> 
 
 			  </td>
