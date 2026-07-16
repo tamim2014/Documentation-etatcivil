@@ -673,9 +673,9 @@ Eclatement horizontal:<br>
 			  </td>
 			  <td>
 					<pre><code class="language-css">
-					  ????
-					    ????
-					  ????
+					  Laisser telle qu'elle est !
+					    ---
+					  ---
 					</code></pre>
 			  </td>
 			</tr>
@@ -699,19 +699,14 @@ Eclatement horizontal:<br>
 			  <td>
 					<pre><code class="language-css">
 					  1️⃣ Pour le text header(accueil,index,userManagement)
-					  Faire comme: lecturBD.php, ecritureBD.php
-					  Virer les pixels-perfect (padding-top:2%; padding-left:45%;)
-					  Centrer avec text-align:center
-					  Si mal centré : Solution du topnav(un élément transparent à gauche)
-					  Cette solution(elt transparent) est la pire, donc la dernière ❗
-					  	👉 Desktop: transparent élément
-					  	👉 Mobil: display none élément
+					     factorisation.css:18 → Fixer un padding-bottom
+					  	👉 .text_header{ padding-block:25px; }
 					</code></pre>
 					<pre><code class="language-css">
 					  2️⃣ Pour le flag header(ecritureBD,modifier_)
-					     accueil22.css:49
+					     accueil22.css:49 → écraser le padding-block
 					  	👉 .flag {height:100%;} 
-					     ecritureBD.css:133 → exclure le coupable
+					     ecritureBD.css:133 → exclure du coupable
 					  	👉 input:not(.flag) { padding: .2em .5em; }
 					</code></pre> 
 
