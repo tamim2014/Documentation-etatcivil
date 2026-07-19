@@ -548,52 +548,76 @@
 	  
   ############################################################################################################################### -->
   
-  <p class="img" id="afficheresultat" style="background: #f7f7f9; width:94%">4. Traitement du résultat de recherche: Le document trouvé 👉 <span style="color:blue">lectureBD2.php</span></p>
+  <p class="img" id="afficheresultat" style="background: #f7f7f9; width:94%">4. Traitements du résultat de recherche: Le document trouvé 👉 <span style="color:blue">lectureBD2.php</span></p>
   
   
-  <p><b><u>4.1 Afficher: Le document trouvé</u></b>(suite à la recherche éffectuée en page d'accueil)</p>
+  <p><b><u>4.1 Afficher: Le document trouvé</u></b>(suite à la recherche éffectuée)</p>
   <div class="img firstPart">
-	  <ul type="cite">
-		 <li><b>lectureBD2_searchPlayBack.php</b>( si recherche par num). </li>     
-		 <li><b>lectureBD2_searchPlayBackByName.php</b>( si recherche par nom). </li>     
-		 <li style="color:transparent"></li>
-		 <li><i style="font-size:.9em; color:#777;">&lt;a id="lien"  href="#" onclick="popup_lectureBD2();"&gt; Afficher &lt;/a&gt; </i></li>
-		 <li style="color:transparent"></li>
-		 <li><i style="font-size:.9em; color:#777;"> onclick="popup_lectureBD2(); ⇒  renvoie à </i> lectureBD.js<i style="font-size:.9em; color:#777;">(ligne158)</i> </li>
-		 <li>lectureBD.js ⇒ <i style="font-size:.9em; color:#777;"> function popup_lectureBD2() &nbsp; { wind'ow.open("<span style="color:black">afficherdanspop.php</span>",'Popup','...ici définition d'un popup d'affichage...' }</i>   </li> 
-	  </ul> 
+	<pre><code class="language-php">
+		/** Recherche par numéro : backend/lectureBD2_searchPlayBack.php  */
+		
+		&lt;a id="lien" href="#" onclick="popup_lectureBD2();"> 👁 &lt;/a>   
+		  
+		/** lectureBD.js : function popup_lectureBD2()  */  
+		
+			window.open("output/afficherdanspop.php", ...); ❗
+	</code></pre>
   </div>
-  <img src="uml/variables.png" class="img lastPart">
-  
-  
-  <p id="imprimeresultat"><b><u>4.2 Imprimer: Le document trouvé</u></b>(suite à la recherche éffectuée en page d'accueil)</p>
-  <div class="img firstPart">  
-	  <ul type="cite">
-		 <li><b>lectureBD2_searchPlayBack.php</b>( si recherche par num). </li>     
-		 <li><b>lectureBD2_searchPlayBackByName.php</b>( si recherche par nom). </li>     
-		 <li style="color:transparent"></li>
-		 <li><i style="font-size:.9em; color:#777;"> &lt;a href="<b style="color:black">imprimer.php</b>?n='.$donnees["ID"].'"&gt; Imprimer &lt;/a&gt; </i></li>
-	  </ul>
+  <div class="img lastPart">
+	<pre><code class="language-php">
+		/** Recherche par nom : backend/lectureBD2_searchPlayBackByName.php  */
+		
+		&lt;a href="output/afficher.php?n='.$donnees["ID"].'" onclick="return ouvrePop(this.href);"> 👁 &lt;/a>    
+	</code></pre>
   </div>
-  <img src="uml/variables.png" class="img lastPart">
   
   
-  <p id="modifieresultat"><b><u>4.3 Modifier: Le document trouvé</u></b>(suite à la recherche éffectuée en page d'accueil)</p>
-  <div class="img firstPart">  
-	  <ul type="cite">   
-		 <li><b>lectureBD2_searchPlayBack.php</b>( si recherche par num). </li>     
-		 <li><b>lectureBD2_searchPlayBackByName.php</b>( si recherche par nom). </li>
-		 <li style="color:transparent"></li>
-		 <li><i style="font-size:.9em; color:#777;">href="<b style="color:black">modifier_.php</b>?n='.$donnees["ID"].' & nom_='.$donnees["nom"].' & prenom_='.$donnees["prenom"].'   & ... etc</i></li>
-	  </ul> 
-  </div>	  
-  <img src="uml/variables.png" class="img lastPart">
+  <p id="imprimeresultat"><b><u>4.2 Imprimer: Le document trouvé</u></b>(suite à la recherche éffectuée)</p>
+  <div class="img firstPart">
+	<pre><code class="language-php">
+		/** Recherche par numéro : backend/lectureBD2_searchPlayBack.php  */
+		
+		&lt;a href="output/imprimer.php?n='.$donnees["ID"].'"> 🖨️&lt;/a>  
+	</code></pre>
+  </div>
+  <div class="img lastPart">
+	<pre><code class="language-php">
+		/** Recherche par nom : backend/lectureBD2_searchPlayBackByName.php  */
+		
+		&lt;a href="output/imprimer.php?n='.$donnees["ID"].'"> 🖨️ &lt;/a>   
+	</code></pre>
+  </div>
   
-  <h4><u>Remarque</u></h4>
-   <p>
-       Il serait préférable de rassembler les 3 traitements du résultat de recherche(Afficher, Imprimer, modifier)
-	   dans un même fichier aulieu de les faire dans deux fichiers séparés(lectureBD2_searchPlayBack.php et lectureBD2_searchPlayBackByName.php)
-   </p>
+  
+  <p id="modifieresultat"><b><u>4.3 Modifier: Le document trouvé</u></b>(suite à la recherche éffectuée)</p>
+  <div class="img firstPart">
+	<pre><code class="language-php">
+		/** Recherche par numéro : backend/lectureBD2_searchPlayBack.php  */
+
+		&lt;a href="#"
+		   onclick="verifierDroitEtModifier(\'modifier_.php?n=' . $donnees['ID'] .
+			   '&nom_=' . urlencode($donnees['nom']) .
+			   '&prenom_=' . urlencode($donnees['prenom']) .
+			   '&acte_=' . urlencode($donnees['acte']) .
+		   '\'); return false;">
+			&lt;span class="desktopText1">Modifier&lt;/span>
+			&lt;span class="mobilText1">✍️&lt;/span>
+		&lt;/a>
+	</code></pre>
+  </div>
+  <div class="img lastPart">
+	<pre><code class="language-php">
+		/** Recherche par nom : backend/lectureBD2_searchPlayBackByName.php  */
+		Idem
+	   Il serait préférable de rassembler les 3 traitements du résultat de recherche
+	   (Afficher, Imprimer, modifier)
+	   dans un même fichier aulieu de les faire dans deux fichiers séparés
+	   (lectureBD2_searchPlayBack.php et lectureBD2_searchPlayBackByName.php)
+ 
+	</code></pre>
+  </div>
+  
+
   
   <p class="img" id="5.1" style="background: #f7f7f9; width:94%">5. Nouveau document 👉 <span style="color:blue">ecritureBD.php</span></p>
   
